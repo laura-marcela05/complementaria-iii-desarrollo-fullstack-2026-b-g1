@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semana 04 · Buscador de Recetas (React)</title>
+    <style>
+      :root {
+        --chalkboard: #6b84b7;
+        --chalkboard-edge: #4f6693;
+        --chalk: #ffffff;
+        --chalk-dim: #dbe2f0;
+        --accent: #bcd0f0;
+        --index-card: #f4f6fb;
+        --error: #e0a3a3;
+        --error-dark: #7a3a3a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--chalkboard);
+        color: var(--chalk);
+        font-family: "Space Mono", monospace, sans-serif;
+        padding: 2.5rem 1.5rem;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 0.2rem;
+      }
+
+      p.subtitle {
+        text-align: center;
+        color: var(--chalk-dim);
+        margin-top: 0;
+        font-size: 0.85rem;
+      }
+
+      .buscador {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 1.75rem 0;
+      }
+
+      .buscador input {
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        border: none;
+        width: 260px;
+        font-family: inherit;
+        font-size: 0.85rem;
+        background: var(--index-card);
+        color: var(--chalkboard-edge);
+      }
+
+      .buscador button {
+        padding: 0.75rem 1.25rem;
+        border-radius: 4px;
+        border: none;
+        background: var(--chalk);
+        color: var(--chalkboard-edge);
+        cursor: pointer;
+        font-weight: bold;
+        font-family: inherit;
+      }
+
+      .buscador button:hover {
+        background: var(--accent);
+      }
+
+      .estado {
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        color: var(--chalk-dim);
+      }
+
+      .estado.error {
+        color: var(--error-dark);
+        background: var(--error);
+        display: inline-block;
+        padding: 0.75rem 1.25rem;
+        border-radius: 4px;
+      }
+
+      .lista {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        max-width: 900px;
+        margin: 2rem auto 0;
+      }
+
+      .tarjeta {
+        background: var(--index-card);
+        color: var(--chalkboard-edge);
+        border-radius: 6px;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .tarjeta img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 0.6rem;
+      }
+
+      .tarjeta h3 {
+        margin: 0.3rem 0;
+        font-size: 0.95rem;
+      }
+
+      .tarjeta p {
+        margin: 0.2rem 0;
+        font-size: 0.75rem;
+        opacity: 0.75;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React y ReactDOM vía CDN (sin necesidad de instalar nada) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel para poder escribir JSX directo en el navegador -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      // ---------------------------------------------------------
+      // COMPONENTE REUTILIZABLE: recibe una receta y la muestra.
+      // Es pequeño, no maneja estado propio, y se le puede pasar
+      // cualquier receta distinta como prop.
+      // ---------------------------------------------------------
+      function TarjetaReceta({ receta }) {
+        return (
+          <div className="tarjeta">
+            <img src={receta.strMealThumb} alt={receta.strMeal} />
+            <h3>{receta.strMeal}</h3>
+            <p>
+              {receta.strCategory} · {receta.strArea}
+            </p>
+          </div>
+        );
+      }
+
+      // ---------------------------------------------------------
+      // COMPONENTE PRINCIPAL: maneja el ESTADO y consume la API
+      // ---------------------------------------------------------
+      function App() {
+        // 1) ESTADO: los datos que la vista va a mostrar
+        const [recetas, setRecetas] = useState([]); // lista de recetas
+        const [cargando, setCargando] = useState(true); // ¿estamos esperando la API?
+        const [error, setError] = useState(null); // por si algo falla
+        const [busqueda, setBusqueda] = useState("chicken"); // texto del buscador
+
+        // 2) FUNCIÓN que consulta la API de TheMealDB
+        function buscarRecetas(termino) {
+          setCargando(true);
+          setError(null);
+
+          const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(termino)}`;
+
+          fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+              setRecetas(data.meals || []); // la API devuelve null si no encuentra nada
+              setCargando(false);
+            })
+            .catch((err) => {
+              setError("No se pudo cargar la información. Intenta de nuevo.");
+              setCargando(false);
+            });
+        }
+
+        // 3) useEffect: se ejecuta automáticamente cuando el componente
+        //    aparece en pantalla (equivalente a "ngOnInit" en Angular)
+        useEffect(() => {
+          buscarRecetas(busqueda);
+        }, []); // el arreglo vacío [] significa "solo una vez al inicio"
+
+        function manejarBusqueda(e) {
+          e.preventDefault();
+          buscarRecetas(busqueda);
+        }
+
+        return (
+          <div>
+            <h1>🍲 Buscador de Recetas</h1>
+            <p className="subtitle">
+              Componente React con estado + consumo de API (TheMealDB)
+            </p>
+
+            <form className="buscador" onSubmit={manejarBusqueda}>
+              <input
+                type="text"
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+                placeholder="Ej: chicken, pasta, cake..."
+              />
+              <button type="submit">Buscar</button>
+            </form>
+
+            {/* 4) RENDER CONDICIONAL según el estado de carga */}
+            {cargando && <p className="estado">⏳ Cargando recetas...</p>}
+            {error && <p className="estado error">❌ {error}</p>}
+            {!cargando && !error && recetas.length === 0 && (
+              <p className="estado">
+                No se encontraron recetas con ese nombre.
+              </p>
+            )}
+
+            {!cargando && !error && recetas.length > 0 && (
+              <div className="lista">
+                {recetas.map((receta) => (
+                  <TarjetaReceta key={receta.idMeal} receta={receta} />
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
