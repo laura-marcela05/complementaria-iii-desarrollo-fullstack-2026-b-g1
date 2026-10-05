@@ -1,0 +1,13 @@
+/* Ajustes mínimos sobre Bootstrap 4.6.2 */
+
+body {
+  background-color: #f8f9fa;
+}
+
+#list .list-group-item {
+  line-height: 1.4;
+}
+
+#status-text {
+  min-height: 1.5rem;
+}

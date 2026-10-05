@@ -1,0 +1,102 @@
+/* --- Reset básico y tipografía general --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* --- Encabezado --- */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+header .subtitulo {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+/* --- Secciones de concepto --- */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.concepto {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.concepto h2 {
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+  border-left: 4px solid #333;
+  padding-left: 10px;
+}
+
+.concepto p {
+  color: #444;
+  margin-bottom: 14px;
+}
+
+/* --- Bloques de pseudocódigo --- */
+pre {
+  background-color: #1e1e1e;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+pre code {
+  font-family: "Consolas", "Courier New", monospace;
+}
+
+/* --- Sección en inglés (destacada aparte) --- */
+.ingles {
+  border-left: 4px solid #2a7f2a;
+}
+
+.ingles h2 {
+  border-left-color: #2a7f2a;
+}
+
+.etiqueta {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: #2a7f2a;
+  background-color: #e6f4e6;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+code {
+  background-color: #eee;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.85rem;
+}

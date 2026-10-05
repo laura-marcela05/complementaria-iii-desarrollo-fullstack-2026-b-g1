@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipos de LaLiga</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>⚽ Equipos de LaLiga Española</h1>
+  </header>
+
+  <main>
+    <!-- Estado 1: Cargando -->
+    <div id="loading" class="state-msg">
+      <p>⏳ Cargando equipos de fútbol...</p>
+    </div>
+
+    <!-- Estado 2: Error -->
+    <div id="error" class="state-msg hidden">
+      <p>⚠️ No se pudo obtener la información del servidor.</p>
+      <button id="retry-btn">Reintentar</button>
+    </div>
+
+    <!-- Estado 3: Datos -->
+    <div id="teams-container" class="grid-container"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

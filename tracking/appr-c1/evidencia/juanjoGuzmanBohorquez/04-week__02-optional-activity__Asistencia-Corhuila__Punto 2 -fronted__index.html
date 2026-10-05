@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORHUILA Smart Attendance Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col items-center justify-center p-2 sm:p-4">
+
+    <div class="w-full max-w-md bg-white shadow-xl rounded-2xl overflow-hidden min-h-[680px] flex flex-col justify-between border border-gray-200 relative">
+        
+        <header class="bg-green-700 text-white p-4 flex justify-between items-center shadow-md">
+            <div>
+                <h1 class="text-xs font-semibold tracking-wider text-green-200">CORHUILA</h1>
+                <span id="screen-title" class="text-sm font-bold">Control de Asistencia</span>
+            </div>
+            <button onclick="cargarDatosAPI()" title="Recargar datos API" class="text-xs bg-green-800 hover:bg-green-600 px-2 py-1 rounded text-white flex items-center gap-1 transition">
+                <i class="fa-solid fa-rotate"></i> Sync API
+            </button>
+        </header>
+
+        <div id="api-status" class="px-4 pt-3 hidden">
+            <div id="status-loading" class="hidden bg-blue-50 text-blue-700 p-2.5 rounded-lg text-xs flex items-center justify-center gap-2 border border-blue-200">
+                <i class="fa-solid fa-circle-notch animate-spin"></i> Consumiendo API con fetch()...
+            </div>
+            <div id="status-error" class="hidden bg-red-50 text-red-700 p-2.5 rounded-lg text-xs flex items-center justify-between border border-red-200">
+                <span><i class="fa-solid fa-triangle-exclamation"></i> Error al conectar con la API.</span>
+                <button onclick="cargarDatosAPI()" class="underline font-bold">Reintentar</button>
+            </div>
+        </div>
+
+        <main class="p-4 flex-1 overflow-y-auto">
+
+            <section id="screen-profesor-inicio" class="app-screen space-y-4">
+                <div class="flex items-center space-x-3 bg-gray-50 p-3 roun ded-lg border border-gray-100">
+                    <div class="w-10 h-10 rounded-full bg-green-100 text-green-800 flex items-center justify-center font-bold text-lg">RG</div>
+                    <div>
+                        <p class="text-xs text-gray-500">Bienvenido,</p>
+                        <h2 class="text-sm font-bold text-gray-800">Prof. Ricardo Gómez</h2>
+                    </div>
+                </div>
+
+                <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500">Mis Materias</h3>
+                
+                <div class="space-y-3">
+                    <button onclick="navegarA('screen-profesor-pase-lista', 'Fullstack - Grupo 01')" class="w-full text-left p-3.5 bg-white border border-gray-200 rounded-xl hover:border-green-500 hover:shadow-md transition flex justify-between items-center group">
+                        <div>
+                            <p class="font-bold text-sm text-gray-800 group-hover:text-green-700">Fullstack - Grupo 01</p>
+                            <p class="text-xs text-gray-500"><i class="fa-solid fa-users text-xs mr-1"></i> <span class="count-estudiantes">--</span> estudiantes asignados</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-400 text-xs group-hover:text-green-600"></i>
+                    </button>
+
+                    <button onclick="navegarA('screen-profesor-pase-lista', 'Diseño UI/UX - Grupo 02')" class="w-full text-left p-3.5 bg-white border border-gray-200 rounded-xl hover:border-green-500 hover:shadow-md transition flex justify-between items-center group">
+                        <div>
+                            <p class="font-bold text-sm text-gray-800 group-hover:text-green-700">Diseño UI/UX - Grupo 02</p>
+                            <p class="text-xs text-gray-500"><i class="fa-solid fa-users text-xs mr-1"></i> <span class="count-estudiantes">--</span> estudiantes asignados</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-400 text-xs group-hover:text-green-600"></i>
+                    </button>
+
+                    <button onclick="navegarA('screen-profesor-pase-lista', 'Ingeniería de Software - Grupo 01')" class="w-full text-left p-3.5 bg-white border border-gray-200 rounded-xl hover:border-green-500 hover:shadow-md transition flex justify-between items-center group">
+                        <div>
+                            <p class="font-bold text-sm text-gray-800 group-hover:text-green-700">Ingeniería de Software - Grupo 01</p>
+                            <p class="text-xs text-gray-500"><i class="fa-solid fa-users text-xs mr-1"></i> <span class="count-estudiantes">--</span> estudiantes asignados</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-400 text-xs group-hover:text-green-600"></i>
+                    </button>
+                </div>
+            </section>
+
+            <section id="screen-profesor-pase-lista" class="app-screen space-y-4 hidden">
+                <div class="flex items-center justify-between border-b pb-2">
+                    <button aria-label="Volver" onclick="navegarA('screen-profesor-inicio')" class="text-gray-600 hover:text-green-700 flex items-center text-xs font-semibold gap-1">
+                        <i class="fa-solid fa-arrow-left"></i> Volver
+                    </button>
+                    <span id="nombre-materia-actual" class="text-xs font-bold text-green-800 bg-green-50 px-2.5 py-1 rounded-full">Materia</span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500">Registro de Asistencia</h3>
+                    <span class="text-[10px] text-gray-400">Fecha: Hoy</span>
+                </div>
+
+                <div id="lista-estudiantes-pase" class="space-y-2.5">
+                    </div>
+
+                <button onclick="guardarAsistencia()" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2.5 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar asistencia
+                </button>
+            </section>
+
+            <section id="screen-estudiante-inicio" class="app-screen space-y-4 hidden">
+                <div class="flex items-center space-x-3 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg">JS</div>
+                    <div>
+                        <p class="text-xs text-gray-500">Estudiante</p>
+                        <h2 class="text-sm font-bold text-gray-800">Juan Sebastián Gómez</h2>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500">Mi Asistencia Actual</h3>
+                    <span class="text-[10px] bg-red-100 text-red-700 font-bold px-2 py-0.5 rounded">Límite Pérdida: 30%</span>
+                </div>
+
+                <div id="lista-materias-estudiante" class="space-y-3">
+                    </div>
+            </section>
+
+            <section id="screen-estudiante-notificaciones" class="app-screen space-y-4 hidden">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <h3 class="text-sm font-bold text-gray-800"><i class="fa-solid fa-bell text-yellow-500 mr-1.5"></i> Centro de Alertas</h3>
+                    <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">CORHUILA System</span>
+                </div>
+
+                <div id="lista-notificaciones" class="space-y-3">
+                    <div class="p-3 bg-red-50 border-l-4 border-red-500 rounded-r-xl space-y-1">
+                        <div class="flex justify-between items-start">
+                            <p class="text-xs font-bold text-red-800">Límite alcanzado (30%)</p>
+                            <span class="text-[10px] text-red-400">Hace 5 min</span>
+                        </div>
+                        <p class="text-xs text-red-700">Tienes un 30% de inasistencias en <strong>Cálculo Integral</strong>. La asignatura aparece como perdida.</p>
+                        <button onclick="navegarA('screen-estudiante-inicio')" class="text-xs text-red-800 font-bold underline mt-1 inline-block">Ver Detalles</button>
+                    </div>
+
+                    <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl space-y-1">
+                        <div class="flex justify-between items-start">
+                            <p class="text-xs font-bold text-amber-800">Alerta importante (25%)</p>
+                            <span class="text-[10px] text-amber-500">Hace 2 horas</span>
+                        </div>
+                        <p class="text-xs text-amber-700">Tienes un 25% de inasistencias en <strong>Diseño UI/UX</strong>. Estás cerca del límite.</p>
+                        <button onclick="navegarA('screen-estudiante-inicio')" class="text-xs text-amber-800 font-bold underline mt-1 inline-block">Ver Detalles</button>
+                    </div>
+
+                    <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl space-y-1">
+                        <div class="flex justify-between items-start">
+                            <p class="text-xs font-bold text-blue-800">Cuidado (20%)</p>
+                            <span class="text-[10px] text-blue-400">Ayer</span>
+                        </div>
+                        <p class="text-xs text-blue-700">Has alcanzado el 20% de inasistencias en <strong>Fullstack</strong>.</p>
+                        <button onclick="navegarA('screen-estudiante-inicio')" class="text-xs text-blue-800 font-bold underline mt-1 inline-block">Ver Detalles</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <nav class="bg-gray-900 text-gray-400 flex justify-around items-center p-2 text-center text-[11px] border-t border-gray-800">
+            <a href="#" onclick="navegarA('screen-estudiante-inicio'); return false;" class="hover:text-white flex flex-col items-center p-1">
+                <i class="fa-solid fa-house text-base mb-0.5"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" onclick="navegarA('screen-profesor-inicio'); return false;" class="hover:text-white flex flex-col items-center p-1">
+                <i class="fa-solid fa-chalkboard-user text-base mb-0.5"></i>
+                <span>Classes</span>
+            </a>
+            <a href="#" onclick="navegarA('screen-estudiante-notificaciones'); return false;" class="hover:text-white flex flex-col items-center p-1 relative">
+                <i class="fa-solid fa-bell text-base mb-0.5"></i>
+                <span>Alerts</span>
+                <span class="absolute top-0 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        // Datos Mock locales que se complementan con el consumo de API (fetch)
+        let listaEstudiantesAPI = [];
+        let materiasEstudiante = [
+            { nombre: 'Fullstack - Grupo 01', inasistencia: 20 },
+            { nombre: 'Diseño UI/UX - Grupo 02', inasistencia: 25 },
+            { nombre: 'Cálculo Integral', inasistencia: 30 },
+            { nombre: 'Física Mecánica', inasistencia: 10 }
+        ];
+
+        // Títulos para la barra superior
+        const titulosPantalla = {
+            'screen-profesor-inicio': 'Profesor - Inicio',
+            'screen-profesor-pase-lista': 'Profesor - Pase de Lista',
+            'screen-estudiante-inicio': 'Estudiante - Mi Asistencia',
+            'screen-estudiante-notificaciones': 'Centro de Alertas'
+        };
+
+        // Función de Navegación entre Pantallas
+        function navegarA(screenId, parametroExtra = null) {
+            document.querySelectorAll('.app-screen').forEach(s => s.classList.add('hidden'));
+            
+            const pantallaDestino = document.getElementById(screenId);
+            if (pantallaDestino) {
+                pantallaDestino.classList.remove('hidden');
+                document.getElementById('screen-title').innerText = titulosPantalla[screenId] || 'CORHUILA';
+            }
+
+            if (screenId === 'screen-profesor-pase-lista' && parametroExtra) {
+                document.getElementById('nombre-materia-actual').innerText = parametroExtra;
+            }
+        }
+
+        // Función para consumir API pública (JSONPlaceholder) con fetch y manejar sus 3 estados
+        function cargarDatosAPI() {
+            const statusBox = document.getElementById('api-status' );
+            const statusLoading = document.getElementById('status-loading');
+            const statusError = document.getElementById('status-error');
+
+            // 1. ESTADO: CARGA
+            statusBox.classList.remove('hidden');
+            statusLoading.classList.remove('hidden'); 
+            statusError.classList.add('hidden');
+
+            fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => {
+                    if (!response.ok) throw new Error('Respuesta de red no ok');
+                    return response.json();
+                })
+                .then(users => {
+                    // 2. ESTADO: DATOS (ÉXITO)
+                    listaEstudiantesAPI = users.slice(0, 6); // Tomamos los primeros 6 usuarios de ejemplo
+                    
+                    // Actualizar contadores en la vista del profesor
+                    document.querySelectorAll('.count-estudiantes').forEach(el => el.innerText = listaEstudiantesAPI.length);
+
+                    renderizarListaEstudiantes();
+                    renderizarMateriasEstudiante();
+
+                    // Ocultar mensaje de carga
+                    statusLoading.classList.add('hidden');
+                    statusBox.classList.add('hidden');
+                })
+                .catch(error => {
+                    // 3. ESTADO: ERROR
+                    console.error('Error al realizar fetch:', error);
+                    statusLoading.classList.add('hidden');
+                    statusError.classList.remove('hidden');// Muestra mensaje de error al usuario
+
+                });
+        }
+
+        // Renderizar lista de estudiantes en el Pase de Lista del Profesor
+        function renderizarListaEstudiantes() {
+            const contenedor = document.getElementById('lista-estudiantes-pase');
+            contenedor.innerHTML = '';
+
+            listaEstudiantesAPI.forEach((estudiante, index) => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between p-2.5 bg-gray-50 rounded-lg border border-gray-200 text-xs';
+                item.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span class="font-bold text-gray-400">${index + 1}.</span>
+                        <div>
+                            <p class="font-semibold text-gray-800">${estudiante.name}</p>
+                            <p class="text-[10px] text-gray-400">${estudiante.email.toLowerCase()}</p>
+                        </div>
+                    </div>
+                    <label class="flex items-center space-x-1 bg-white px-2 py-1 rounded border border-gray-300 cursor-pointer hover:bg-red-50">
+                        <input type="checkbox" class="form-checkbox text-red-600 rounded">
+                        <span class="text-[10px] font-bold text-red-600">Inasistencia</span>
+                    </label>
+                `;
+                contenedor.appendChild(item);
+            });
+        }
+
+        // Renderizar vista del estudiante con barras de inasistencia
+        function renderizarMateriasEstudiante() {
+            const contenedor = document.getElementById('lista-materias-estudiante');
+            contenedor.innerHTML = '';
+
+            materiasEstudiante.forEach(materia => {
+                let colorBarra = 'bg-green-500';
+                let tagEstado = '<span class="text-[10px] text-green-700 bg-green-100 font-bold px-2 py-0.5 rounded">Normal</span>';
+
+                if (materia.inasistencia >= 30) {
+                    colorBarra = 'bg-red-600';
+                    tagEstado = '<span class="text-[10px] text-red-700 bg-red-100 font-bold px-2 py-0.5 rounded">Crítico (Perdida)</span>';
+                } else if (materia.inasistencia >= 25) {
+                    colorBarra = 'bg-amber-500';
+                    tagEstado = '<span class="text-[10px] text-amber-700 bg-amber-100 font-bold px-2 py-0.5 rounded">Advertencia</span>';
+                } else if (materia.inasistencia >= 20) {
+                    colorBarra = 'bg-blue-500';
+                    tagEstado = '<span class="text-[10px] text-blue-700 bg-blue-100 font-bold px-2 py-0.5 rounded">Alerta</span>';
+                }
+
+                const item = document.createElement('div');
+                item.className = 'p-3 bg-white border border-gray-200 rounded-xl space-y-2';
+                item.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <p class="text-xs font-bold text-gray-800">${materia.nombre}</p>
+                        ${tagEstado}
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-[10px] text-gray-500">
+                            <span>Inasistencia acumulada</span>
+                            <span class="font-bold">${materia.inasistencia}%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div class="${colorBarra} h-2 rounded-full" style="width: ${materia.inasistencia}%"></div>
+                        </div>
+                    </div>
+                `;
+                contenedor.appendChild(item);
+            });
+        }
+
+        // Acción al presionar Guardar Asistencia
+        function guardarAsistencia() {
+            alert('¡Asistencia registrada y sincronizada correctamente con la base de datos!');
+            navegarA('screen-profesor-inicio');
+        }
+
+        // Inicializar consumo de API al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarDatosAPI();
+        });
+    </script>
+</body>
+</html>

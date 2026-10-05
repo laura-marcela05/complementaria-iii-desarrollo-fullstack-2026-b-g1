@@ -1,0 +1,100 @@
+{
+  "jugadores": [
+    {
+      "id": 1,
+      "nombre": "David Ospina",
+      "posicion": "Portero",
+      "dorsal": 1,
+      "club": "Atlético Nacional",
+      "descripcion": "Arquero titular histórico de la Tricolor, referente de experiencia bajo los tres palos."
+    },
+    {
+      "id": 2,
+      "nombre": "Camilo Vargas",
+      "posicion": "Portero",
+      "dorsal": 12,
+      "club": "Atlas (México)",
+      "descripcion": "Arquero con buena salida en los pies, pelea el puesto de titular."
+    },
+    {
+      "id": 3,
+      "nombre": "Dávinson Sánchez",
+      "posicion": "Defensa",
+      "dorsal": 2,
+      "club": "Galatasaray (Turquía)",
+      "descripcion": "Central fuerte en el juego aéreo y con buena salida desde el fondo."
+    },
+    {
+      "id": 4,
+      "nombre": "Yerry Mina",
+      "posicion": "Defensa",
+      "dorsal": 3,
+      "club": "Cagliari (Italia)",
+      "descripcion": "Central alto, potente de cabeza tanto en defensa como en jugadas de gol."
+    },
+    {
+      "id": 5,
+      "nombre": "Daniel Muñoz",
+      "posicion": "Defensa",
+      "dorsal": 4,
+      "club": "Crystal Palace (Inglaterra)",
+      "descripcion": "Lateral derecho de mucha proyección ofensiva."
+    },
+    {
+      "id": 6,
+      "nombre": "Johan Mojica",
+      "posicion": "Defensa",
+      "dorsal": 17,
+      "club": "Mallorca (España)",
+      "descripcion": "Lateral izquierdo veloz, aporta desborde por la banda."
+    },
+    {
+      "id": 7,
+      "nombre": "Richard Ríos",
+      "posicion": "Volante",
+      "dorsal": 8,
+      "club": "Benfica (Portugal)",
+      "descripcion": "Volante de recuperación con buen manejo de balón y llegada al área."
+    },
+    {
+      "id": 8,
+      "nombre": "Jefferson Lerma",
+      "posicion": "Volante",
+      "dorsal": 14,
+      "club": "Crystal Palace (Inglaterra)",
+      "descripcion": "Volante de marca, aporta fuerza y liderazgo en el mediocampo."
+    },
+    {
+      "id": 9,
+      "nombre": "James Rodríguez",
+      "posicion": "Volante",
+      "dorsal": 10,
+      "club": "Minnesota United (EE. UU.)",
+      "descripcion": "Capitán y figura histórica, motor creativo del equipo y especialista en pases clave."
+    },
+    {
+      "id": 10,
+      "nombre": "Jhon Arias",
+      "posicion": "Volante",
+      "dorsal": 21,
+      "club": "Palmeiras (Brasil)",
+      "descripcion": "Extremo habilidoso, aporta asistencias y remate de media distancia."
+    },
+    {
+      "id": 11,
+      "nombre": "Luis Díaz",
+      "posicion": "Delantero",
+      "dorsal": 7,
+      "club": "Bayern Múnich (Alemania)",
+      "descripcion": "Extremo veloz y desequilibrante, una de las principales cartas de gol."
+    },
+    {
+      "id": 12,
+      "nombre": "Luis Suárez",
+      "posicion": "Delantero",
+      "dorsal": 9,
+      "club": "Independiente (Argentina)",
+      "descripcion": "Delantero de área, definición precisa y buen juego aéreo."
+    }
+  ]
+}

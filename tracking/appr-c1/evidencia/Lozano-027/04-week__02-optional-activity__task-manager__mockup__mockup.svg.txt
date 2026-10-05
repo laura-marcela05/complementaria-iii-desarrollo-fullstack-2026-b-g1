@@ -1,0 +1,57 @@
+
+   
+
+   
+   
+   Task Manager 
+   3 pending · 2 done 
+
+   
+   
+   
+   Task title... 
+   
+   + Add task 
+
+   
+   [ States below: loading -&gt; skeleton rows | error -&gt; red banner | data -&gt; list ] 
+
+   
+   
+   
+   Buy groceries 
+   Created: 2026-08-20 
+   
+   pending 
+   Edit 
+   Delete 
+
+   
+   
+   
+   
+   Pay electricity bill 
+   Created: 2026-08-18 
+   
+   completed 
+   Edit 
+   Delete 
+
+   
+   
+   
+   Study for database exam 
+   Created: 2026-08-27 
+   
+   pending 
+   Edit 
+   Delete 
+
+   
+   
+   Error state: "Could not load tasks. Check your connection and try again." [Retry] 
+
+   
+   
+   
+   Loading state: animated skeleton placeholders while fetch() resolves

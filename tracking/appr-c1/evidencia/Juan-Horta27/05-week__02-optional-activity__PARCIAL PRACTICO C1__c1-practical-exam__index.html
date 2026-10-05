@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Canciones - Parcial Corte 1</title>
+  <!-- Enlace a la librería Bootstrap (según estructura) -->
+  <link rel="stylesheet" href="assets/library/bootstrap-4.0.0/css/bootstrap.min.css">
+  <!-- Enlace a los estilos CSS personalizados -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- ========================================== -->
+    <!-- PROBLEMA 1: HTML5 SEMÁNTICO (Encabezado)  -->
+    <!-- ========================================== -->
+    <header>
+      <img src="assets/img/music.svg" alt="Icono de Música" width="48" height="48" style="margin-bottom: 8px;">
+      <h1>Catálogo de Canciones</h1>
+      <p>Proyecto sencillo de consumo de API con JavaScript Vanilla</p>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- PROBLEMA 1 y 2: Botón y Controles         -->
+    <!-- ========================================== -->
+    <section class="controls">
+      <div>
+        <button id="btn-cargar" class="btn btn-primary">🎵 Cargar Canciones</button>
+        <button id="btn-limpiar" class="btn btn-secondary">🧹 Limpiar</button>
+      </div>
+      <small style="color: #64748b;">Método HTTP: <strong>GET</strong></small>
+    </section>
+
+    <!-- Mensajes de Estado: Carga / Error / Vacío -->
+    <div id="estado-mensaje" class="status-msg"></div>
+
+    <!-- ========================================== -->
+    <!-- PROBLEMA 1 y 2: Lista de canciones        -->
+    <!-- ========================================== -->
+    <main>
+      <ul id="lista-canciones" class="song-list">
+        <!-- Las canciones se insertan dinámicamente con JavaScript -->
+      </ul>
+    </main>
+  </div>
+
+  <!-- Enlace a la lógica en JavaScript -->
+  <script src="assets/logic/logic.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+:root {
+  --bg: #f8f5ef;
+  --card: #ffffff;
+  --ink: #221f1a;
+  --muted: #7a7364;
+  --accent: #2f6b4f;
+  --accent-soft: #e3efe7;
+  --border: #e5dfd1;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem;
+}
+
+.app h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin: 0 0 0.6rem;
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 0 1.5rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.refresh-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status-tag {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.state-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3.5rem 1rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.state-box.error .error-title {
+  color: #b5482f;
+  font-weight: 600;
+  margin: 0;
+}
+
+.product-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem;
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-card img {
+  height: 110px;
+  object-fit: contain;
+  align-self: center;
+}
+
+.product-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+
+.product-price {
+  background: var(--accent-soft);
+  color: var(--accent);
+  align-self: flex-start;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}

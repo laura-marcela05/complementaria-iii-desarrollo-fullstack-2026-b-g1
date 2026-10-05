@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semana 4 - Componente que consume datos</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Componente de usuarios (React)</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Usuarios</h2>
+      <!-- React renderiza aquí dentro -->
+      <div id="root"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Semana 4 - Componente que consume datos</p>
+  </footer>
+
+  <!-- React y Babel cargados por CDN, sin npm ni herramientas de build -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel" src="./js/UserCard.jsx"></script>
+  <script type="text/babel" src="./js/App.jsx"></script>
+</body>
+</html>

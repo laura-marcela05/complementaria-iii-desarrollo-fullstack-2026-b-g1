@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project Tracker — complementaria-iii-desarrollo-fullstack-2026-b — Avance Corte 1 (semanas 1–6)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#1A2445;--ink-muted:#5A6A8A;--ink-faint:#9AAABF;
+  --accent:#3A5AE8;--accent-dim:#6B87F0;
+  --surface:#F4F6FB;--card:#FFFFFF;--border:#DDE3F0;--ground:#EEF1F8;
+  --yes:#16A34A;--yes-bg:#DCFCE7;--yes-bd:#86EFAC;
+  --warn:#B45309;--warn-bg:#FEF3C7;--warn-bd:#FCD34D;
+  --no:#DC2626;--no-bg:#FEE2E2;--no-bd:#FCA5A5;
+  --radius:10px;--shadow:0 1px 4px rgba(26,36,69,.08),0 4px 16px rgba(26,36,69,.06);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ink:#E8EDF8;--ink-muted:#8A9BBC;--ink-faint:#4A5A78;
+  --accent:#6B87F0;--accent-dim:#3A5AE8;
+  --surface:#141C30;--card:#1C2640;--border:#2A3654;--ground:#0F1525;
+  --yes:#4ADE80;--yes-bg:#052E16;--yes-bd:#166534;
+  --warn:#FCD34D;--warn-bg:#1C1A00;--warn-bd:#854D0E;
+  --no:#F87171;--no-bg:#1C0606;--no-bd:#991B1B;
+  --shadow:0 1px 4px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.2);
+}}
+:root[data-theme="dark"]{
+  --ink:#E8EDF8;--ink-muted:#8A9BBC;--ink-faint:#4A5A78;
+  --accent:#6B87F0;--accent-dim:#3A5AE8;
+  --surface:#141C30;--card:#1C2640;--border:#2A3654;--ground:#0F1525;
+  --yes:#4ADE80;--yes-bg:#052E16;--yes-bd:#166534;
+  --warn:#FCD34D;--warn-bg:#1C1A00;--warn-bd:#854D0E;
+  --no:#F87171;--no-bg:#1C0606;--no-bd:#991B1B;
+  --shadow:0 1px 4px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ground);color:var(--ink);font-size:14px;line-height:1.55;min-height:100vh}
+.ph{background:var(--ink);color:#fff;padding:20px 28px 18px;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.ph-left{display:flex;flex-direction:column;gap:4px}
+.ph-eye{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);opacity:.9}
+.ph-title{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700}
+.ph-label{font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.6)}
+.ph-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mc{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:4px 10px;font-size:12px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,.85);white-space:nowrap}
+.mc strong{color:#fff;font-weight:500}
+.sb{background:var(--card);border-bottom:1px solid var(--border);padding:10px 28px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sb-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin-right:4px}
+.sc{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:3px 8px;color:var(--accent)}
+.main{max-width:1100px;margin:0 auto;padding:24px 20px 48px;display:flex;flex-direction:column;gap:24px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;align-items:center;padding:12px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius)}
+.leg-lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin-right:4px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--ink-muted)}
+.mcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.ch{padding:14px 20px;border-bottom:1px solid var(--border);font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-muted)}
+.mwrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);padding:10px 14px;text-align:left;background:var(--surface);border-bottom:1px solid var(--border);white-space:nowrap}
+th.c,td.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--surface)}
+.tn{display:flex;flex-direction:column;gap:2px}
+.tnv{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600}
+.tr{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint)}
+.sem{font-size:16px;line-height:1}
+.pc{display:flex;flex-direction:column;gap:4px;min-width:90px}
+.pb{background:var(--border);border-radius:100px;height:6px;overflow:hidden}
+.pf{height:100%;border-radius:100px;background:var(--accent)}
+.pp{font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;color:var(--ink-muted)}
+.ts{display:flex;flex-direction:column;gap:16px}
+.sh{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-muted);padding-left:2px}
+.tc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.tch{padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.ttb{flex:1;display:flex;flex-direction:column;gap:3px}
+.tcn{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700}
+.tcr{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint)}
+.mems{display:flex;flex-wrap:wrap;gap:6px}
+.mtag{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--accent)}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;border-radius:5px;padding:3px 7px;border:1px solid;white-space:nowrap}
+.pill.g{background:var(--yes-bg);border-color:var(--yes-bd);color:var(--yes)}
+.pill.a{background:var(--warn-bg);border-color:var(--warn-bd);color:var(--warn)}
+.pill.r{background:var(--no-bg);border-color:var(--no-bd);color:var(--no)}
+.tcb{border-top:1px solid var(--border)}
+.sr{display:grid;grid-template-columns:90px 28px 1fr;gap:12px;align-items:start;padding:14px 20px;border-bottom:1px solid var(--border)}
+.sr:last-child{border-bottom:none}
+.sr:hover{background:var(--surface)}
+.scode{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--ink-muted);padding-top:1px}
+.sico{font-size:15px;line-height:1.3}
+.sdet{display:flex;flex-direction:column;gap:6px}
+.stit{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600}
+.cl{display:flex;flex-wrap:wrap;gap:5px}
+.ci{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--ink-muted)}
+.ci.d{color:var(--yes);background:var(--yes-bg);border-color:var(--yes-bd)}
+.ci.w{color:var(--warn);background:var(--warn-bg);border-color:var(--warn-bd)}
+.ci.m{color:var(--no);background:var(--no-bg);border-color:var(--no-bd)}
+.scom{font-size:12px;color:var(--ink-muted);font-style:italic;padding:6px 10px;background:var(--surface);border-left:3px solid var(--accent);border-radius:0 5px 5px 0;line-height:1.5}
+.pf2{text-align:center;padding:0 20px 12px;font-size:11px;color:var(--ink-faint);font-family:'JetBrains Mono',monospace}
+.note{padding:12px 20px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);font-size:12px;color:var(--ink-muted);line-height:1.6}
+.note strong{color:var(--ink);font-weight:600}
+.num{font-family:'JetBrains Mono',monospace;font-size:12px;white-space:nowrap}
+.plus{color:var(--yes)}.minus{color:var(--no)}
+.who{display:flex;flex-direction:column;gap:2px}
+.who-l{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--accent)}
+.who-m{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint)}
+.stat{font-family:'JetBrains Mono',monospace;font-size:10px;border-radius:4px;padding:2px 7px;border:1px solid;white-space:nowrap}
+.stat.ok{background:var(--yes-bg);border-color:var(--yes-bd);color:var(--yes)}
+.stat.pend{background:var(--warn-bg);border-color:var(--warn-bd);color:var(--warn)}
+.stat.none{background:var(--no-bg);border-color:var(--no-bd);color:var(--no)}
+.secs{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-muted)}
+</style>
+</head>
+<body>
+
+<header class="ph">
+  <div class="ph-left">
+    <span class="ph-eye">corhuila · project tracker</span>
+    <h1 class="ph-title">complementaria-iii-desarrollo-fullstack-2026-b</h1>
+    <span class="ph-label">Avance Corte 1 — repos <code>-docs</code>, secciones 00–06, con aporte discriminado por estudiante</span>
+  </div>
+  <div class="ph-meta">
+    <span class="mc"><strong>Framework:</strong> jesusarielgb-works/monolith-governance-framework</span>
+    <span class="mc"><strong>Fecha:</strong> 2026-09-21</span>
+    <span class="mc"><strong>Equipos:</strong> 10</span>
+    <span class="mc"><strong>Estudiantes:</strong> 17</span>
+  </div>
+</header>
+
+<div class="sb">
+  <span class="sb-label">Secciones evaluadas</span>
+  <span class="sc">00 · Governance</span>
+  <span class="sc">01 · Context</span>
+  <span class="sc">02 · Domain</span>
+  <span class="sc">03 · Product</span>
+  <span class="sc">04 · Requirements</span>
+  <span class="sc">05 · Architecture</span>
+  <span class="sc">06 · Data</span>
+</div>
+
+<div class="main">
+
+  <div class="note">
+    <strong>Cómo leer este informe.</strong> El semáforo mide lo que está <strong>en <code>main</code></strong>, contrastado
+    contra el template base del framework (commit <code>53f27f0</code>). Un documento cuenta como lleno cuando fue editado
+    <em>y</em> ya no conserva su bloque <code>[!NOTE] INSTRUCTIONS</code> — que el propio framework manda borrar
+    «once every document in the section is complete». El <strong>% de avance</strong> es la fracción de documentos ⭐
+    (obligatorios) completos sobre los 21 que exigen las secciones 00–06.
+    La columna <strong>«En PR abierto»</strong> registra aparte el trabajo que existe pero no está integrado: no suma al
+    semáforo, pero deja constancia de que el equipo sí produjo.
+    El repo <code>t-fs-docs</code> (equipo <code>test-fullstack</code>) es el de referencia del docente y queda fuera de la evaluación.
+  </div>
+
+  <div class="legend">
+    <span class="leg-lbl">Semáforo</span>
+    <span class="leg-item">🟢 <span>Lleno — contenido real sin bloques template</span></span>
+    <span class="leg-item">🟡 <span>Parcial — mezcla de contenido y placeholders</span></span>
+    <span class="leg-item">🔴 <span>Vacío — solo plantilla o sin archivo</span></span>
+  </div>
+
+  <!-- MATRIZ RESUMEN -->
+  <div class="mcard">
+    <div class="ch">Resumen — equipos × secciones (estado en <code>main</code>)</div>
+    <div class="mwrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Equipo</th>
+            <th class="c">S00</th>
+            <th class="c">S01</th>
+            <th class="c">S02</th>
+            <th class="c">S03</th>
+            <th class="c">S04</th>
+            <th class="c">S05</th>
+            <th class="c">S06</th>
+            <th>Avance</th>
+            <th>En PR abierto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="tn"><span class="tnv">Wellness Habits System</span><span class="tr">habits-system-docs</span></div></td>
+            <td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td>
+            <td><div class="pc"><span class="pp">100%</span><div class="pb"><div class="pf" style="width:100%"></div></div></div></td>
+            <td><span class="secs">—</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">Gym Track</span><span class="tr">g-t-docs</span></div></td>
+            <td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟢</span></td>
+            <td><div class="pc"><span class="pp">95%</span><div class="pb"><div class="pf" style="width:95%"></div></div></div></td>
+            <td><span class="secs">—</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">Attendance Registry</span><span class="tr">att-book-docs</span></div></td>
+            <td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟢</span></td>
+            <td><div class="pc"><span class="pp">81%</span><div class="pb"><div class="pf" style="width:81%"></div></div></div></td>
+            <td><span class="secs">—</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">VisionCare</span><span class="tr">vc-docs</span></div></td>
+            <td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td>
+            <td><div class="pc"><span class="pp">76%</span><div class="pb"><div class="pf" style="width:76%"></div></div></div></td>
+            <td><span class="secs">—</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">Task Manager</span><span class="tr">tm-fs-docs</span></div></td>
+            <td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟢</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🔴</span></td>
+            <td><div class="pc"><span class="pp">14%</span><div class="pb"><div class="pf" style="width:14%"></div></div></div></td>
+            <td><span class="secs">—</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">Budget Tracker</span><span class="tr">bud-tack-docs</span></div></td>
+            <td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🟡</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td>
+            <td><div class="pc"><span class="pp">10%</span><div class="pb"><div class="pf" style="width:10%"></div></div></div></td>
+            <td><span class="secs">S02, S03 — PR #2, #3</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">Inven Track</span><span class="tr">it-docs</span></div></td>
+            <td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td>
+            <td><div class="pc"><span class="pp">0%</span><div class="pb"><div class="pf" style="width:0%"></div></div></div></td>
+            <td><span class="secs">S01–S06 — PR #1 (<span class="plus">+1469</span>)</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">BarFlow</span><span class="tr">bf-docs</span></div></td>
+            <td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td>
+            <td><div class="pc"><span class="pp">0%</span><div class="pb"><div class="pf" style="width:0%"></div></div></div></td>
+            <td><span class="secs">S00–S06 — PR #1 (<span class="plus">+1318</span>)</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">UrbanStyle E-commerce</span><span class="tr">u-e-docs</span></div></td>
+            <td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td>
+            <td><div class="pc"><span class="pp">0%</span><div class="pb"><div class="pf" style="width:0%"></div></div></div></td>
+            <td><span class="secs">S00–S06 — 7 PRs (<span class="plus">+1232</span>)</span></td>
+          </tr>
+          <tr>
+            <td><div class="tn"><span class="tnv">Product Invoice Manager</span><span class="tr">product-invoice-manager-docs</span></div></td>
+            <td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td><td class="c"><span class="sem">🔴</span></td>
+            <td><div class="pc"><span class="pp">0%</span><div class="pb"><div class="pf" style="width:0%"></div></div></div></td>
+            <td><span class="secs">sin integrantes</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- APORTE POR ESTUDIANTE -->
+  <div class="mcard">
+    <div class="ch">Aporte por estudiante — secciones 00–06</div>
+    <div class="mwrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Estudiante</th>
+            <th>Equipo</th>
+            <th class="c">Commits</th>
+            <th class="c">Líneas</th>
+            <th class="c">Archivos</th>
+            <th>Secciones trabajadas</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="who"><span class="who-l">@11William11</span><span class="who-m">juniorxderneycollonarvaez@gmail.com</span></div></td>
+            <td><span class="tr">BarFlow</span></td>
+            <td class="c num">6</td>
+            <td class="c num"><span class="plus">+1318</span> / <span class="minus">−345</span></td>
+            <td class="c num">41</td>
+            <td><span class="secs">S00 S01 S02 S03 S04 S05 S06</span></td>
+            <td><span class="stat pend">en PR #1</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@jesusestebanlopezcharry-source</span><span class="who-m">jesusestebanlopezcharry@gmail.com</span></div></td>
+            <td><span class="tr">Inven Track</span></td>
+            <td class="c num">26</td>
+            <td class="c num"><span class="plus">+1317</span> / <span class="minus">−711</span></td>
+            <td class="c num">14</td>
+            <td><span class="secs">S01 S02 S04 S05 S06</span></td>
+            <td><span class="stat pend">en PR #1</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@jdbonilla-2025b-netizen</span><span class="who-m">Juan Diego Bonilla · jdbonilla-2025b@corhuila.edu.co</span></div></td>
+            <td><span class="tr">UrbanStyle E-commerce</span></td>
+            <td class="c num">42</td>
+            <td class="c num"><span class="plus">+1232</span> / <span class="minus">−860</span></td>
+            <td class="c num">44</td>
+            <td><span class="secs">S00 S01 S02 S03 S04 S05 S06</span></td>
+            <td><span class="stat pend">en 7 PRs</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@Andresfg20</span><span class="who-m">Andrés Felipe Gómez Anacona · afgomez-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Task Manager</span></td>
+            <td class="c num">29</td>
+            <td class="c num"><span class="plus">+1210</span> / <span class="minus">−346</span></td>
+            <td class="c num">27</td>
+            <td><span class="secs">S00 S01 S02 S03 S04 S05</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@Juan-Horta27</span><span class="who-m">jjhorta-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Wellness Habits System</span></td>
+            <td class="c num">6</td>
+            <td class="c num"><span class="plus">+548</span> / <span class="minus">−677</span></td>
+            <td class="c num">21</td>
+            <td><span class="secs">S00 S02 S04 S06</span></td>
+            <td><span class="stat ok">en main</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@laura-marcela05</span><span class="who-m">Laura Marcela Quintero · lmquintero-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Gym Track</span></td>
+            <td class="c num">2</td>
+            <td class="c num"><span class="plus">+359</span> / <span class="minus">−155</span></td>
+            <td class="c num">15</td>
+            <td><span class="secs">S01 S04</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@carloszuluaga-20</span><span class="who-m">cazuluaga-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Attendance Registry</span></td>
+            <td class="c num">10</td>
+            <td class="c num"><span class="plus">+359</span> / <span class="minus">−179</span></td>
+            <td class="c num">5</td>
+            <td><span class="secs">S03 S05</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@ItzJunixs</span><span class="who-m">juan.200379@gmail.com</span></div></td>
+            <td><span class="tr">VisionCare</span></td>
+            <td class="c num">7</td>
+            <td class="c num"><span class="plus">+341</span> / <span class="minus">−312</span></td>
+            <td class="c num">22</td>
+            <td><span class="secs">S00 S01 S02 S03 S04 S05 S06</span></td>
+            <td><span class="stat ok">en main</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@luisfernando-77</span><span class="who-m">lfperez-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Attendance Registry</span></td>
+            <td class="c num">12</td>
+            <td class="c num"><span class="plus">+321</span> / <span class="minus">−164</span></td>
+            <td class="c num">6</td>
+            <td><span class="secs">S00</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@Esteban-64210</span><span class="who-m">jeortiz-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Wellness Habits System</span></td>
+            <td class="c num">4</td>
+            <td class="c num"><span class="plus">+291</span> / <span class="minus">−605</span></td>
+            <td class="c num">14</td>
+            <td><span class="secs">S01 S03 S05</span></td>
+            <td><span class="stat ok">en main</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@cristianmunoz2006</span><span class="who-m">Cristian Andrés Muñoz Montenegro · lusami2005@gmail.com</span></div></td>
+            <td><span class="tr">Gym Track</span></td>
+            <td class="c num">2</td>
+            <td class="c num"><span class="plus">+262</span> / <span class="minus">−228</span></td>
+            <td class="c num">11</td>
+            <td><span class="secs">S02 S05</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@juanjoGuzmanBohorquez</span><span class="who-m">jjguzman-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Attendance Registry</span></td>
+            <td class="c num">12</td>
+            <td class="c num"><span class="plus">+250</span> / <span class="minus">−72</span></td>
+            <td class="c num">6</td>
+            <td><span class="secs">S02 S05</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@feller2006</span><span class="who-m">rdcastillo-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Attendance Registry</span></td>
+            <td class="c num">8</td>
+            <td class="c num"><span class="plus">+225</span> / <span class="minus">−153</span></td>
+            <td class="c num">4</td>
+            <td><span class="secs">S06</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@JuanBernalCorhuila</span><span class="who-m">Juan Camilo Bernal Gordillo · jcbernal-2024a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Gym Track</span></td>
+            <td class="c num">4</td>
+            <td class="c num"><span class="plus">+210</span> / <span class="minus">−287</span></td>
+            <td class="c num">19</td>
+            <td><span class="secs">S00 S01 S02 S03 S04 S06</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@Pablo2467</span><span class="who-m">Juan Pablo Valverde Barreiro · jpvalverde-2023a@corhuila.edu.co</span></div></td>
+            <td><span class="tr">Inven Track</span></td>
+            <td class="c num">2</td>
+            <td class="c num"><span class="plus">+152</span> / <span class="minus">−177</span></td>
+            <td class="c num">8</td>
+            <td><span class="secs">S01 S02 S03</span></td>
+            <td><span class="stat pend">en PR #1</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@Jose-1206</span><span class="who-m">ayaperaltaj456@gmail.com · lead del equipo</span></div></td>
+            <td><span class="tr">Attendance Registry</span></td>
+            <td class="c num">12</td>
+            <td class="c num"><span class="plus">+143</span> / <span class="minus">−142</span></td>
+            <td class="c num">6</td>
+            <td><span class="secs">S01 S04</span></td>
+            <td><span class="stat ok">mergeado</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@Naudi13</span><span class="who-m">Victor Tovar · victor50212@gmail.com</span></div></td>
+            <td><span class="tr">Budget Tracker</span></td>
+            <td class="c num">7</td>
+            <td class="c num"><span class="plus">+130</span> / <span class="minus">−144</span></td>
+            <td class="c num">8</td>
+            <td><span class="secs">S01 S02 S03</span></td>
+            <td><span class="stat pend">S01 mergeado · S02/S03 en PR</span></td>
+          </tr>
+          <tr>
+            <td><div class="who"><span class="who-l">@Adst2006</span><span class="who-m">sin commits registrados</span></div></td>
+            <td><span class="tr">UrbanStyle E-commerce</span></td>
+            <td class="c num">0</td>
+            <td class="c num">—</td>
+            <td class="c num">0</td>
+            <td><span class="secs">—</span></td>
+            <td><span class="stat none">sin aporte</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Notas sobre la atribución.</strong>
+    Las líneas se cuentan solo dentro de <code>00-governance</code> … <code>06-data</code>; commits de merge y cambios en
+    <code>README.md</code> raíz o <code>CHANGELOG.md</code> quedan fuera.
+    <br>· <strong>@Andresfg20</strong> aparece con dos identidades git (<code>afgomez-2024a@corhuila.edu.co</code> desde la web de GitHub y
+    <code>andresf.gomeza2020@gmail.com</code> desde su equipo); se consolidaron en una sola fila.
+    <br>· <strong>@Naudi13</strong> igual (<code>victor50212@gmail.com</code> + cuenta <code>noreply</code>).
+    <br>· Commits con correo personal en lugar del institucional: <strong>@Jose-1206</strong>, <strong>@ItzJunixs</strong>,
+    <strong>@cristianmunoz2006</strong>, <strong>@11William11</strong>, <strong>@jesusestebanlopezcharry-source</strong>,
+    <strong>@Naudi13</strong>. Conviene pedirles configurar <code>user.email</code> institucional para que la trazabilidad
+    del <code>traceability-matrix.md</code> sea verificable.
+    <br>· <strong>@Adst2006</strong> figura como colaborador de <code>u-e-docs</code> pero no tiene un solo commit: todo el repo lo
+    sostiene <strong>@jdbonilla-2025b-netizen</strong>.
+  </div>
+
+  <!-- TARJETAS DE DETALLE -->
+  <div class="ts">
+    <h2 class="sh">Detalle por equipo</h2>
+
+    <!-- WELLNESS HABITS -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">Wellness Habits System</span>
+          <span class="tcr">code-corhuila / habits-system-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@Juan-Horta27</span>
+          <span class="mtag">@Esteban-64210</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 7 llenas</span>
+          <span class="pill a">🟡 0 parciales</span>
+          <span class="pill r">🔴 0 vacías</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci d">✓ definition-of-ready.md</span><span class="ci d">✓ definition-of-done.md</span><span class="ci d">✓ git-conventions.md</span><span class="ci d">✓ documentation-rules.md</span><span class="ci d">✓ agile-conventions.md</span><span class="ci d">✓ security-policy.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Única sección de gobernanza del curso completamente cerrada, con los bloques de instrucción eliminados. Irónicamente, el equipo casi no aplica su propio <code>git-conventions.md</code>: 10 commits directos a <code>main</code> y un solo PR.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci d">✓ overview.md</span><span class="ci d">✓ scope.md</span><span class="ci d">✓ glossary.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Alcance y glosario propios del dominio de hábitos, sin residuos de plantilla.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci d">✓ entities-and-rules.md</span><span class="ci d">✓ module-boundaries.md</span><span class="ci d">✓ domain-map.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Seis entidades con módulo propietario explícito; los límites de módulo se sostienen contra el modelo de datos.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci d">✓ vision.md</span><span class="ci d">✓ problem-framing.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Completa. Los documentos son breves (16–28 líneas) frente a la profundidad de las otras secciones.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci d">✓ user-stories.md</span><span class="ci d">✓ non-functional.md</span><span class="ci d">✓ traceability-matrix.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Los tres documentos obligatorios están llenos, pero no se abrió un archivo <code>HU-NN</code> por historia como sí hicieron Gym Track y BarFlow.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci d">✓ modular-monolith.md</span><span class="ci d">✓ layered-architecture.md</span><span class="ci d">✓ module-structure.md</span><span class="ci d">✓ boundary-enforcement.md</span><span class="ci d">✓ decisions/README.md</span><span class="ci d">✓ ADR-001</span></div>
+            <p class="scom">Único equipo que adaptó el ADR-001 heredado a su propio contexto en vez de dejarlo como texto del framework. Solo tiene un ADR: para el corte 2 debería haber decisiones propias registradas.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci d">✓ models.md</span><span class="ci d">✓ database-conventions.md</span><span class="ci d">✓ migrations.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">El <code>models.md</code> (184 líneas) es el más fuerte del curso: ERD en Mermaid, tabla de entidades con módulo propietario y referencia al <code>schema.prisma</code> real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GYM TRACK -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">Gym Track</span>
+          <span class="tcr">code-corhuila / g-t-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@JuanBernalCorhuila</span>
+          <span class="mtag">@laura-marcela05</span>
+          <span class="mtag">@cristianmunoz2006</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 6 llenas</span>
+          <span class="pill a">🟡 1 parcial</span>
+          <span class="pill r">🔴 0 vacías</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci d">✓ definition-of-ready.md</span><span class="ci d">✓ definition-of-done.md</span><span class="ci d">✓ git-conventions.md</span><span class="ci w">⚠ documentation-rules.md</span><span class="ci d">✓ agile-conventions.md</span><span class="ci d">✓ security-policy.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Falta un solo documento para cerrar la sección: <code>documentation-rules.md</code> conserva su bloque de instrucciones.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci d">✓ overview.md</span><span class="ci d">✓ scope.md</span><span class="ci d">✓ glossary.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Cerrada limpiamente por @laura-marcela05 en PR #2.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci d">✓ entities-and-rules.md</span><span class="ci d">✓ module-boundaries.md</span><span class="ci d">✓ domain-map.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Completa, y con corrección posterior (PR #8) que alineó el identificador de entrenador y la regla de check-in — señal de que el equipo relee lo que escribe.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci d">✓ vision.md</span><span class="ci d">✓ problem-framing.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Completa.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci d">✓ user-stories.md</span><span class="ci d">✓ non-functional.md</span><span class="ci d">✓ traceability-matrix.md</span><span class="ci d">✓ HU-01 … HU-07</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">La sección mejor estructurada del curso: siete historias en archivo propio a partir de <code>_template-hu.md</code>, como pide el framework.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci d">✓ modular-monolith.md</span><span class="ci d">✓ layered-architecture.md</span><span class="ci d">✓ module-structure.md</span><span class="ci d">✓ boundary-enforcement.md</span><span class="ci d">✓ decisions/README.md</span><span class="ci d">✓ ADR-002 propio</span><span class="ci w">⚠ ADR-001 (heredado, sin adaptar)</span></div>
+            <p class="scom">Los cinco documentos obligatorios están cerrados y hay un ADR-002 propio sobre arquitectura en capas. El ADR-001 del framework quedó tal cual: conviene adaptarlo o retirarlo.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci d">✓ models.md</span><span class="ci d">✓ database-conventions.md</span><span class="ci d">✓ migrations.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Completa. Los documentos son más escuetos (35–58 líneas) que los de Habits o Attendance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTENDANCE REGISTRY -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">Attendance Registry</span>
+          <span class="tcr">code-corhuila / att-book-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@Jose-1206</span>
+          <span class="mtag">@juanjoGuzmanBohorquez</span>
+          <span class="mtag">@luisfernando-77</span>
+          <span class="mtag">@carloszuluaga-20</span>
+          <span class="mtag">@feller2006</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 1 llena</span>
+          <span class="pill a">🟡 6 parciales</span>
+          <span class="pill r">🔴 0 vacías</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci d">✓ definition-of-ready.md</span><span class="ci d">✓ definition-of-done.md</span><span class="ci d">✓ git-conventions.md</span><span class="ci w">⚠ documentation-rules.md</span><span class="ci d">✓ agile-conventions.md</span><span class="ci d">✓ security-policy.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Trabajo sólido de @luisfernando-77 (6 PRs), pero el README de la sección sigue intacto y <code>documentation-rules.md</code> aún tiene el bloque de instrucciones.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci d">✓ overview.md</span><span class="ci d">✓ scope.md</span><span class="ci d">✓ glossary.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Los tres documentos de contenido están llenos; solo falta cerrar el README para que la sección cuente como completa.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci d">✓ entities-and-rules.md</span><span class="ci d">✓ module-boundaries.md</span><span class="ci d">✓ domain-map.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Ocho reglas de negocio BR-01…BR-08 con su módulo de aplicación identificado — de lo mejor escrito del curso. Solo falta cerrar el README.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci d">✓ vision.md</span><span class="ci d">✓ problem-framing.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Ambos documentos obligatorios están llenos pero son los más cortos del repo (23 y 26 líneas), desproporcionados frente a dominio y datos.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci d">✓ user-stories.md</span><span class="ci d">✓ non-functional.md</span><span class="ci d">✓ traceability-matrix.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Los tres obligatorios están completos; falta el README y abrir una HU por archivo con <code>_template-hu.md</code>.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci d">✓ modular-monolith.md</span><span class="ci d">✓ decisions/README.md</span><span class="ci d">✓ ADR-002 propio</span><span class="ci w">⚠ layered-architecture.md</span><span class="ci w">⚠ module-structure.md</span><span class="ci w">⚠ boundary-enforcement.md</span><span class="ci m">✗ ADR-001</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Es la sección con más volumen (+525 líneas entre @carloszuluaga-20 y @juanjoGuzmanBohorquez) y a la vez la más sucia: tres documentos obligatorios conservan bloques de instrucciones a medio borrar. Limpiar esos tres cierra la sección.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci d">✓ models.md</span><span class="ci d">✓ database-conventions.md</span><span class="ci d">✓ migrations.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">@feller2006 cerró la sección entera en cuatro PRs, incluido el README. Es el patrón que los otros cinco bloques del repo deberían copiar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISIONCARE -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">VisionCare</span>
+          <span class="tcr">code-corhuila / vc-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@ItzJunixs</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 0 llenas</span>
+          <span class="pill a">🟡 7 parciales</span>
+          <span class="pill r">🔴 0 vacías</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci d">✓ definition-of-ready.md</span><span class="ci d">✓ definition-of-done.md</span><span class="ci d">✓ git-conventions.md</span><span class="ci m">✗ documentation-rules.md</span><span class="ci d">✓ agile-conventions.md</span><span class="ci d">✓ security-policy.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">Solo falta <code>documentation-rules.md</code>, que quedó tal como vino del template. Además el repo no tiene un solo PR: los 7 commits van directos a <code>main</code>, contra lo que dice su propio <code>git-conventions.md</code>.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci d">✓ overview.md</span><span class="ci d">✓ scope.md</span><span class="ci d">✓ glossary.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">El <code>overview.md</code> define con precisión el recorrido paciente-a-gafas y los cinco roles del óptica; solo falta cerrar el README.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci d">✓ entities-and-rules.md</span><span class="ci d">✓ module-boundaries.md</span><span class="ci d">✓ domain-map.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Contenido completo, README sin cerrar.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci d">✓ vision.md</span><span class="ci d">✓ problem-framing.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Contenido completo, README sin cerrar.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci d">✓ user-stories.md</span><span class="ci d">✓ non-functional.md</span><span class="ci d">✓ traceability-matrix.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Los tres obligatorios llenos, con la matriz de trazabilidad más extensa (68 líneas) de los equipos de un solo integrante.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci d">✓ modular-monolith.md</span><span class="ci d">✓ module-structure.md</span><span class="ci m">✗ layered-architecture.md</span><span class="ci m">✗ boundary-enforcement.md</span><span class="ci m">✗ decisions/README.md</span><span class="ci w">⚠ ADR-001</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Es el cuello de botella del repo: tres de los cinco documentos obligatorios siguen siendo texto del framework, y no hay ningún ADR propio. Sin <code>boundary-enforcement.md</code> la arquitectura no es verificable en CI.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci d">✓ models.md</span><span class="ci d">✓ migrations.md</span><span class="ci m">✗ database-conventions.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Falta <code>database-conventions.md</code>, y sin él las convenciones que <code>models.md</code> da por supuestas no están escritas en ningún lado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TASK MANAGER -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">Task Manager</span>
+          <span class="tcr">code-corhuila / tm-fs-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@Andresfg20</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 1 llena</span>
+          <span class="pill a">🟡 5 parciales</span>
+          <span class="pill r">🔴 1 vacía</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci m">✗ definition-of-ready.md</span><span class="ci m">✗ definition-of-done.md</span><span class="ci m">✗ git-conventions.md</span><span class="ci m">✗ documentation-rules.md</span><span class="ci d">✓ security-policy.md</span><span class="ci w">⚠ +5 archivos propios fuera del framework</span></div>
+            <p class="scom">Escribió <code>team-norms.md</code>, <code>git-branching.md</code>, <code>pull-request-flow.md</code>, <code>code-conventions.md</code> y <code>documentation-policy.md</code> — contenido real — mientras los cuatro documentos ⭐ del framework siguen siendo plantilla intacta. Además renombró el README de la sección a <code>00-governance.md</code>, con lo que el índice de la sección desaparece.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🟢</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci d">✓ overview.md</span><span class="ci d">✓ scope.md</span><span class="ci d">✓ glossary.md</span><span class="ci d">✓ README.md</span></div>
+            <p class="scom">La única sección donde llenó los archivos canónicos: cerrada y correcta.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci m">✗ entities-and-rules.md</span><span class="ci m">✗ module-boundaries.md</span><span class="ci m">✗ domain-map.md</span><span class="ci d">✓ README.md</span><span class="ci w">⚠ bounded-contexts / business-rules / ubiquitous-language</span></div>
+            <p class="scom">Mismo patrón: tres archivos nuevos con contenido bueno al lado de los tres obligatorios sin tocar. El README de la sección apunta a los canónicos, así que el índice miente sobre dónde está el contenido.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci d">✓ vision.md</span><span class="ci m">✗ problem-framing.md</span><span class="ci d">✓ README.md</span><span class="ci w">⚠ epics.md / user-personas.md</span></div>
+            <p class="scom">Llenó <code>vision.md</code> pero dejó <code>problem-framing.md</code> como plantilla, que es justamente el documento que justifica el proyecto.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci m">✗ user-stories.md</span><span class="ci m">✗ non-functional.md</span><span class="ci m">✗ traceability-matrix.md</span><span class="ci m">✗ README.md</span><span class="ci w">⚠ functional-requirements / non-functional-requirements / use-cases</span></div>
+            <p class="scom">Duplicó la sección entera: <code>non-functional.md</code> (plantilla) y <code>non-functional-requirements.md</code> (contenido) coexisten. Sin <code>traceability-matrix.md</code> llena, nada de lo escrito se puede rastrear hasta una prueba.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci m">✗ modular-monolith.md</span><span class="ci m">✗ layered-architecture.md</span><span class="ci m">✗ module-structure.md</span><span class="ci m">✗ boundary-enforcement.md</span><span class="ci m">✗ decisions/README.md</span><span class="ci w">⚠ overview / component-diagram / decisions/ADR-001-monolith-first</span></div>
+            <p class="scom">Creó su ADR en <code>decisions/ADR-001-monolith-first.md</code> en vez de <code>decisions/records/</code>, así que queda fuera del índice de decisiones. Los cinco documentos ⭐ siguen intactos.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci m">✗ models.md</span><span class="ci m">✗ database-conventions.md</span><span class="ci m">✗ migrations.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Sin tocar. Es el siguiente paso obligado: sin modelo de datos, la arquitectura ya escrita no tiene contra qué validarse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUDGET TRACKER -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">Budget Tracker</span>
+          <span class="tcr">code-corhuila / bud-tack-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@Naudi13</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 0 llenas</span>
+          <span class="pill a">🟡 1 parcial</span>
+          <span class="pill r">🔴 6 vacías</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci m">✗ definition-of-ready.md</span><span class="ci m">✗ definition-of-done.md</span><span class="ci m">✗ git-conventions.md</span><span class="ci m">✗ documentation-rules.md</span></div>
+            <p class="scom">Intacta. Es la primera que debe abordarse: el framework la sitúa antes de las cuatro fases.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🟡</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci d">✓ overview.md</span><span class="ci d">✓ scope.md</span><span class="ci d">✓ glossary.md</span><span class="ci m">✗ README.md</span></div>
+            <p class="scom">Única sección mergeada (PR #1). Contenido correcto, README sin cerrar.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci w">⚠ domain-map / entities-and-rules / module-boundaries — en PR #2</span></div>
+            <p class="scom">El trabajo existe en <code>feature/02-domain-update</code> con PR abierto desde hace días, pero nadie lo ha mergeado. Como está, <code>main</code> sigue en plantilla.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci w">⚠ vision / problem-framing — en PR #3</span></div>
+            <p class="scom">Mismo caso que S02: contenido en rama, PR #3 abierto sin integrar.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci m">✗ user-stories.md</span><span class="ci m">✗ non-functional.md</span><span class="ci m">✗ traceability-matrix.md</span></div>
+            <p class="scom">Sin empezar.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci m">✗ los 5 documentos obligatorios</span></div>
+            <p class="scom">Sin empezar; bloqueada además por S04, que es su insumo.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci m">✗ models.md</span><span class="ci m">✗ database-conventions.md</span><span class="ci m">✗ migrations.md</span></div>
+            <p class="scom">Sin empezar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVEN TRACK -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">Inven Track</span>
+          <span class="tcr">code-corhuila / it-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@jesusestebanlopezcharry-source</span>
+          <span class="mtag">@Pablo2467</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 0 llenas</span>
+          <span class="pill a">🟡 0 parciales</span>
+          <span class="pill r">🔴 7 vacías en main</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci m">✗ los 4 documentos obligatorios</span></div>
+            <p class="scom">Intacta incluso en la rama de trabajo: es la única sección que el equipo no ha tocado en absoluto.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci w">⚠ overview / scope / glossary — en PR #1</span></div>
+            <p class="scom">Contenido real escrito en <code>First-Attach</code>, con los bloques de instrucciones ya eliminados. No está en <code>main</code>.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci w">⚠ domain-map / entities-and-rules / module-boundaries — en PR #1</span></div>
+            <p class="scom">Igual que S01: hecho pero sin integrar.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci w">⚠ vision / problem-framing — en PR #1</span></div>
+            <p class="scom">Aportado por @Pablo2467 dentro de la misma rama.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci w">⚠ user-stories / non-functional / traceability-matrix — en PR #1</span></div>
+            <p class="scom">Hecho en rama.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci w">⚠ 5 documentos + ADRs — en PR #1 (+438 líneas)</span></div>
+            <p class="scom">La sección más trabajada de la rama. Sin merge, nada de esto cuenta para el corte.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci w">⚠ models / database-conventions / migrations — en PR #1 (+456 líneas)</span></div>
+            <p class="scom">Hecho en rama, sin integrar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BARFLOW -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">BarFlow</span>
+          <span class="tcr">code-corhuila / bf-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@11William11</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 0 llenas</span>
+          <span class="pill a">🟡 0 parciales</span>
+          <span class="pill r">🔴 7 vacías en main</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci m">✗ definition-of-ready.md</span><span class="ci m">✗ documentation-rules.md</span><span class="ci w">⚠ definition-of-done / git-conventions / security-policy — retoques mínimos en PR #1</span></div>
+            <p class="scom">La rama toca gobernanza con apenas 25 líneas en tres archivos: es la sección más débil de un PR por lo demás muy completo.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci w">⚠ overview / scope / glossary — en PR #1</span></div>
+            <p class="scom">Contenido real en rama, pero los bloques <code>[!NOTE] INSTRUCTIONS</code> siguen ahí: aunque se mergeara hoy, la sección quedaría 🟡.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci w">⚠ domain-map / entities-and-rules / module-boundaries — en PR #1</span></div>
+            <p class="scom">Mismo caso: contenido sí, limpieza de plantilla no.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci w">⚠ vision / problem-framing — en PR #1</span></div>
+            <p class="scom">Hecho en rama.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci w">⚠ HU-01 … HU-13 en stories/ — en PR #1</span><span class="ci w">⚠ user-stories / non-functional / traceability-matrix</span></div>
+            <p class="scom">Trece historias en archivo propio, el mayor volumen de requisitos del curso. Las puso en <code>04-requirements/stories/</code> en vez de la raíz de la sección, y cada una arrastra el bloque de instrucciones del <code>_template-hu.md</code>.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci w">⚠ 5 documentos + ADR-002…ADR-005 propios — en PR #1</span></div>
+            <p class="scom">Cuatro ADR propios bien ubicados en <code>decisions/records/</code> — el único equipo que registra decisiones de stack, migraciones y transacciones. Todo sigue sin mergear.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci w">⚠ models / database-conventions / migrations — en PR #1</span></div>
+            <p class="scom">Hecho en rama, sin integrar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- URBANSTYLE -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">UrbanStyle E-commerce</span>
+          <span class="tcr">code-corhuila / u-e-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">@jdbonilla-2025b-netizen</span>
+          <span class="mtag">@Adst2006</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 0 llenas</span>
+          <span class="pill a">🟡 0 parciales</span>
+          <span class="pill r">🔴 7 vacías en main</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 · Governance</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">00 — Governance</span>
+            <div class="cl"><span class="ci w">⚠ DoR / DoD / git-conventions / security-policy / agile — en PR #1</span></div>
+            <p class="scom">Los cinco documentos están escritos en <code>chore/docs-governance</code>, pero quedan tres bloques de instrucciones sin borrar.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S01 · Context</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">01 — Context</span>
+            <div class="cl"><span class="ci w">⚠ overview / scope / glossary / README — en PR #2</span></div>
+            <p class="scom">Sección enteramente cerrada en rama, incluido el README: mergeada quedaría 🟢.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S02 · Domain</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">02 — Domain</span>
+            <div class="cl"><span class="ci w">⚠ domain-map / entities-and-rules / module-boundaries / README — en PR #3</span></div>
+            <p class="scom">También cerrada en rama sin bloques de plantilla.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S03 · Product</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">03 — Product</span>
+            <div class="cl"><span class="ci w">⚠ vision / problem-framing / README — en PR #4</span></div>
+            <p class="scom">Cerrada en rama.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S04 · Requirements</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">04 — Requirements</span>
+            <div class="cl"><span class="ci w">⚠ HU-01 … HU-07 + los 3 obligatorios — en PR #5</span></div>
+            <p class="scom">Siete historias en archivo propio, bien ubicadas en la raíz de la sección.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S05 · Architecture</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">05 — Architecture</span>
+            <div class="cl"><span class="ci w">⚠ 5 documentos + ADR-002 / ADR-003 propios — en PR #7</span></div>
+            <p class="scom">El PR #7 mezcla <code>05-architecture</code> con cuatro archivos de <code>06-data</code>, lo que lo hace difícil de revisar por separado.</p>
+          </div>
+        </div>
+        <div class="sr">
+          <span class="scode">S06 · Data</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">06 — Data</span>
+            <div class="cl"><span class="ci w">⚠ models / database-conventions / migrations — en PR #6</span><span class="ci m">✗ 4 archivos «- copia.md» duplicados</span></div>
+            <p class="scom">El PR #6 arrastra <code>README - copia.md</code>, <code>models - copia.md</code>, <code>migrations - copia.md</code> y <code>database-conventions - copia.md</code>: hay que borrarlos antes de mergear.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT INVOICE MANAGER -->
+    <div class="tc">
+      <div class="tch">
+        <div class="ttb">
+          <span class="tcn">Product Invoice Manager</span>
+          <span class="tcr">code-corhuila / product-invoice-manager-docs</span>
+        </div>
+        <div class="mems">
+          <span class="mtag">sin integrantes asignados</span>
+        </div>
+        <div class="pills">
+          <span class="pill g">🟢 0 llenas</span>
+          <span class="pill a">🟡 0 parciales</span>
+          <span class="pill r">🔴 7 vacías</span>
+        </div>
+      </div>
+      <div class="tcb">
+        <div class="sr">
+          <span class="scode">S00 – S06</span><span class="sico">🔴</span>
+          <div class="sdet"><span class="stit">Repositorio sin actividad</span>
+            <div class="cl"><span class="ci m">✗ 21 documentos obligatorios sin tocar</span></div>
+            <p class="scom">El repo está exactamente como salió del template (23 commits, todos del docente) y el equipo GitHub no tiene ningún estudiante. Hay que asignar integrantes o retirar el proyecto del curso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <strong>Tres patrones que cruzan el curso.</strong>
+    <br>1 · <strong>El README de sección es el cuello de botella silencioso.</strong> Attendance y VisionCare tienen casi todo el
+    contenido escrito y se quedan en 🟡 porque nunca borraron el bloque <code>[!NOTE] INSTRUCTIONS</code> del índice,
+    que es la señal de cierre que el framework define. Es una corrección de cinco minutos por sección.
+    <br>2 · <strong>Cuatro equipos tienen el trabajo represado en PRs.</strong> BarFlow, Inven Track, UrbanStyle y Budget Tracker
+    suman más de 4.000 líneas escritas y cero integradas. Nadie está revisando ni mergeando: conviene fijar quién
+    aprueba en cada equipo y revisar los PR abiertos antes de pedir contenido nuevo.
+    <br>3 · <strong>Task Manager documenta al margen del framework.</strong> Es el mayor volumen mergeado del curso (+1.210 líneas)
+    y el menor avance formal (14%), porque creó archivos paralelos en vez de llenar los canónicos. Debe migrar el
+    contenido a los archivos ⭐ y borrar los duplicados antes del corte 2.
+  </div>
+
+</div>
+
+<div class="pf2">
+  corhuila-project-tracker · complementaria-iii-desarrollo-fullstack-2026-b · s00010203040506 · 2026-09-21
+</div>
+</body>
+</html>

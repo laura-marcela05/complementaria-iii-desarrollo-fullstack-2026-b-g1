@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de recetas</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="board-header">
+      <span class="board-header-title"
+        >Escribe un ingrediente o el nombre de un plato</span
+      >
+      <h1>Buscador de recetas</h1>
+      <p class="chalk-subtitle">
+        Consulta recetas en tiempo real desde TheMealDB
+      </p>
+    </header>
+
+    <main>
+      <section class="search-area" aria-label="Buscar recetas">
+        <form id="searchForm" class="search-form">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Ej: chicken, pasta, cake..."
+            aria-label="Buscar receta"
+          />
+          <button type="submit" class="chalk-button">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar
+          </button>
+        </form>
+      </section>
+
+      <section class="status-area" aria-live="polite">
+        <p id="loadingMsg" class="status-msg hidden">
+          <i class="fa-solid fa-chalkboard"></i> Cargando recetas...
+        </p>
+        <p id="errorMsg" class="status-msg error hidden"></p>
+      </section>
+
+      <section class="recipes" aria-label="Lista de recetas">
+        <ul id="recipeList" class="recipe-list"></ul>
+      </section>
+    </main>
+
+    <footer class="board-footer">
+      <p>
+        © 2026 Buscador de recetas. Datos de
+        <a href="https://www.themealdb.com/" target="_blank" rel="noopener"
+          >TheMealDB</a
+        >. Actividad Fullstack, semana 4.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

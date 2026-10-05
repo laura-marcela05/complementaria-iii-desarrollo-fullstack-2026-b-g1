@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty Characters</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Rick and Morty Characters</h1>
+        <p>Characters obtained from a public API</p>
+    </header>
+
+    <main>
+        <div id="loading" class="message">
+            Loading characters...
+        </div>
+
+        <div id="error" class="message error">
+            An error occurred while loading the characters.
+        </div>
+
+        <section id="characters" class="characters-container"></section>
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

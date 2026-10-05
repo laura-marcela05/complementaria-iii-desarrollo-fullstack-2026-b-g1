@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 03 · Mockup + consumo de API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Lista de Usuarios</h1>
+    <p>Datos obtenidos desde una API pública (JSONPlaceholder)</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Usuarios registrados</h2>
+        <button id="reloadBtn">Recargar</button>
+      </div>
+
+      <!-- Estado: cargando -->
+      <p id="loading" class="estado cargando">Cargando datos...</p>
+
+      <!-- Estado: error -->
+      <p id="error" class="estado error oculto">
+        Ocurrió un error al cargar los datos. Intenta de nuevo.
+      </p>
+
+      <!-- Estado: datos -->
+      <ul id="lista" class="lista-usuarios oculto"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Actividad Semana 03 - Desarrollo Fullstack</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

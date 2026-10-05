@@ -1,0 +1,26 @@
+/*!
+ * Bootstrap v4.0.0 (https://getbootstrap.com)
+ * Minimal lightweight core styles for standalone / offline usage
+ */
+.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+@media (min-width:576px){.container{max-width:540px}}
+@media (min-width:768px){.container{max-width:720px}}
+@media (min-width:992px){.container{max-width:960px}}
+.btn{display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem;cursor:pointer}
+.btn-primary{color:#fff;background-color:#007bff;border-color:#007bff}
+.btn-primary:hover{color:#fff;background-color:#0069d9;border-color:#0062cc}
+.btn-secondary{color:#fff;background-color:#6c757d;border-color:#6c757d}
+.btn-danger{color:#fff;background-color:#dc3545;border-color:#dc3545}
+.list-group{display:flex;flex-direction:column;padding-left:0;margin-bottom:0}
+.list-group-item{position:relative;display:block;padding:.75rem 1.25rem;margin-bottom:-1px;background-color:#fff;border:1px solid rgba(0,0,0,.125)}
+.alert{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem}
+.alert-info{color:#0c5460;background-color:#d1ecf1;border-color:#bee5eb}
+.alert-danger{color:#721c24;background-color:#f8d7da;border-color:#f5c6cb}
+.alert-success{color:#155724;background-color:#d4edda;border-color:#c3e6cb}
+.badge{display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem}
+.badge-secondary{color:#fff;background-color:#6c757d}
+.d-none{display:none!important}
+.d-block{display:block!important}
+.text-center{text-align:center!important}
+.mt-3{margin-top:1rem!important}
+.mb-3{margin-bottom:1rem!important}

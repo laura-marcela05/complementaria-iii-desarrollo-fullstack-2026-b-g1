@@ -1,0 +1,15 @@
+body {
+  background-color: #f4f6f5;
+}
+
+#problema1 {
+  border-left: 4px solid #0d6efd;
+}
+
+#problema2 {
+  border-left: 4px solid #fd0d31;
+}
+
+#problema3 {
+  border-left: 4px solid #04bc47;
+}

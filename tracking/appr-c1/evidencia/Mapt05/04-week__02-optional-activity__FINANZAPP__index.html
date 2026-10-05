@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis Finanzas</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="header">
+    <div class="header-logo header-logo-left" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="28" width="80" height="52" rx="10" fill="none" stroke="white" stroke-width="5"/>
+        <circle cx="68" cy="54" r="7" fill="white"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>FINANZAPP</h1>
+      <p>Control de ingresos y gastos personales</p>
+    </div>
+    <div class="header-logo header-logo-right" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="28" width="80" height="52" rx="10" fill="none" stroke="white" stroke-width="5"/>
+        <circle cx="32" cy="54" r="7" fill="white"/>
+      </svg>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <p id="estado-carga" class="estado">Cargando datos...</p>
+
+    <p id="estado-error" class="estado error oculto">
+      Ocurrió un error al cargar los datos. Intenta recargar la página.
+    </p>
+
+    <div id="contenido" class="oculto">
+
+        <section class="resumen">
+        <div class="tarjeta">
+          <p class="tarjeta-label">Ingresos</p>
+          <p id="total-ingresos" class="tarjeta-valor ingreso">$0</p>
+        </div>
+        <div class="tarjeta">
+          <p class="tarjeta-label">Gastos</p>
+          <p id="total-gastos" class="tarjeta-valor gasto">$0</p>
+        </div>
+        <div class="tarjeta">
+          <p class="tarjeta-label">Balance</p>
+          <p id="total-balance" class="tarjeta-valor">$0</p>
+        </div>
+      </section>
+              <section class="formularios">
+        <form id="form-ingreso" class="tarjeta form-tarjeta">
+          <h2>Agregar ingreso</h2>
+          <label for="ingreso-fuente">Fuente</label>
+          <input type="text" id="ingreso-fuente" placeholder="Ej: sueldo" required />
+
+          <label for="ingreso-monto">Monto</label>
+          <input type="number" id="ingreso-monto" placeholder="Ej: 2500000" min="1" required />
+
+          <button type="submit">Agregar ingreso</button>
+        </form>
+
+        <form id="form-gasto" class="tarjeta form-tarjeta">
+          <h2>Agregar gasto</h2>
+          <label for="gasto-descripcion">Descripción</label>
+          <input type="text" id="gasto-descripcion" placeholder="Ej: mercado" required />
+
+          <label for="gasto-categoria">Categoría</label>
+          <select id="gasto-categoria" required></select>
+
+          <label for="gasto-monto">Monto</label>
+          <input type="number" id="gasto-monto" placeholder="Ej: 150000" min="1" required />
+
+          <button type="submit">Agregar gasto</button>
+        </form>
+      </section>
+              <section class="tarjeta">
+        <h2>Gastos por grupo vs. límite recomendado</h2>
+        <div id="barras-limites"></div>
+      </section>
+
+      <section id="consejos" class="tarjeta"></section>
+
+      <section class="tarjeta">
+        <h2>Movimientos</h2>
+        <ul id="lista-movimientos" class="movimientos"></ul>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

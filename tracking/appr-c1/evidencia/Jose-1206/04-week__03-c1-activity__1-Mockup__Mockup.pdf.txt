@@ -1,0 +1,53 @@
+--- pag 1 ---
+El presente documento expone el diseño y la distribución espacial de las interfaces
+móviles para AsistApp, un prototipo orientado a optimizar la gestión de asistencia
+académica. A través de este mockup, se ilustran dos vistas fundamentales del flujo del
+usuario: el Portal de Autenticación y el Panel Principal del Docente (Mis Clases).
+El objetivo de este diseño es proporcionar una experiencia de usuario (UX) fluida e
+intuitiva, aplicando patrones de diseño móvil estandarizados. La estructura visual
+busca minimizar la carga cognitiva del docente, priorizando el acceso rápido a la
+información de sus asignaturas (horarios y aulas) y facilitando la ejecución de su tarea
+principal: el registro diario de asistencia de los estudiantes.
+--- pag 2 ---
+
+--- pag 3 ---
+
+--- pag 4 ---
+El flujo de interacción de AsistApp se estructura mediante una arquitectura modular
+que conecta la validación de identidad con paneles de gestión específicos según el rol
+del usuario, garantizando una transición intuitiva desde el ingreso hasta el análisis de
+datos.
+Autenticación y Enrutamiento Inteligente El ciclo de uso inicia en el Portal de
+Autenticación, el cual actúa como el enrutador principal del sistema. Mediante un
+selector de segmentos integrado en la parte superior del formulario (Docente /
+Estudiante), la aplicación determina dinámicamente qué interfaz, permisos y base de
+datos cargar tras validar las credenciales. Este diseño centraliza el acceso en una sola
+pantalla mientras bifurca la experiencia del usuario de forma transparente según sus
+responsabilidades académicas.
+Gestión Operativa del Docente Una vez el sistema valida al catedrático, lo redirige a la
+vista "Mis Clases". Este módulo está diseñado bajo un patrón de tarjetas de tareas que
+prioriza la carga académica del día en curso ("Hoy"). La interfaz funciona como un
+centro de control operativo que se comunica directamente con la base de datos: el
+sistema proporciona retroalimentación visual inmediata cambiando el estado de los
+componentes. Un botón primario vibrante indica una acción pendiente ("Tomar
+Asistencia"), el cual transiciona a un estado pasivo y deshabilitado ("Asistencia
+Completada") una vez que el registro es exitoso, bloqueando interacciones duplicadas
+y confirmando el éxito de la transacción.
+Trazabilidad y Análisis de Métricas El ecosistema se consolida al transformar los
+datos operativos en información analítica mediante los módulos de historial y
+resumen. Por un lado, la vista de registro detallado ofrece una auditoría cronológica
+estructurada en una línea de tiempo; aquí, el sistema categoriza cada entrada con
+códigos de color universales (verde para presentes, amarillo para tardanzas, rojo para
+ausencias) y resume los totales en tarjetas superiores. Por otro lado, la vista "Mi
+Asistencia" procesa todo este volumen de datos y lo renderiza en un tablero de control
+gerencial con gráficas de anillos. Esta interfaz traduce los registros diarios en un
+porcentaje global, contrastándolo con el límite de ausencias permitidas para generar
+alertas tempranas de riesgo académico.
+La arquitectura de estas interfaces demuestra un sistema informático cohesivo donde
+la entrada de datos en un módulo (el pase de lista) alimenta y actualiza
+automáticamente las métricas de los demás (historial y anillos de progreso). Al
+estandarizar la navegación con un menú inferior fijo y mantener una consistencia
+estricta en el uso de colores y estados de los botones, la aplicación minimiza la carga
+cognitiva del usuario, asegurando que la gestión del seguimiento académico sea un
+proceso rápido, escalable y libre de errores operativos.
+--- pag 5 ---

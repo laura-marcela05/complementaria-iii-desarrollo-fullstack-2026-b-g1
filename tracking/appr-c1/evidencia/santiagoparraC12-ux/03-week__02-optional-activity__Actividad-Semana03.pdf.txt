@@ -1,0 +1,36 @@
+--- pag 1 ---
+GUÍA DE ACTIVIDAD PRÁCTICA
+Desarrollo Fullstack · Semana 3 · Mockup + consumo de API
+Programa Ingeniería de Sistemas Asignatura Desarrollo Fullstack
+Unidad 1 · Fundamentos
+Unidad del desarrollo web y Semana / Corte 3 · Corte 1
+Frontend
+Modalidad Individual o en parejas Periodo 2026-B
+Formativa (opcional, sin
+Tipo Entrega Repositorio en GitHub
+nota)
+Objetivos
+• Diseñar un mockup de la vista.
+• Consumir una API y manejar carga/error.
+1. Enunciado
+1. Diseña el mockup de una vista (lista de elementos).
+2. Consume una API pública con fetch, muestra los datos en la lista.
+3. Maneja los estados cargando, datos y error.
+2. Requisitos
+• Vista que consume una API con estados.
+3. Cómo entregar (por GitHub)
+Las entregas se realizan en tu fork del repositorio de la clase, dentro de la carpeta de esta semana.
+Si nunca has usado GitHub, sigue el [Manual de Entrega por GitHub](https://code-
+corhuila.github.io/ova-web/manuales/Manual-Entrega-GitHub.pdf) paso a paso.
+1. Haz fork del repositorio de la clase y clónalo.
+2. Coloca tu entrega en la carpeta `03-week/`.
+3. Sube los cambios: git add . · git commit -m "Entrega semana 03" · git push.
+4. Ten tu repo de perfil con el bloque CONFIG (FULL_NAME + GITHUB_USER).
+--- pag 2 ---
+4. Rúbrica de evaluación
+Criterio Excelente Aceptable Por mejorar Pts
+Mockup Claro Básico Ausente 25
+Consumo con fetch Correcto Parcial Falla 45
+Estados carga/error Ambos Uno Ausente 30
+Nota: actividad formativa y opcional (sin nota en Moodle). Consulta el Manual de Entrega por GitHub
+en Información importante.

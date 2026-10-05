@@ -1,0 +1,123 @@
+/* CSS: se encarga de la presentación visual (colores, espacios, tipografía) */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: #f4f6f5;
+  color: #1f2a24;
+}
+
+.header {
+  background-color: #2f6d4f;
+  color: white;
+  padding: 28px 16px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0 0 6px 0;
+}
+
+.contenido {
+  max-width: 620px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tarjeta {
+  background: white;
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formulario label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.formulario input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #2f6d4f;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #24583f;
+}
+
+.btn-secundario {
+  background-color: #4c7c8f;
+  margin-bottom: 10px;
+}
+
+.btn-secundario:hover {
+  background-color: #3b6070;
+}
+
+.mensaje-estado {
+  min-height: 20px;
+  font-style: italic;
+  color: #555;
+  font-size: 14px;
+}
+
+#listaObjetos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#listaObjetos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.btn-eliminar {
+  background-color: #b04a4a;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.btn-eliminar:hover {
+  background-color: #8f3a3a;
+}
+
+.footer {
+  text-align: center;
+  padding: 18px;
+  color: #666;
+  font-size: 13px;
+}

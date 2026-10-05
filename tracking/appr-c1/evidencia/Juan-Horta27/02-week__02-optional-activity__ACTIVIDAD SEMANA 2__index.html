@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis canciones favoritas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Mis canciones favoritas</h1>
+    <p>Las que más escucho últimamente.</p>
+  </header>
+
+  <main>
+
+    <section class="agregar">
+      <h2>Agregar una canción</h2>
+
+      <div class="fila">
+        <input type="text" id="titulo" placeholder="Título">
+        <input type="text" id="artista" placeholder="Artista">
+        <button id="boton-agregar">Agregar</button>
+      </div>
+
+      <p id="aviso"></p>
+    </section>
+
+    <section>
+      <h2>Mi lista</h2>
+
+      <ul id="lista">
+        <li>
+          <span class="titulo">Creep</span>
+          <span class="artista">Radiohead</span>
+        </li>
+        <li>
+          <span class="titulo">La Bicicleta</span>
+          <span class="artista">Carlos Vives</span>
+        </li>
+        <li>
+          <span class="titulo">Come As You Are</span>
+          <span class="artista">Nirvana</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

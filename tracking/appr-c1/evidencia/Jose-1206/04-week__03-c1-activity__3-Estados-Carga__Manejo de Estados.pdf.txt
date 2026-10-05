@@ -1,0 +1,71 @@
+--- pag 1 ---
+Gestión de Estados de Carga en aplicación de Control de Asistencia
+En el diseño de sistemas interactivos, la comunicación constante con el usuario final
+es un principio fundamental. Cuando una aplicación cliente (frontend) necesita
+solicitar datos a un servidor externo (API) —como el listado de estudiantes
+matriculados—, esta operación no ocurre de forma instantánea. Depende de la
+latencia de la red y el tiempo de procesamiento del servidor.
+Para garantizar una experiencia de usuario fluida y evitar la incertidumbre, la
+arquitectura del sistema implementa un patrón de gestión de estados. Este patrón
+transiciona la interfaz gráfica a través de tres fases mutuamente excluyentes:
+1. Carga (Loading): Informa que hay un proceso en segundo plano recolectando la
+información.
+2. Éxito (Data/Success): Renderiza la información solicitada cuando el proceso
+de red culmina correctamente.
+3. Error: Captura excepciones (caídas de red, fallos del servidor) y ofrece
+mecanismos de recuperación.
+El manejo explícito de estos estados previene que la aplicación parezca "congelada",
+evita el envío de solicitudes duplicadas por parte del usuario y provee robustez frente a
+fallos, cumpliendo con los estándares de calidad de software requeridos para un
+producto funcional.
+--- pag 2 ---
+Esta captura expone la lógica asíncrona de la aplicación a través de la función
+fetchStudents(). Se observa la implementación de un bloque try/catch que
+encapsula el consumo de la API web.
+Aquí se manipula el estado de forma directa. Antes de iniciar la petición de red, se
+establece state.loading = true y se limpia cualquier error previo. Dentro del try,
+destaca la inclusión de una validación estructurada para simular un error forzado; este
+tipo de mecanismos es vital en etapas de pruebas de calidad (QA) para evaluar el
+comportamiento del sistema bajo fallos. Si la promesa de red es exitosa, se mapean
+los datos, se cambia el estado de carga a false y se invoca la actualización de la
+interfaz. Si ocurre un fallo, el bloque catch lo intercepta, detiene el estado de carga e
+inyecta el mensaje exacto del fallo en state.error.
+--- pag 3 ---
+La imagen muestra el núcleo del controlador de la vista: la función renderUI(). Este
+bloque de código actúa como un "director" unificado para el DOM (Document Object
+Model).
+En lugar de modificar el estilo de cada elemento de forma dispersa, el sistema utiliza
+un enfoque centralizado. Primero, la función resetea la vista ocultando todos los
+contenedores principales (inyectando la clase CSS .hidden). Posteriormente, evalúa
+las variables del objeto global state (state.loading y state.error) mediante una
+estructura condicional. Dependiendo de los valores, remueve la clase .hidden
+únicamente del contenedor que corresponde al estado actual. Esto garantiza
+modularidad y asegura que nunca se superpongan dos pantallas (por ejemplo, mostrar
+un error y la tabla al mismo tiempo).
+--- pag 4 ---
+Esta captura evidencia la vista que se le presenta al docente en el momento exacto en
+que el sistema solicita los datos al servidor. A nivel de Interfaz de Usuario (UI), se
+oculta la tabla principal y se despliega un indicador visual de progreso (spinner
+circular) acompañado del mensaje "Cargando lista de estudiantes desde la API...".
+Su propósito principal es retroalimentar al usuario de que su solicitud fue recibida y se
+está procesando. Desde el punto de vista de la ingeniería del software, este estado
+bloquea implícitamente interacciones prematuras con la tabla de asistencia hasta que
+el conjunto de datos esté íntegro y listo para ser renderizado, asegurando la
+consistencia de la información.
+--- pag 5 ---
+La imagen final ilustra la interfaz de contingencia (Fallback UI). Tras activar la
+simulación de error, el sistema detecta la falla, oculta el indicador de carga y presenta
+un panel de alerta claro con un ícono de rechazo.
+Este estado cumple una doble función crítica en el análisis y diseño del sistema.
+Primero, informa al docente de manera transparente sobre el motivo del fallo ("Error
+simulado: No se logró conectar con el servidor de matrículas..."), evitando frustración.
+Segundo, implementa un mecanismo de recuperación proactivo mediante el botón
+"Reintentar Conexión". A nivel de arquitectura, proveer alternativas para que el usuario
+recupere el flujo de trabajo sin necesidad de reiniciar completamente la aplicación es
+una práctica esencial en el diseño de sistemas tolerantes a fallos.
+La correcta implementación de estos estados visuales y lógicos garantiza que
+UniAttend MVP ofrezca una experiencia de usuario transparente y robusta. Al gestionar
+la asincronía de los datos y prever escenarios de fallo, el sistema no solo mejora la
+interacción del docente, sino que también cumple con los estándares técnicos
+fundamentales en la ingeniería de software moderna para crear aplicaciones
+confiables y tolerantes a errores.

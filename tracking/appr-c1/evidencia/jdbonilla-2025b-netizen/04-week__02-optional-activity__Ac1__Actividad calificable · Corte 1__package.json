@@ -1,0 +1,13 @@
+{
+  "name": "prueba",
+  "version": "1.0.0",
+  "description": "UrbanStyle E-Commerce is a simple frontend application built with React that displays a catalog of urban clothing and accessories. The app consumes the public Fake Store API using the `fetch` function to retrieve a list of products, including their name, price, image, and category. It handles three different states during the data-fetching process: a loading state while the request is in progress, a data state that renders the product grid once the information arrives, and an error state that informs the user if the request fails. The interface is organized into reusable components (Header, ProductList, ProductCard, and Footer), which keeps the code clean and easy to maintain. Users can click \"Agregar al carrito\" on any product, and the cart counter in the header updates automatically to reflect the number of items added.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

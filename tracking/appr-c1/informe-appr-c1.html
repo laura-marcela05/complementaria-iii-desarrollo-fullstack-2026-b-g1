@@ -1,0 +1,244 @@
+<title>Apreciativa C1 · Fullstack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A2445;--accent:#3A5AE8;--bg:#F7F8FC;--card:#FFF;--border:#E4E7F1;--muted:#6B7280;
+--g-bg:#D1FAE5;--g-fg:#065F46;--n-bg:#F1F2F6;--n-fg:#4B5563;--mono:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10142A;--card:#171C38;--border:#2A3055;--ink:#EEF1FF;--muted:#A6ADC9;--n-bg:#252B4D;--n-fg:#A6ADC9;--g-bg:#0C4A3A;--g-fg:#8FF0CB}}
+:root[data-theme="dark"]{--bg:#10142A;--card:#171C38;--border:#2A3055;--ink:#EEF1FF;--muted:#A6ADC9;--n-bg:#252B4D;--n-fg:#A6ADC9;--g-bg:#0C4A3A;--g-fg:#8FF0CB}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',Segoe UI,Arial,sans-serif;padding:32px 20px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-family:Outfit;font-size:27px;margin:0 0 4px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 24px}
+.summary{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;min-width:130px}
+.stat .n{font-family:Outfit;font-size:27px;font-weight:700}
+.stat .l{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:20px}
+.card h2{font-family:Outfit;font-size:17px;margin:0 0 4px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:9px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+td.num{color:var(--muted);font-family:var(--mono);width:38px}
+td.name{font-weight:600;min-width:210px}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+.small{font-size:11px}
+td.desc{color:var(--muted);font-size:12.5px;max-width:560px}
+td.appr{text-align:right} td.wk{white-space:nowrap;width:118px}
+.w{display:inline-block;width:19px;height:19px;line-height:19px;text-align:center;border-radius:5px;
+font-family:var(--mono);font-size:10px;font-weight:700;margin-right:2px}
+.w.on{background:var(--g-bg);color:var(--g-fg)} .w.off{background:var(--n-bg);color:var(--n-fg);opacity:.55}
+.pill{display:inline-block;padding:3px 11px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.g{background:var(--g-bg);color:var(--g-fg)} .pill.q{background:var(--n-bg);color:var(--n-fg)}
+tr.ok td{background:color-mix(in srgb,var(--g-bg) 26%,transparent)}
+.note{border-left:3px solid var(--accent);padding:2px 0 2px 15px;margin-bottom:19px}
+.note h3{font-family:Outfit;font-size:14.5px;margin:0 0 2px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.note p{margin:7px 0 0;font-size:13.5px}
+.rule{background:var(--g-bg);color:var(--g-fg);border-radius:10px;padding:14px 17px;font-size:13.5px;margin-bottom:20px}
+ul{margin:8px 0;padding-left:20px;font-size:13.5px} li{margin-bottom:5px}
+</style>
+<div class="wrap">
+<h1>Nota apreciativa · Corte 1</h1>
+<p class="sub">Complementaria III — Desarrollo Fullstack · 2026-B · columna <code>appr</code>, hoja <code>F-S</code> · aplicado 2026-09-12</p>
+
+<div class="rule"><b>Criterio:</b> la appr (0.6) se da unicamente a quien entrego las actividades de las
+<b>semanas 1 a 5</b>. La cumplen 12 de 26. A los demas no se les escribe nota: la celda queda en blanco.</div>
+
+<div class="summary">
+<div class="stat"><div class="n">26</div><div class="l">estudiantes</div></div>
+<div class="stat"><div class="n">12</div><div class="l">appr 0.6</div></div>
+<div class="stat"><div class="n">12</div><div class="l">incompletos</div></div>
+<div class="stat"><div class="n">2</div><div class="l">sin ubicar</div></div>
+</div>
+
+<div class="card"><h2>Completan las semanas 1 a 5 — appr 0.6</h2><div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Estudiante</th><th>1 2 3 4 5</th><th>Que entrego</th><th>appr</th></tr></thead>
+<tbody><tr class="ok"><td class="num">2</td>
+<td class="name">AGUDELO QUINTERO JUAN SEBASTIAN<div class="mono">@sebastiian06</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 maquetacion de interfaz; S3 mockup + consumo de API; S4 app React completa (17 archivos) con estado y manejo de error; S5 parcial practico resuelto por problemas.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">3</td>
+<td class="name">AYA PERALTA JOSE MIGUEL<div class="mono">@Jose-1206</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 &#x27;Mi Stack de Desarrollo&#x27; con toggle; S3 directorio de usuarios con fetch y los 3 estados; S4 mockup + frontend &#x27;AsistApp&#x27; con simulador de error; S5 parcial extenso (57 archivos).</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">4</td>
+<td class="name">BERNAL GORDILLO JUAN CAMILO<div class="mono">@JuanBernalCorhuila</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 trivia Mundial 2026; S3 Pokedex con PokeAPI real (Promise.all + estados); S4 &#x27;Equipos de LaLiga&#x27; en React y version vanilla; S5 roster de la Seleccion Colombia. Ademas entrego S6.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">5</td>
+<td class="name">BONILLA OROZCO JUAN DIEGO<div class="mono">@jdbonilla-2025b-netizen</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 portafolio con toggle; S3 lista de usuarios con fetch y 3 estados; S4 componente React con useState; S5 mini-frontend React/Vite. Ademas entrego S6.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">14</td>
+<td class="name">GUZMAN BOHORQUEZ JUAN JOSE<div class="mono">@juanjoGuzmanBohorquez</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 y S3 con fetch y estados; S4 &#x27;Asistencia CORHUILA&#x27; entregada en tres puntos: mockup, frontend y manejo de estados; S5 parcial practico.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">15</td>
+<td class="name">HORTA VANEGAS JUAN JOSE<div class="mono">@Juan-Horta27</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S3 con boton &#x27;Probar el error&#x27; para forzar el estado de fallo; S4 componente Angular standalone real (signals, HttpClient, componente hijo reutilizable); S5 parcial por problemas. Ademas entrego S6.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">16</td>
+<td class="name">JIMENEZ HORTA JUAN DIEGO<div class="mono">@ItzJunixs</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">Cada semana titulada exactamente como el enunciado oficial; S4 React con hooks y componente UserCard reutilizable; S5 con modulos ES (import/export).</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">19</td>
+<td class="name">MUÑOZ MONTENEGRO CRISTIAN ANDRES<div class="mono">@cristianmunoz2006</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 estanteria semantica con flexbox; S3 &#x27;Recetario Expres&#x27; con fetch, busqueda y 3 estados; S4 &#x27;Citas Celebres&#x27; con consumo de API; S5 parcial con Bootstrap. Todo JavaScript plano de buena calidad.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">21</td>
+<td class="name">PEREZ CHALA LUIS FERNANDO<div class="mono">@luisfernando-77</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 panel de sesion de estudio con toggle; S3 directorio con fetch, plantilla y 3 estados; S4 React con Vite real; S5 parcial practico.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">23</td>
+<td class="name">QUINTERO POVEDA LAURA MARCELA<div class="mono">@laura-marcela05</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 consejos de cocina con toggle; S3 recetas con fetch; S4 &#x27;Buscador de Recetas&#x27; en React consumiendo TheMealDB en vivo; S5 recetario en el parcial (24 archivos).</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">26</td>
+<td class="name">VALVERDE BARREIRO JUAN PABLO<div class="mono">@Pablo2467</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 portafolio con toggle; S3 componente React que consume API con los 3 estados (en carpeta &#x27;activity-04&#x27;); S4 app Rick and Morty en React/Vite con componentes separados y hook propio; S5 parcial en 3 casos.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr><tr class="ok"><td class="num">27</td>
+<td class="name">ZULUAGA ACUÑA CARLOS ANDRES<div class="mono">@carloszuluaga-20</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S2 lista de tareas interactiva; S3 mockup + fetch con los 3 estados documentados; S4 app React real (Vite, useState/useEffect, componente reutilizable); S5 fetch de productos.</td>
+<td class="appr"><span class="pill g">0.6</span></td></tr></tbody></table></div></div>
+
+<div class="card"><h2>No completan — celda en blanco</h2>
+<p class="sub" style="margin:0 0 12px">Casi todos tienen solo las semanas 4 y 5. Varios hicieron buen trabajo ahi;
+la nota de cada uno lo reconoce y explica por que no alcanza el bono.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Estudiante</th><th>1 2 3 4 5</th><th>Que entrego</th><th>appr</th></tr></thead>
+<tbody><tr><td class="num">7</td>
+<td class="name">CARDENAS BERMEO ANDRES FELIPE<div class="mono">@felip442</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w off">4</span><span class="w on">5</span></td><td class="desc">Solo S5: parcial practico con fetch a JSONPlaceholder y respuestas de fundamentos, HTTP y SPA bien desarrolladas.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">8</td>
+<td class="name">CASTILLO GARZON ROSFELLER DAVID<div class="mono">@feller2006</div></td>
+<td class="wk"><span class="w on">1</span><span class="w on">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S1 presentacion, S2 lista de tareas, S4 lista de usuarios con fetch, S5 parcial en ingles. Le falta unicamente la S3. El mas cerca del curso.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">9</td>
+<td class="name">CHAMBO REYES KAROL TATIANA<div class="mono">@ktchambo-2024a-max</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 personajes de Rick and Morty con fetch y estados (en ingles); S5 practica C1. Sin bloque CONFIG en su repo de perfil.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">10</td>
+<td class="name">COLLO NARVAEZ WILLIAM ERNEY<div class="mono">@11William11</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 &#x27;barflow&#x27; gestion de pedidos con fetch, estados y simulador de fallo, muy completo; S5 parcial con catalogo.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">11</td>
+<td class="name">DIAZ PERDOMO PAULINA<div class="mono">@Palinapau</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 &#x27;BarFlow&#x27; inventario de bar con fetch y estados; S5 parcial practico completo.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">12</td>
+<td class="name">FERNANDEZ ROJAS DANIEL FELIPE<div class="mono">@Daniel666-ui</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 &#x27;People Explorer&#x27; con mockup.md y frontend; S5 practica C1 con fetch, eventos y respuestas conceptuales bilingues.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">13</td>
+<td class="name">GOMEZ ANACONA ANDRES FELIPE<div class="mono">@Andresfg20</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 &#x27;Task Ledger&#x27; consumiendo la API de DummyJSON; S5 parcial con fetch a JSONPlaceholder e interactividad.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">17</td>
+<td class="name">LOPEZ CHARRY JESUS ESTEBAN<div class="mono">@jesusestebanlopezcharry-source</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 &#x27;Mi Inventario&#x27; CRUD con Open Food Facts (sin framework, la S4 pedia Angular o React); S5 backend Express + frontend plano.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">18</td>
+<td class="name">LOZANO LOZANO JULIO CESAR<div class="mono">@Lozano-027</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 task manager con fetch real a JSONPlaceholder (con nota sobre las limitaciones de la API publica); S5 parcial con fetch de usuarios. ANOMALIA: su CONFIG trae el nombre del docente.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">20</td>
+<td class="name">PARRA CADENA SANTIAGO STIVEN<div class="mono">@santiagoparraC12-ux</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w on">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S3 subio el PDF de la guia, no su trabajo; S4 Pokedex SPA en React via CDN, correcta; S5 parcial completo.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">22</td>
+<td class="name">PEREZ TRIANA MICHAEL ADONIS<div class="mono">@Mapt05</div></td>
+<td class="wk"><span class="w off">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S4 &#x27;FINANZAPP&#x27; control de ingresos y gastos con fetch local y estados; S5 parcial completo con Bootstrap.</td>
+<td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">24</td>
+<td class="name">SALGADO TRUJILLO ALEX DAVID<div class="mono">@Adst2006</div></td>
+<td class="wk"><span class="w on">1</span><span class="w off">2</span><span class="w off">3</span><span class="w on">4</span><span class="w on">5</span></td><td class="desc">S1 presentacion completa; S4 directorio de usuarios con fetch y estados (JS plano); S5 buscador de paises con fetch real. Le faltan S2 y S3.</td>
+<td class="appr"><span class="pill q">—</span></td></tr></tbody></table></div></div>
+
+<div class="card"><h2>Sin entrega localizable</h2><div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Estudiante</th><th>Que se intento</th><th>appr</th></tr></thead>
+<tbody><tr><td class="num">6</td>
+<td class="name">CABRERA ARDILA AURA MARIA<div class="mono">aura.cabrera@corhuila.edu.co</div></td>
+<td class="desc">ninguna cuenta de GitHub hallada por nombre ni por prefijo de correo (aura.cabrera)</td><td class="appr"><span class="pill q">—</span></td></tr><tr><td class="num">25</td>
+<td class="name">TOVAR RAMIREZ VICTOR ALFONSO<div class="mono">vatovar-2025b@corhuila.edu.co</div></td>
+<td class="desc">ninguna cuenta de GitHub hallada por nombre ni por prefijo de correo (vatovar-2025b)</td><td class="appr"><span class="pill q">—</span></td></tr></tbody></table></div></div>
+
+<div class="card"><h2>Notas para entregar a cada estudiante</h2><div class="note"><h3>AGUDELO QUINTERO JUAN SEBASTIAN
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@sebastiian06</div>
+<p>Juan Sebastian, mantuviste el ritmo las cinco semanas y se nota la progresion: de maquetar una interfaz en S2 a una app React con estado y manejo de error en S4. Nombraste cada carpeta con el titulo de la actividad, lo que hace tu repo muy facil de revisar.</p></div><div class="note"><h3>AYA PERALTA JOSE MIGUEL
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@Jose-1206</div>
+<p>Jose Miguel, el simulador de error que agregaste en AsistApp es un detalle de buen criterio: obliga a probar el estado de fallo en vez de asumir que la API siempre responde. Tu parcial de la semana 5 es de los mas completos del curso.</p></div><div class="note"><h3>BERNAL GORDILLO JUAN CAMILO
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@JuanBernalCorhuila</div>
+<p>Juan Camilo, usar Promise.all en la Pokedex para resolver varias peticiones a la vez muestra que entendiste como funciona fetch de verdad, no solo copiarlo. Y haber hecho la semana 4 en React y tambien en JavaScript plano dice mucho de tu interes.</p></div><div class="note"><h3>BONILLA OROZCO JUAN DIEGO
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@jdbonilla-2025b-netizen</div>
+<p>Juan Diego, tu progresion de JavaScript plano a React con Vite en cinco semanas es clara y ordenada. Un detalle administrativo: tienes dos cuentas de GitHub y la otra (juan895) quedo con el fork vacio; deja solo esta para que no haya confusion al revisar.</p></div><div class="note"><h3>CARDENAS BERMEO ANDRES FELIPE
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@felip442</div>
+<p>Andres Felipe, el parcial que entregaste esta bien resuelto: el fetch funciona y tus respuestas sobre HTTP y SPA estan bien explicadas, no copiadas.</p></div><div class="note"><h3>CASTILLO GARZON ROSFELLER DAVID
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@feller2006</div>
+<p>Rosfeller David, fuiste el que mas cerca quedo: hiciste la presentacion, la lista de tareas, el consumo de API y el parcial en ingles. Te falto solo la semana 3 (mockup + fetch con los tres estados).</p></div><div class="note"><h3>CHAMBO REYES KAROL TATIANA
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@ktchambo-2024a-max</div>
+<p>Karol Tatiana, tu componente de Rick and Morty maneja bien los estados y ademas lo documentaste en ingles. Te falta crear tu repo de perfil con el bloque CONFIG, que es parte de la semana 1.</p></div><div class="note"><h3>COLLO NARVAEZ WILLIAM ERNEY
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@11William11</div>
+<p>William Erney, barflow esta muy completo: el simulador de fallo que le pusiste es justo lo que hace falta para probar el estado de error en serio.</p></div><div class="note"><h3>DIAZ PERDOMO PAULINA
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@Palinapau</div>
+<p>Paulina, tu inventario de bar resuelve bien el consumo de API y el manejo de estados, y el parcial quedo completo.</p></div><div class="note"><h3>FERNANDEZ ROJAS DANIEL FELIPE
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@Daniel666-ui</div>
+<p>Daniel Felipe, haber entregado el mockup en un archivo aparte antes del frontend muestra buen orden de trabajo, y tus respuestas conceptuales bilingues estan bien redactadas.</p></div><div class="note"><h3>GOMEZ ANACONA ANDRES FELIPE
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@Andresfg20</div>
+<p>Andres Felipe, Task Ledger consume una API real y la muestra bien; el parcial tambien quedo funcionando con interactividad.</p></div><div class="note"><h3>GUZMAN BOHORQUEZ JUAN JOSE
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@juanjoGuzmanBohorquez</div>
+<p>Juan Jose, organizar la semana 4 en tres puntos separados (mockup, frontend y manejo de estados) fue una buena decision: se ve exactamente que hiciste para cada requisito de la actividad. El proyecto de asistencia esta bien pensado como caso real.</p></div><div class="note"><h3>HORTA VANEGAS JUAN JOSE
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@Juan-Horta27</div>
+<p>Juan Jose, fuiste de los poquisimos que trabajo con Angular de verdad: signals, HttpClient y un componente hijo reutilizable. Y el boton &#x27;Probar el error&#x27; de la semana 3 es justo lo que un desarrollador hace para no entregar a ciegas.</p></div><div class="note"><h3>JIMENEZ HORTA JUAN DIEGO
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@ItzJunixs</div>
+<p>Juan Diego, tu repositorio es el mas facil de revisar de todo el curso: cada carpeta se llama como la actividad y cada semana trae su README. El componente UserCard reutilizable y el uso de modulos ES en el parcial muestran que estas pensando en estructura, no solo en que funcione.</p></div><div class="note"><h3>LOPEZ CHARRY JESUS ESTEBAN
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@jesusestebanlopezcharry-source</div>
+<p>Jesus Esteban, montar un backend con Express en la semana 5 va mas alla de lo que pedia la actividad y habla bien de tu interes. Ojo con un detalle: la semana 4 pedia explicitamente Angular o React, y la entregaste sin framework.</p></div><div class="note"><h3>LOZANO LOZANO JULIO CESAR
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@Lozano-027</div>
+<p>Julio Cesar, me gusto que dejaras anotadas las limitaciones de la API publica en tu task manager: es lo que haria alguien que probo de verdad. Importante: el bloque CONFIG de tu repo de perfil tiene el nombre del docente en vez del tuyo; corrigelo para que las entregas queden a tu nombre.</p></div><div class="note"><h3>MUÑOZ MONTENEGRO CRISTIAN ANDRES
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@cristianmunoz2006</div>
+<p>Cristian Andres, hiciste todo en JavaScript plano y aun asi tus entregas estan entre las mas cuidadas: el Recetario Expres con busqueda y los tres estados bien separados funciona igual de bien que las versiones con framework. Eso demuestra que entendiste el fondo.</p></div><div class="note"><h3>PARRA CADENA SANTIAGO STIVEN
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@santiagoparraC12-ux</div>
+<p>Santiago Stiven, la Pokedex en React quedo bien resuelta como SPA y el parcial esta completo. Un aviso: en la semana 3 subiste el PDF del enunciado en vez de tu entrega, asi que esa semana quedo sin trabajo tuyo.</p></div><div class="note"><h3>PEREZ CHALA LUIS FERNANDO
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@luisfernando-77</div>
+<p>Luis Fernando, pasar de JavaScript plano a un proyecto React con Vite en la semana 4 y que quede funcionando no es poca cosa. El directorio de la semana 3, con su plantilla y los tres estados, quedo muy limpio.</p></div><div class="note"><h3>PEREZ TRIANA MICHAEL ADONIS
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@Mapt05</div>
+<p>Michael Adonis, FINANZAPP resuelve un problema concreto y el manejo de estados esta bien hecho; el parcial con Bootstrap quedo ordenado.</p></div><div class="note"><h3>QUINTERO POVEDA LAURA MARCELA
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@laura-marcela05</div>
+<p>Laura Marcela, sostuviste un mismo hilo tematico (la cocina) durante todo el corte y eso hizo que cada semana se apoyara en la anterior. El buscador de recetas consumiendo TheMealDB en vivo es un ejemplo real de consumo de API, no un simulacro.</p></div><div class="note"><h3>SALGADO TRUJILLO ALEX DAVID
+<span class="pill q">sin appr</span></h3>
+<div class="mono small">@Adst2006</div>
+<p>Alex David, hiciste la presentacion de la semana 1 y tus entregas de las semanas 4 y 5 funcionan bien, con fetch real y estados. Te faltaron las semanas 2 y 3.</p></div><div class="note"><h3>VALVERDE BARREIRO JUAN PABLO
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@Pablo2467</div>
+<p>Juan Pablo, la app de Rick and Morty esta muy bien estructurada: separaste CharacterCard, CharacterList, LoadingState y ErrorState, y sacaste la logica a un hook propio (useCharacters). Un detalle: la entrega de la semana 3 quedo en una carpeta llamada &#x27;activity-04&#x27;, lo que confunde al revisar; el contenido si corresponde a la semana 3.</p></div><div class="note"><h3>ZULUAGA ACUÑA CARLOS ANDRES
+<span class="pill g">0.6</span></h3>
+<div class="mono small">@carloszuluaga-20</div>
+<p>Carlos Andres, documentar explicitamente los tres estados en la semana 3 fue un acierto: obliga a pensar que ve el usuario mientras carga y cuando falla. Tu app React de la semana 4, con componente reutilizable y useEffect, esta bien armada.</p></div></div>
+
+<div class="card"><h2>Correcciones frente al conteo del 09-sep</h2>
+<ul>
+<li>Aquel informe dio <b>0 de 25</b> y reporto «24 de 25 sin Semana 1». En realidad <b>14 si la entregaron</b>,
+casi todos el 1-sep: sus README de presentacion estan en <code>01-week/02-optional-activity/</code>, no en
+<code>01-week/</code> a secas.</li>
+<li><b>Juan Jose Guzman</b> — se dijo «solo el mockup, sin componente funcional». Tiene Punto 1-mockup,
+Punto 2-frontend y Punto 3-manejo Estados: semana 4 completa.</li>
+<li><b>Juan Pablo Valverde</b> — se dijo que su S3 «no responde al planteamiento». Es un componente React que
+consume API con los 3 estados (75 de los 100 pts de esa semana); solo le falta el mockup.</li>
+<li><b>Juan Diego Bonilla</b> tiene dos cuentas; <code>juan895</code> es la abandonada con el fork vacio, no un
+estudiante que no entrego.</li>
+<li><b>Julio Cesar Lozano</b>: su bloque CONFIG trae el nombre del docente en vez del propio — corregir.</li>
+</ul></div>
+
+<div class="card"><h2>Como se verifico</h2>
+<ul>
+<li>Arbol completo de cada fork (todas las ramas) menos el esqueleto del repo base, comparando ruta <b>y sha</b>;
+se omitieron <code>node_modules</code> y carpetas de build.</li>
+<li>Identidad: CONFIG de <code>usuario/usuario</code>, nombre del perfil de GitHub, prefijo del correo
+institucional y nombre del fork. 25 de 25 forks identificados.</li>
+<li>Cada semana se contrasto con su enunciado oficial en <code>ova-web/2026-B/fullstack</code>.</li>
+<li>Evidencia cruda en <code>tracking/appr-c1/evidencia/&lt;usuario&gt;/</code>.</li>
+</ul></div>
+</div>

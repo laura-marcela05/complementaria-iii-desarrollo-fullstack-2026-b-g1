@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 04 · Componente que consume datos (React)</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- React vía CDN: no requiere instalar Node ni npm -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Componente reutilizable en React</h1>
+    <p>Un mismo componente &lt;DataList /&gt; consumiendo dos APIs distintas</p>
+  </header>
+
+  <main>
+    <div id="root"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Actividad Semana 04 - Desarrollo Fullstack</p>
+  </footer>
+
+  <!-- type="text/babel" permite escribir JSX sin necesidad de un build tool -->
+  <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

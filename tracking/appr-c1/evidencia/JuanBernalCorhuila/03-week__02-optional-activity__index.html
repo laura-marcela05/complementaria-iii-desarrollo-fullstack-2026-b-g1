@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Pokédex</h1>
+  <p class="subtitulo">Mockup de la vista — lista de pokémon (datos de ejemplo)</p>
+
+  <p id="mensaje-cargando">Cargando pokémon...</p>
+  <p id="mensaje-error" style="display: none;">No se pudieron cargar los datos. Intenta de nuevo.</p>
+
+  <ul id="lista-pokemon">
+    <li class="pokemon-card">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu">
+      <h3>Pikachu</h3>
+      <p class="tipo">Tipo: Eléctrico</p>
+    </li>
+
+    <li class="pokemon-card">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png" alt="Mewtwo">
+      <h3>Mewtwo</h3>
+      <p class="tipo">Tipo: Psíquico</p>
+    </li>
+
+    <li class="pokemon-card">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png" alt="Articuno">
+      <h3>Articuno</h3>
+      <p class="tipo">Tipo: Hielo / Volador</p>
+    </li>
+
+    <li class="pokemon-card">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/249.png" alt="Lugia">
+      <h3>Lugia</h3>
+      <p class="tipo">Tipo: Psíquico / Volador</p>
+    </li>
+  </ul>
+
+  <script src="script.js"></script>
+</body>
+</html>

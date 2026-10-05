@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Qué personaje de Rick y Morty eres?</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1> ¿Qué personaje de Rick y Morty eres?</h1>
+    <p> te ayudo a descubrirlo</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <label for="nameInput">Nombre</label>
+      <input type="text" id="nameInput" placeholder="Tu nombre">
+
+      <label for="ageInput">Edad</label>
+      <input type="text" id="ageInput" placeholder="Tu edad" inputmode="numeric">
+
+      <button id="discoverBtn">Descubrir mi personaje</button>
+    </section>
+
+    <section>
+      <p id="status" role="status"></p>
+    </section>
+
+    <section id="resultSection" class="result-section" hidden>
+      <img id="resultImg" src="" alt="">
+      <h2 id="resultIntro"></h2>
+      <ul id="resultDetails"></ul>
+    </section>
+  </main>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parcial Práctico · Corte 1</title>
+  <link rel="stylesheet" href="assets/library/bootstrap-4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <header class="container mt-4">
+    <h1>Parcial Práctico · Corte 1</h1>
+  </header>
+
+  <main class="container my-4">
+
+    <section id="problema1" class="mb-5 p-4 bg-white rounded shadow-sm">
+
+      <h2>Problema 1 — Fundamentos web</h2>
+      <p class="text-muted">Lista de tareas del día</p>
+
+      <ul id="lista-tareas" class="list-group mb-3">
+        <li class="list-group-item">Repasar apuntes de HTML semántico</li>
+        <li class="list-group-item">Practicar selectores de CSS</li>
+        <li class="list-group-item">Escribir una función en JavaScript</li>
+      </ul>
+
+      <button id="btn-agregar-tarea" type="button" class="btn btn-primary">
+        Agregar tarea
+      </button>
+
+      <p id="contador-tareas" class="text-muted mt-2">Total de tareas: 3</p>
+
+    <hr />
+
+      <h3 class="h5">Rol de cada lenguaje</h3>
+      <div class="alert alert-light border">
+        <ul class="mb-0">
+
+          <li><strong>HTML:</strong> define la estructura y el contenido de la página (el encabezado, la lista, el botón). Es el "esqueleto" de la vista.</li>
+          <li><strong>CSS:</strong> se encarga de la apariencia visual (colores, espaciados, bordes). Aquí lo aporta Bootstrap como framework, más el archivo <code>style.css</code> propio para ajustes personalizados.</li>
+          <li><strong>JavaScript:</strong> agrega comportamiento e interactividad. Al hacer clic en "Agregar tarea", JS crea un nuevo elemento de lista y actualiza el contador — sin JS, el botón no haría nada.</li>
+        
+        </ul>
+      </div>
+    </section>
+
+    <section id="problema2" class="mb-5 p-4 bg-white rounded shadow-sm">
+
+      <h2>Problema 2 — Consumo de API</h2>
+      <p class="text-muted">Lista de usuarios consumida desde una API pública (JSONPlaceholder)</p>
+
+      <p id="estado-carga-p2" class="text-muted">Cargando datos...</p>
+      <p id="estado-error-p2" class="text-danger d-none">
+        Ocurrió un error al cargar los datos. Intenta recargar la página.
+      </p>
+
+      <ul id="lista-usuarios" class="list-group d-none"></ul>
+
+    <hr />
+
+      <h3 class="h5">Métodos HTTP</h3>
+      <div class="alert alert-light border mb-0">
+        <p class="mb-0">
+          Para <strong>consultar</strong> los usuarios se usó el método <code>GET</code> con <code>fetch</code>.
+          Para <strong>crear</strong> un nuevo usuario se usaría el método <code>POST</code>
+          (enviando los datos del nuevo usuario en el cuerpo de la petición).
+          Para <strong>borrar</strong> un usuario existente se usaría el método <code>DELETE</code>,
+          indicando el <code>id</code> del usuario en la URL.
+        </p>
+      </div>
+
+    </section>
+
+     <section id="problema3" class="mb-5 p-4 bg-white rounded shadow-sm">
+
+      <h2>Problema 3 — Framework y SPA</h2>
+
+      <h3 class="h5 mt-3">¿Qué es un componente?</h3>
+      <p>
+        Un componente es un bloque de interfaz reutilizable que agrupa su propia estructura,
+        estilo y lógica (por ejemplo, una tarjeta de usuario o un botón con su comportamiento).
+        Se puede usar varias veces en distintas partes de la app sin repetir código.
+      </p>
+
+      <h3 class="h5">¿Qué es el estado?</h3>
+      <p>
+        El estado es la información que puede cambiar mientras la app está en uso
+        (por ejemplo, la lista de tareas o si se está cargando algo). Cuando el estado
+        cambia, la interfaz se vuelve a mostrar automáticamente reflejando ese cambio.
+      </p>
+
+      <h3 class="h5">¿Qué hace el enrutamiento (routing)?</h3>
+      <p>
+        El enrutamiento permite mostrar diferentes vistas dentro de una misma página,
+        cambiando la URL sin que el navegador recargue todo el sitio.
+      </p>
+
+      <h3 class="h5">Pseudocódigo de ejemplo</h3>
+      <pre class="bg-light p-3 rounded"><code>componente TarjetaUsuario(usuario):
+    mostrar usuario.nombre
+    mostrar usuario.email
+
+estado listaUsuarios = []
+
+al iniciar la app:
+    listaUsuarios = obtenerUsuariosDesdeAPI()
+
+router:
+    ruta "/"             -> mostrar PaginaInicio
+    ruta "/usuarios"      -> mostrar ListaUsuarios(listaUsuarios)
+    ruta "/usuarios/:id"  -> mostrar DetalleUsuario(id)</code></pre>
+
+      <h3 class="h5">¿Por qué una SPA necesita una API?</h3>
+      <p>
+        Una SPA (Single Page Application) carga una sola página HTML y luego actualiza su
+        contenido dinámicamente con JavaScript. Como no recarga el servidor para cada vista,
+        necesita una API para pedir y enviar datos "por detrás" (con <code>fetch</code>) cada
+        vez que el usuario navega o interactúa, manteniendo la información actualizada sin
+        recargar toda la página.
+      </p>
+
+      <hr />
+
+      <h3 class="h5">English requirement</h3>
+      <div class="alert alert-light border mb-0">
+        <p class="fst-italic mb-0">
+          A Single Page Application (SPA) loads a single HTML page once and then updates its
+          content dynamically using JavaScript, without reloading the whole page. In contrast,
+          a Multi Page Application (MPA) loads a new HTML page from the server every time the
+          user navigates to a different section, which usually makes navigation feel slower.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+  <script src="assets/library/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+  <script src="assets/logic/problema1.js"></script>
+  <script src="assets/logic/problema2.js"></script>
+</body>
+</html>

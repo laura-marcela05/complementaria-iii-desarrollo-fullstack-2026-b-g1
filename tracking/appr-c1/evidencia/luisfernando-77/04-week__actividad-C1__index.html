@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruequeLocal - Plataforma de Intercambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>🔄 TruequeLocal</h1>
+      <p>Intercambia lo que no usas por lo que necesitas</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <h2>Publicaciones Disponibles para Trueque</h2>
+      <button id="reload-btn" class="btn">Cargar Publicaciones</button>
+    </section>
+
+    <!-- Estado de Carga -->
+    <div id="loading" class="state-container hidden">
+      <div class="spinner"></div>
+      <p>Cargando publicaciones para trueque...</p>
+    </div>
+
+    <!-- Estado de Error -->
+    <div id="error" class="state-container hidden error-box">
+      <p>⚠️ Ocurrió un error al cargar las publicaciones. Intenta nuevamente.</p>
+    </div>
+
+    <!-- Estado de Datos (Contenedor de tarjetas) -->
+    <div id="products-grid" class="grid-container"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

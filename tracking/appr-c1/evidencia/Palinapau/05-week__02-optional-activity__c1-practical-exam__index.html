@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C1 Practical Exam</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+        href="assets/library/bootstrap-4.0.0/css/bootstrap.min.css">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header class="bg-primary text-white py-4">
+
+        <div class="container">
+
+            <h1>C1 Practical Exam</h1>
+
+            <p class="lead mb-0">
+                Desarrollo FullStack
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- Contenido principal -->
+    <main class="container my-5">
+
+
+        <!-- =====================================
+             Problema 1
+        ====================================== -->
+
+        <section id="problema1" class="mb-5">
+
+            <h2>Problema 1 — Desarrollo FullStack</h2>
+
+            <p>
+                En esta sección se utiliza HTML5 semántico,
+                CSS3 para los estilos y JavaScript para agregar
+                comportamiento a la página.
+            </p>
+
+
+            <article class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h3 class="card-title">
+                        Tecnologías utilizadas
+                    </h3>
+
+
+                    <!-- Lista -->
+
+                    <ul class="list-group mb-3">
+
+                        <li class="list-group-item">
+                            <strong>HTML5:</strong>
+                            estructura semántica de la página.
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>CSS3:</strong>
+                            presentación y estilos visuales.
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>JavaScript:</strong>
+                            comportamiento e interacción.
+                        </li>
+
+                    </ul>
+
+
+                    <!-- Botón -->
+
+                    <button id="botonSaludo"
+                        class="btn btn-primary">
+
+                        Haz clic aquí
+
+                    </button>
+
+
+                    <!-- Mensaje javascript -->
+
+                    <p id="mensaje" class="mt-3 font-weight-bold"></p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =====================================
+             Problema 2
+        ====================================== -->
+
+        <section id="problema2" class="mb-5">
+
+            <h2>Problema 2 — Consumo de API</h2>
+
+            <p>
+                Esta sección consume una API utilizando
+                <code>fetch()</code> y el método HTTP
+                <strong>GET</strong>.
+            </p>
+
+
+            <button id="cargarDatos"
+                class="btn btn-success mb-3">
+
+                Cargar usuarios
+
+            </button>
+
+
+            <!-- Estado de carga -->
+
+            <div id="loading"
+                class="alert alert-info d-none">
+
+                Cargando datos...
+
+            </div>
+
+
+            <!-- Estado de error -->
+
+            <div id="error"
+                class="alert alert-danger d-none">
+
+            </div>
+
+
+            <!-- Lista de datos -->
+
+            <ul id="listaDatos"
+                class="list-group">
+
+            </ul>
+
+
+            <!-- Métodos HTTP -->
+
+            <article class="card mt-4">
+
+                <div class="card-body">
+
+                    <h3>Métodos HTTP</h3>
+
+                    <ul>
+
+                        <li>
+                            <strong>GET:</strong>
+                            obtener información.
+                        </li>
+
+                        <li>
+                            <strong>POST:</strong>
+                            crear nueva información.
+                        </li>
+
+                        <li>
+                            <strong>DELETE:</strong>
+                            eliminar información.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =====================================
+             Problema 3
+        ====================================== -->
+
+        <section id="problema3" class="mb-5">
+
+            <h2>Problema 3 — Framework y SPA</h2>
+
+
+            <!-- COMPONENTE -->
+
+            <article class="card mb-4">
+
+                <div class="card-body">
+
+                    <h3>¿Qué es un componente?</h3>
+
+                    <p>
+                        Un componente es una parte reutilizable
+                        de una interfaz. Por ejemplo, un botón,
+                        un menú o una lista pueden funcionar
+                        como componentes independientes.
+                    </p>
+
+                    <pre class="bg-light p-3"><code>
+Componente Usuario
+    ├── Nombre
+    ├── Email
+    └── Botón
+                    </code></pre>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Estado -->
+
+            <article class="card mb-4">
+
+                <div class="card-body">
+
+                    <h3>¿Qué es el estado?</h3>
+
+                    <p>
+                        El estado representa información que puede
+                        cambiar durante la ejecución de una aplicación.
+                    </p>
+
+                    <pre class="bg-light p-3"><code>
+estado = {
+    cargando: false,
+    usuarios: [],
+    error: null
+}
+                    </code></pre>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Routing -->
+
+            <article class="card mb-4">
+
+                <div class="card-body">
+
+                    <h3>¿Qué hace el enrutamiento?</h3>
+
+                    <p>
+                        El enrutamiento permite mostrar diferentes
+                        vistas según la URL o la ruta seleccionada
+                        por el usuario.
+                    </p>
+
+                    <pre class="bg-light p-3"><code>
+/            → Inicio
+/usuarios    → Usuarios
+/contacto    → Contacto
+                    </code></pre>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SPA Y API -->
+
+            <article class="card mb-4">
+
+                <div class="card-body">
+
+                    <h3>¿Por qué una SPA necesita una API?</h3>
+
+                    <p>
+                        Una SPA necesita una API para comunicarse
+                        con el servidor y obtener o modificar datos
+                        sin tener que recargar completamente la página.
+                    </p>
+
+                    <p>
+                        Una API permite separar el frontend del backend
+                        y facilita que la aplicación pueda consumir
+                        información de forma dinámica.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Requisito en inglés-->
+
+            <article class="card border-primary">
+
+                <div class="card-body">
+
+                    <h3>English requirement</h3>
+
+                    <p>
+                        An SPA loads a single page and updates its
+                        content dynamically without reloading the
+                        entire page. An MPA loads a new page from
+                        the server when the user navigates to a
+                        different section.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+    </main>
+
+
+
+
+    <!-- Javascript -->
+
+    <script src="assets/logic/login.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+/* Fuente legible y contenido centrado */
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+section {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+li {
+  padding: 5px 0;
+}
+
+button {
+  background-color: #2c7be5;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Efecto hover simple */
+button:hover {
+  background-color: #1a5bb8;
+}
+
+footer {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+}

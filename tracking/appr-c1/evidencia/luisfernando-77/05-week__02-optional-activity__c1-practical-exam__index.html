@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruequeLocal</title>
+  <link rel="stylesheet" href="assets/library/css/style.css">
+</head>
+<body>
+
+  <!-- HTML: define la estructura y el significado de cada parte de la página -->
+  <header class="header">
+    <h1>🔄 TruequeLocal</h1>
+    <p>Intercambia objetos que ya no usas por otros que necesitas.</p>
+  </header>
+
+  <main class="contenido">
+
+    <section class="tarjeta" aria-label="Publicar un objeto">
+      <h2>Publicar un objeto</h2>
+      <form id="formObjeto" class="formulario">
+        <label for="nombreObjeto">Nombre del objeto</label>
+        <input type="text" id="nombreObjeto" placeholder="Ej: Bicicleta usada" required>
+        <button type="submit">Agregar objeto</button>
+      </form>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Objetos disponibles para intercambiar</h2>
+      <button id="btnCargarApi" type="button" class="btn-secundario">Cargar más objetos desde la API</button>
+      <p id="mensajeEstado" class="mensaje-estado" aria-live="polite"></p>
+      <ul id="listaObjetos">
+        <li>
+          <span>Libro de programación - se cambia por una planta</span>
+          <button class="btn-eliminar" type="button" aria-label="Eliminar objeto">✕</button>
+        </li>
+        <li>
+          <span>Chaqueta talla M - se cambia por zapatos</span>
+          <button class="btn-eliminar" type="button" aria-label="Eliminar objeto">✕</button>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Proyecto académico - Parcial práctico Corte 1</p>
+  </footer>
+
+  <!-- JS: se encarga del comportamiento e interactividad de la página -->
+  <script src="assets/library/js/main.js"></script>
+</body>
+</html>

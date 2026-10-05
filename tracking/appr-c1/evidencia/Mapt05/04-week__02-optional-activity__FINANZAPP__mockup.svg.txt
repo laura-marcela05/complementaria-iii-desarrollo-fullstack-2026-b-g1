@@ -1,0 +1,46 @@
+
+   
+
+   
+   FINANZAPP 
+
+   
+   Ingresos 
+   $0 
+
+   
+   Gastos 
+   $0 
+
+   
+   Balance 
+   $0 
+
+   
+   Agregar ingreso 
+   
+   
+   
+   Agregar 
+
+   
+   Agregar gasto 
+   
+   
+   
+   
+   Agregar 
+
+   
+   Gastos por grupo vs. limite recomendado 
+   
+   
+   
+   
+   
+   
+
+   
+   Movimientos 
+   🏠 Arriendo apartamento 
+   -$900.000

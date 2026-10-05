@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Framework y SPA — Componente, Estado y Enrutamiento</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Framework y SPA</h1>
+    <p class="subtitulo">Componente, Estado, Enrutamiento y por qué una SPA necesita una API</p>
+  </header>
+
+  <main>
+
+    <section class="concepto">
+      <h2>¿Qué es un componente?</h2>
+      <p>
+        Un componente es una pieza de interfaz reutilizable y autocontenida que combina
+        estructura (qué se muestra), lógica (cómo se comporta) y, opcionalmente, sus
+        propios estilos. Un componente se puede reutilizar varias veces con distintos
+        datos de entrada (props), sin duplicar código.
+      </p>
+      <pre><code>// Pseudocódigo de un componente "TarjetaProducto"
+componente TarjetaProducto(props) {
+  retornar:
+    contenedor {
+      titulo: props.nombre
+      texto: props.descripcion
+      texto: "$" + props.precio
+    }
+}
+
+// Uso del componente con distintos datos
+TarjetaProducto({ nombre: "Producto 1", descripcion: "...", precio: 10000 })
+TarjetaProducto({ nombre: "Producto 2", descripcion: "...", precio: 20000 })</code></pre>
+    </section>
+
+    <section class="concepto">
+      <h2>¿Qué es el estado?</h2>
+      <p>
+        El estado (state) es la información interna de un componente que puede cambiar
+        con el tiempo (por ejemplo, tras una interacción del usuario o una respuesta de
+        una API) y que, al cambiar, hace que el componente se vuelva a renderizar
+        automáticamente para reflejar ese cambio en la pantalla.
+      </p>
+      <pre><code>// Pseudocódigo de un componente con estado
+componente ContadorClicks {
+  estado contador = 0
+
+  al hacer click en boton:
+    contador = contador + 1
+
+  retornar:
+    contenedor {
+      texto: "Has hecho click " + contador + " veces"
+      boton: "Sumar"
+    }
+}
+// Cada vez que "contador" cambia, la vista se actualiza sola</code></pre>
+    </section>
+
+    <section class="concepto">
+      <h2>¿Qué hace el enrutamiento?</h2>
+      <p>
+        El enrutamiento (routing) es el mecanismo que decide qué componente mostrar
+        según la URL actual, sin recargar la página completa. En una SPA, el
+        "router" del framework intercepta los cambios de URL y renderiza dinámicamente
+        el componente correspondiente en el mismo documento HTML.
+      </p>
+      <pre><code>// Pseudocódigo de enrutamiento
+rutas = {
+  "/"          : ComponentePagina de Inicio,
+  "/productos" : ComponenteListaProductos,
+  "/usuarios"  : ComponenteListaUsuarios
+}
+
+al cambiar la URL:
+  componente_a_mostrar = rutas[url_actual]
+  renderizar(componente_a_mostrar)
+  // no se recarga el navegador, solo cambia el contenido</code></pre>
+    </section>
+
+    <section class="concepto">
+      <h2>¿Por qué una SPA necesita una API?</h2>
+      <p>
+        Una SPA (Single Page Application) carga un único documento HTML inicial y luego
+        todo el contenido dinámico se genera con JavaScript en el navegador. Como esa
+        página no se recarga para navegar entre secciones, tampoco recibe HTML nuevo
+        del servidor en cada "vista" (a diferencia de una app tradicional). Por eso,
+        para mostrar datos reales y actualizados (usuarios, productos, mensajes, etc.),
+        la SPA necesita pedirlos por su cuenta, generalmente vía JavaScript con
+        <code>fetch</code>, a una API que le devuelva esos datos (normalmente en
+        formato JSON), como hicimos en el Problema 2 de este examen. La API se
+        convierte así en la única fuente de datos "frescos" de la aplicación, ya que el
+        HTML por sí solo quedó estático desde la primera carga.
+      </p>
+    </section>
+
+    <section class="concepto ingles">
+      <h2>SPA vs MPA <span class="etiqueta">English requirement</span></h2>
+      <p>
+        A Single Page Application (SPA) loads a single HTML page and updates the
+        content dynamically with JavaScript as the user navigates, without reloading
+        the whole page. A Multi Page Application (MPA), on the other hand, loads a new
+        HTML page from the server every time the user navigates to a different
+        section, which usually means slower transitions but simpler, more
+        traditional server-side rendering.
+      </p>
+    </section>
+
+  </main>
+
+</body>
+</html>

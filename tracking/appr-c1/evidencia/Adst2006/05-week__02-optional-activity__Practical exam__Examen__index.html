@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explorador de Países</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- HTML5 semántico: header, main y footer -->
+  <header class="site-header">
+    <h1>Explorador de Países</h1>
+    <p class="subtitle">Consulta datos de países en tiempo real.</p>
+  </header>
+
+  <main>
+    <button id="load-btn" class="btn btn-primary" type="button">
+      Cargar países
+    </button>
+
+    <!-- Estados de la petición a la API -->
+    <p id="loading-state" class="state loading hidden">Cargando países…</p>
+    <p id="error-state" class="state error hidden">
+      No se pudieron cargar los países. Inténtalo de nuevo.
+    </p>
+
+    <!-- La lista donde se pintan los datos -->
+    <ul id="countries-list" class="countries-grid" aria-live="polite"></ul>
+  </main>
+
+  <footer class="site-footer">
+    <p>Semana 5 · Frontend inicial</p>
+  </footer>
+
+  <script src="assets/logic/script.js"></script>
+</body>
+</html>

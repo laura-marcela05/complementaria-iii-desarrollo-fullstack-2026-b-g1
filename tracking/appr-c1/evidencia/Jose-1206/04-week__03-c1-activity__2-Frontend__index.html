@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniAttend - Control de Asistencia Universitario</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <header class="navbar">
+            <div class="brand">
+                <span class="logo-icon">🎓</span>
+                <div>
+                    <h1>UniAttend MVP</h1>
+                    <p class="subtitle">Sistema de Control de Asistencia - Vista Docente</p>
+                </div>
+            </div>
+            <div class="user-badge">
+                <span class="role-tag">Docente</span>
+                <span class="user-name">Prof. Carlos Mendoza</span>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="controls-card">
+                <div class="course-info">
+                    <h2>Asignatura: Análisis y Diseño de Sistemas - Grupo A</h2>
+                    <p class="date-display">Fecha: <strong id="current-date"></strong></p>
+                </div>
+                <div class="actions-group">
+                    <button id="btn-reload" class="btn btn-secondary">🔄 Recargar Datos</button>
+                    <button id="btn-toggle-error" class="btn btn-outline-danger">⚠️ Simular Error</button>
+                </div>
+            </section>
+
+            <section id="metrics-summary" class="metrics-grid hidden">
+                <div class="metric-card">
+                    <span class="metric-title">Total Estudiantes</span>
+                    <span id="metric-total" class="metric-value">0</span>
+                </div>
+                <div class="metric-card success">
+                    <span class="metric-title">Presentes</span>
+                    <span id="metric-present" class="metric-value">0</span>
+                </div>
+                <div class="metric-card warning">
+                    <span class="metric-title">Tardanzas</span>
+                    <span id="metric-late" class="metric-value">0</span>
+                </div>
+                <div class="metric-card danger">
+                    <span class="metric-title">Ausentes</span>
+                    <span id="metric-absent" class="metric-value">0</span>
+                </div>
+            </section>
+
+            <section class="content-area">
+                <!-- State 1: Loading -->
+                <div id="state-loading" class="state-container">
+                    <div class="spinner"></div>
+                    <p class="state-msg">Cargando lista de estudiantes desde la API...</p>
+                </div>
+
+                <!-- State 2: Error -->
+                <div id="state-error" class="state-container hidden">
+                    <div class="error-icon">❌</div>
+                    <h3>Error al cargar la información</h3>
+                    <p id="error-message">No se pudo conectar con el servidor para obtener el listado de asistencia.</p>
+                    <button id="btn-retry" class="btn btn-primary">Reintentar Conexión</button>
+                </div>
+
+                <!-- State 3: Data Loaded -->
+                <div id="state-data" class="state-container hidden">
+                    <div class="table-responsive">
+                        <table class="attendance-table">
+                            <thead>
+                                <tr>
+                                    <th>Estudiante</th>
+                                    <th>Código / Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Estado Asistencia</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-list">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 UniAttend - Proyecto Híbrido Sprint 1 | Corhuila Software Engineering</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

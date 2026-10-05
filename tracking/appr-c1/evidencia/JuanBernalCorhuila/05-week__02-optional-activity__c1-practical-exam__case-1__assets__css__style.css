@@ -1,0 +1,13 @@
+
+body {
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+header h1 {
+  color: #1d3557;
+}
+
+#estado {
+  font-weight: bold;
+}

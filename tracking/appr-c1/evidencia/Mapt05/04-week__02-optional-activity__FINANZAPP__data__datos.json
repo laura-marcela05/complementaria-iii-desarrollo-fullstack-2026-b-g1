@@ -1,0 +1,14 @@
+{
+  "categorias": [
+    { "id": "arriendo", "nombre": "Arriendo", "grupo": "necesidad", "emoji": "🏠" },
+    { "id": "comida", "nombre": "Comida", "grupo": "necesidad", "emoji": "🍽️" },
+    { "id": "servicios", "nombre": "Servicios", "grupo": "necesidad", "emoji": "💡" },
+    { "id": "transporte", "nombre": "Transporte", "grupo": "necesidad", "emoji": "🚗" },
+    { "id": "deudas", "nombre": "Deudas", "grupo": "necesidad", "emoji": "💳" },
+    { "id": "ocio", "nombre": "Ocio y entretenimiento", "grupo": "gusto", "emoji": "🎬" },
+    { "id": "compras", "nombre": "Compras personales", "grupo": "gusto", "emoji": "🛍️" },
+    { "id": "ahorro", "nombre": "Ahorro", "grupo": "ahorro", "emoji": "💰" }
+  ],
+  "ingresos": [],
+  "gastos": []
+}

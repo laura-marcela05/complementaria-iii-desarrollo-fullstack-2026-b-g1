@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recetas de cocina</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <span class="hero-eyebrow">Encuentra tu próxima receta</span>
+      <h1><em>Recetas</em><br />de cocina</h1>
+      <span class="underline"></span>
+      <p class="hero-text">
+        Escribe un ingrediente y consulta recetas reales al instante, conectado
+        a una API pública de cocina.
+      </p>
+
+      <div class="search-area">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Ej: pollo, pasta, pastel"
+        />
+        <button id="searchBtn">Buscar</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="loadingState" class="state-msg hidden">Cargando recetas...</div>
+      <div id="errorState" class="state-msg error hidden">
+        No se pudieron cargar las recetas. Intenta de nuevo.
+      </div>
+      <ul id="resultsList" class="results-list"></ul>
+    </main>
+
+    <footer class="site-footer">
+      <span>Actividad opcional semana 3 · Desarrollo Fullstack</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

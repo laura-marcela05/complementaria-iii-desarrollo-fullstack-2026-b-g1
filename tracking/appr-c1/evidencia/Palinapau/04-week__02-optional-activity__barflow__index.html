@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BarFlow - Inventario</title>
+
+    <link
+        rel="stylesheet"
+        href="css/styles.css"
+    >
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span>BF</span>
+
+            <h1>BarFlow</h1>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#">Inicio</a>
+
+            <a
+                href="#"
+                class="active"
+            >
+                Inventario
+            </a>
+
+            <a href="#">Pedidos</a>
+
+            <a href="#">Ventas</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Contenido principal -->
+
+    <main class="container">
+
+
+        <!-- Encabezado -->
+
+        <section class="page-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    BARFLOW / INVENTARIO
+                </p>
+
+                <h2>
+                    Inventario de productos
+                </h2>
+
+                <p class="description">
+                    Administra los productos y el stock de tu bar.
+                </p>
+
+            </div>
+
+
+            <button class="add-button">
+                + Agregar producto
+            </button>
+
+        </section>
+
+
+        <!-- Estado de carga -->
+
+        <section
+            id="loading"
+            class="state loading-state"
+        >
+
+            <div class="spinner"></div>
+
+            <p>
+                Cargando productos...
+            </p>
+
+        </section>
+
+
+        <!-- Estado de error -->
+
+        <section
+            id="error"
+            class="state error-state hidden"
+        >
+
+            <h3>
+                Ocurrió un error
+            </h3>
+
+            <p>
+                No pudimos cargar los productos.
+            </p>
+
+            <button id="retry-button">
+                Intentar nuevamente
+            </button>
+
+        </section>
+
+
+        <!-- Estado de datos -->
+
+        <section
+            id="products-container"
+            class="hidden"
+        >
+
+            <div class="inventory-header">
+
+                <div>
+
+                    <h3>
+                        Productos
+                    </h3>
+
+                    <p id="product-count">
+                        Cargando...
+                    </p>
+
+                </div>
+
+
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Buscar productos..."
+                >
+
+            </div>
+
+
+            <!-- Aquí aparecerán los productos -->
+
+            <div
+                id="product-list"
+                class="product-list"
+            >
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

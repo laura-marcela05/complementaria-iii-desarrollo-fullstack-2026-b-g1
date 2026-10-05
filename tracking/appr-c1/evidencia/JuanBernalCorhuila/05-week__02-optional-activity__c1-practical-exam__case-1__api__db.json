@@ -1,0 +1,9 @@
+{
+  "jugadores": [
+    { "id": 1, "nombre": "Lionel Messi", "equipo": "Inter Miami", "posicion": "Delantero", "dorsal": 10 },
+    { "id": 2, "nombre": "Kylian Mbappé", "equipo": "Real Madrid", "posicion": "Delantero", "dorsal": 9 },
+    { "id": 3, "nombre": "Rodrigo Hernández", "equipo": "Barcelona", "posicion": "Mediocampista", "dorsal": 16 },
+    { "id": 4, "nombre": "Joan García", "equipo": "Barcelona", "posicion": "Portero", "dorsal": 1 },
+    { "id": 5, "nombre": "Virgil van Dijk", "equipo": "Liverpool", "posicion": "Defensa", "dorsal": 4 }
+  ]
+}

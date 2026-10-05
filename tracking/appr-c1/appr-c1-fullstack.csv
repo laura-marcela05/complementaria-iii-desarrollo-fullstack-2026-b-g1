@@ -1,0 +1,27 @@
+﻿fila;estudiante;usuario_github;semanas_entregadas;completo_1a5;resumen;appr
+2;AGUDELO QUINTERO JUAN SEBASTIAN;sebastiian06;1 2 3 4 5;SI;"S2 maquetacion de interfaz; S3 mockup + consumo de API; S4 app React completa (17 archivos) con estado y manejo de error; S5 parcial practico resuelto por problemas.";0.6
+3;AYA PERALTA JOSE MIGUEL;Jose-1206;1 2 3 4 5;SI;"S2 'Mi Stack de Desarrollo' con toggle; S3 directorio de usuarios con fetch y los 3 estados; S4 mockup + frontend 'AsistApp' con simulador de error; S5 parcial extenso (57 archivos).";0.6
+4;BERNAL GORDILLO JUAN CAMILO;JuanBernalCorhuila;1 2 3 4 5;SI;"S2 trivia Mundial 2026; S3 Pokedex con PokeAPI real (Promise.all + estados); S4 'Equipos de LaLiga' en React y version vanilla; S5 roster de la Seleccion Colombia. Ademas entrego S6.";0.6
+5;BONILLA OROZCO JUAN DIEGO;jdbonilla-2025b-netizen;1 2 3 4 5;SI;"S2 portafolio con toggle; S3 lista de usuarios con fetch y 3 estados; S4 componente React con useState; S5 mini-frontend React/Vite. Ademas entrego S6.";0.6
+14;GUZMAN BOHORQUEZ JUAN JOSE;juanjoGuzmanBohorquez;1 2 3 4 5;SI;"S2 y S3 con fetch y estados; S4 'Asistencia CORHUILA' entregada en tres puntos: mockup, frontend y manejo de estados; S5 parcial practico.";0.6
+15;HORTA VANEGAS JUAN JOSE;Juan-Horta27;1 2 3 4 5;SI;"S3 con boton 'Probar el error' para forzar el estado de fallo; S4 componente Angular standalone real (signals, HttpClient, componente hijo reutilizable); S5 parcial por problemas. Ademas entrego S6.";0.6
+16;JIMENEZ HORTA JUAN DIEGO;ItzJunixs;1 2 3 4 5;SI;"Cada semana titulada exactamente como el enunciado oficial; S4 React con hooks y componente UserCard reutilizable; S5 con modulos ES (import/export).";0.6
+19;MUÑOZ MONTENEGRO CRISTIAN ANDRES;cristianmunoz2006;1 2 3 4 5;SI;"S2 estanteria semantica con flexbox; S3 'Recetario Expres' con fetch, busqueda y 3 estados; S4 'Citas Celebres' con consumo de API; S5 parcial con Bootstrap. Todo JavaScript plano de buena calidad.";0.6
+21;PEREZ CHALA LUIS FERNANDO;luisfernando-77;1 2 3 4 5;SI;"S2 panel de sesion de estudio con toggle; S3 directorio con fetch, plantilla y 3 estados; S4 React con Vite real; S5 parcial practico.";0.6
+23;QUINTERO POVEDA LAURA MARCELA;laura-marcela05;1 2 3 4 5;SI;"S2 consejos de cocina con toggle; S3 recetas con fetch; S4 'Buscador de Recetas' en React consumiendo TheMealDB en vivo; S5 recetario en el parcial (24 archivos).";0.6
+26;VALVERDE BARREIRO JUAN PABLO;Pablo2467;1 2 3 4 5;SI;"S2 portafolio con toggle; S3 componente React que consume API con los 3 estados (en carpeta 'activity-04'); S4 app Rick and Morty en React/Vite con componentes separados y hook propio; S5 parcial en 3 casos.";0.6
+27;ZULUAGA ACUÑA CARLOS ANDRES;carloszuluaga-20;1 2 3 4 5;SI;"S2 lista de tareas interactiva; S3 mockup + fetch con los 3 estados documentados; S4 app React real (Vite, useState/useEffect, componente reutilizable); S5 fetch de productos.";0.6
+7;CARDENAS BERMEO ANDRES FELIPE;felip442;5;NO;Solo S5: parcial practico con fetch a JSONPlaceholder y respuestas de fundamentos, HTTP y SPA bien desarrolladas.;
+8;CASTILLO GARZON ROSFELLER DAVID;feller2006;1 2 4 5;NO;S1 presentacion, S2 lista de tareas, S4 lista de usuarios con fetch, S5 parcial en ingles. Le falta unicamente la S3. El mas cerca del curso.;
+9;CHAMBO REYES KAROL TATIANA;ktchambo-2024a-max;4 5;NO;"S4 personajes de Rick and Morty con fetch y estados (en ingles); S5 practica C1. Sin bloque CONFIG en su repo de perfil.";
+10;COLLO NARVAEZ WILLIAM ERNEY;11William11;4 5;NO;"S4 'barflow' gestion de pedidos con fetch, estados y simulador de fallo, muy completo; S5 parcial con catalogo.";
+11;DIAZ PERDOMO PAULINA;Palinapau;4 5;NO;"S4 'BarFlow' inventario de bar con fetch y estados; S5 parcial practico completo.";
+12;FERNANDEZ ROJAS DANIEL FELIPE;Daniel666-ui;4 5;NO;"S4 'People Explorer' con mockup.md y frontend; S5 practica C1 con fetch, eventos y respuestas conceptuales bilingues.";
+13;GOMEZ ANACONA ANDRES FELIPE;Andresfg20;4 5;NO;"S4 'Task Ledger' consumiendo la API de DummyJSON; S5 parcial con fetch a JSONPlaceholder e interactividad.";
+17;LOPEZ CHARRY JESUS ESTEBAN;jesusestebanlopezcharry-source;4 5;NO;"S4 'Mi Inventario' CRUD con Open Food Facts (sin framework, la S4 pedia Angular o React); S5 backend Express + frontend plano.";
+18;LOZANO LOZANO JULIO CESAR;Lozano-027;4 5;NO;"S4 task manager con fetch real a JSONPlaceholder (con nota sobre las limitaciones de la API publica); S5 parcial con fetch de usuarios. ANOMALIA: su CONFIG trae el nombre del docente.";
+20;PARRA CADENA SANTIAGO STIVEN;santiagoparraC12-ux;3 4 5;NO;"S3 subio el PDF de la guia, no su trabajo; S4 Pokedex SPA en React via CDN, correcta; S5 parcial completo.";
+22;PEREZ TRIANA MICHAEL ADONIS;Mapt05;4 5;NO;"S4 'FINANZAPP' control de ingresos y gastos con fetch local y estados; S5 parcial completo con Bootstrap.";
+24;SALGADO TRUJILLO ALEX DAVID;Adst2006;1 4 5;NO;"S1 presentacion completa; S4 directorio de usuarios con fetch y estados (JS plano); S5 buscador de paises con fetch real. Le faltan S2 y S3.";
+6;CABRERA ARDILA AURA MARIA;;;NO;ninguna cuenta de GitHub hallada por nombre ni por prefijo de correo (aura.cabrera);
+25;TOVAR RAMIREZ VICTOR ALFONSO;;;NO;ninguna cuenta de GitHub hallada por nombre ni por prefijo de correo (vatovar-2025b);

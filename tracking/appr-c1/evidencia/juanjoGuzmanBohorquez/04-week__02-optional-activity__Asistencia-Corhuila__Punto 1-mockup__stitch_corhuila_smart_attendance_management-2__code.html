@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CORHUILA Asistencia - Student Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#596376",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#f2bc82",
+                        "surface-container": "#efedf1",
+                        "surface-container-low": "#f4f3f7",
+                        "surface-container-highest": "#e3e2e6",
+                        "inverse-primary": "#adc7f7",
+                        "inverse-on-surface": "#f1f0f4",
+                        "on-secondary-fixed": "#121c2c",
+                        "primary-fixed": "#d6e3ff",
+                        "surface": "#faf9fd",
+                        "surface-container-high": "#e9e7eb",
+                        "surface-variant": "#e3e2e6",
+                        "on-tertiary-fixed-variant": "#633f0f",
+                        "surface-dim": "#dad9dd",
+                        "on-surface-variant": "#43474e",
+                        "surface-bright": "#faf9fd",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary": "#555f71",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001b3c",
+                        "on-tertiary-container": "#c6955e",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#bdc7dc",
+                        "on-secondary-fixed-variant": "#3d4759",
+                        "outline-variant": "#c4c6cf",
+                        "on-surface": "#1a1c1e",
+                        "inverse-surface": "#2f3033",
+                        "tertiary-container": "#4f2e00",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffddba",
+                        "primary-container": "#1a365d",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "background": "#faf9fd",
+                        "secondary-fixed": "#d9e3f9",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#d6e0f6",
+                        "on-primary-container": "#86a0cd",
+                        "on-tertiary-fixed": "#2b1700",
+                        "tertiary": "#321b00",
+                        "primary-fixed-dim": "#adc7f7",
+                        "outline": "#74777f",
+                        "surface-tint": "#455f88",
+                        "primary": "#002045",
+                        "on-background": "#1a1c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin": "1rem",
+                        "section-gap": "1.5rem",
+                        "card-padding": "1.25rem",
+                        "stack-gap": "1rem",
+                        "touch-target-min": "44px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "stat-number": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "stat-number": ["28px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg font-body-lg min-h-screen pb-[90px] antialiased">
+<!-- TopAppBar -->
+<header class="bg-surface shadow-sm docked full-width top-0 z-40 sticky">
+<div class="flex justify-between items-center px-container-margin py-3 w-full bg-surface-container-low">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A small, circular avatar portrait of a young male student named Carlos Mario, looking friendly and approachable in a bright, modern academic setting. The image is clean and well-lit, suitable for an app header." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFEXb7CB0ps_s9lMbjQ1mKvVpsbIcNseTMdpGobMrVPGMJIIYDhFK85iDrW8rXswWdOhmZDQWIeJQjrpaGy6vubwDVicKdIejdkAMwN8YSedxUSrINuioIyIr0lkr1g3QvXcmCTO1Q4TZLlvcM7tNnYGV8Sfsx2VXyx6OOlqX5CsZBMc56O3I436U6pFe4RLynirU1f0nJbvo5w9nn0NJj370LyIihtHqiKPfkPeOccvvcsk2VRA9K"/>
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant">Hola,</p>
+<h1 class="font-headline-sm text-headline-sm text-primary font-bold">Carlos Mario</h1>
+</div>
+</div>
+<button aria-label="notifications" class="w-[44px] h-[44px] flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors duration-200" data-icon="notifications">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="px-container-margin py-section-gap max-w-3xl mx-auto space-y-section-gap">
+<section>
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-gap">Mi Asistencia</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap">
+<!-- Subject Card: Fullstack -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-container-highest">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Fullstack</h3>
+<div class="bg-green-100 text-green-800 px-3 py-1 rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="font-label-md text-label-md">Normal</span>
+</div>
+</div>
+<div class="flex justify-between items-end mb-2">
+<div>
+<span class="font-stat-number text-stat-number text-primary">90%</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-1">Asistencia</span>
+</div>
+<div class="text-right">
+<span class="font-body-md text-body-md text-on-surface-variant">10% Inasistencia</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2.5 overflow-hidden">
+<div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Estado: Normal</p>
+</div>
+<!-- Subject Card: Diseño UI/UX -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-container-highest">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Diseño UI/UX</h3>
+<div class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-label-md text-label-md">Advertencia</span>
+</div>
+</div>
+<div class="flex justify-between items-end mb-2">
+<div>
+<span class="font-stat-number text-stat-number text-primary">78%</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-1">Asistencia</span>
+</div>
+<div class="text-right">
+<span class="font-body-md text-body-md text-on-surface-variant">22% Inasistencia</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2.5 overflow-hidden">
+<div class="bg-amber-500 h-2.5 rounded-full" style="width: 78%"></div>
+</div>
+<p class="font-body-md text-body-md text-amber-700 mt-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span>
+                        ⚠️ Advertencia (20% alcanzado)
+                    </p>
+</div>
+<!-- Subject Card: Cálculo Integral -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-container-highest">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Cálculo Integral</h3>
+<div class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span>
+<span class="font-label-md text-label-md">Alerta</span>
+</div>
+</div>
+<div class="flex justify-between items-end mb-2">
+<div>
+<span class="font-stat-number text-stat-number text-primary">73%</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-1">Asistencia</span>
+</div>
+<div class="text-right">
+<span class="font-body-md text-body-md text-on-surface-variant">27% Inasistencia</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2.5 overflow-hidden">
+<div class="bg-orange-500 h-2.5 rounded-full" style="width: 73%"></div>
+</div>
+<p class="font-body-md text-body-md text-orange-700 mt-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">error</span>
+                        🚨 Alerta Importante (25% alcanzado)
+                    </p>
+</div>
+<!-- Subject Card: Física Mecánica -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-error-container">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Física Mecánica</h3>
+<div class="bg-error-container text-on-error-container px-3 py-1 rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-md text-label-md">Crítico</span>
+</div>
+</div>
+<div class="flex justify-between items-end mb-2">
+<div>
+<span class="font-stat-number text-stat-number text-error">68%</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-1">Asistencia</span>
+</div>
+<div class="text-right">
+<span class="font-body-md text-body-md text-on-surface-variant">32% Inasistencia</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2.5 overflow-hidden">
+<div class="bg-error h-2.5 rounded-full" style="width: 68%"></div>
+</div>
+<p class="font-body-md text-body-md text-error mt-3 flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-sm">block</span>
+                        🚫 Riesgo Crítico (30% alcanzado)
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface fixed bottom-0 w-full z-50 rounded-t-xl shadow-[0_-2px_8px_rgba(0,0,0,0.05)] h-[72px] px-2 flex justify-around items-center">
+<!-- Home (Active) -->
+<a aria-label="Home" class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 hover:opacity-80 active:scale-95 transition-transform" data-icon="home" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Classes (Inactive) -->
+<a aria-label="Classes" class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-transform min-w-[44px] min-h-[44px]" data-icon="menu_book" href="#">
+<span class="material-symbols-outlined mb-1">menu_book</span>
+<span class="font-label-md text-label-md">Classes</span>
+</a>
+<!-- Alerts (Inactive) -->
+<a aria-label="Alerts" class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-transform min-w-[44px] min-h-[44px]" data-icon="notifications" href="#">
+<span class="material-symbols-outlined mb-1">notifications</span>
+<span class="font-label-md text-label-md">Alerts</span>
+</a>
+<!-- Profile (Inactive) -->
+<a aria-label="Profile" class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-transform min-w-[44px] min-h-[44px]" data-icon="person" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<!-- Top Nav Cluster for Web (Hidden on Mobile) -->
+<div class="hidden md:flex fixed top-0 right-0 h-16 items-center px-6 gap-6 z-50">
+<a class="text-primary font-bold hover:bg-surface-variant px-3 py-2 rounded-lg transition-colors duration-200 font-label-md text-label-md flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            Home
+        </a>
+<a class="text-on-surface-variant hover:bg-surface-variant px-3 py-2 rounded-lg transition-colors duration-200 font-label-md text-label-md flex items-center gap-2" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+            Classes
+        </a>
+<a class="text-on-surface-variant hover:bg-surface-variant px-3 py-2 rounded-lg transition-colors duration-200 font-label-md text-label-md flex items-center gap-2" href="#">
+<span class="material-symbols-outlined">notifications</span>
+            Alerts
+        </a>
+<a class="text-on-surface-variant hover:bg-surface-variant px-3 py-2 rounded-lg transition-colors duration-200 font-label-md text-label-md flex items-center gap-2" href="#">
+<span class="material-symbols-outlined">person</span>
+            Profile
+        </a>
+</div>
+</body></html>

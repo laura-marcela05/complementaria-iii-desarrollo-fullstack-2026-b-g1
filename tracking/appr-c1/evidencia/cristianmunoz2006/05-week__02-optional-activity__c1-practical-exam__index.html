@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parcial Práctico · Corte 1</title>
+
+  <!-- Bootstrap 4.6.2 local, ya incluido en library/bootstrap-4.6.2/ -->
+  <link rel="stylesheet" href="library/bootstrap-4.6.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="container py-5" style="max-width: 600px;">
+
+    <header class="mb-4 border-bottom pb-3">
+      <h1 class="text-success">Lista de citas</h1>
+      <p class="text-muted mb-0">
+        Problema 1 y 2 del parcial: HTML semántico + CSS (Bootstrap 4.6.2) +
+        comportamiento en JS que consume una API con fetch (método GET).
+      </p>
+    </header>
+
+    <main>
+      <button id="load-btn" class="btn btn-success mb-3" type="button">
+        Cargar citas
+      </button>
+
+      <p id="status-text" class="font-italic text-secondary">
+        Presiona el botón para cargar los datos.
+      </p>
+
+      <!-- estado: cargando -->
+      <div id="loading" class="d-none mb-3">
+        <div class="spinner-border spinner-border-sm text-success" role="status"></div>
+        <span class="ml-2">Cargando...</span>
+      </div>
+
+      <!-- estado: error -->
+      <div id="error-msg" class="alert alert-danger d-none" role="alert"></div>
+
+      <!-- estado: datos -->
+      <ul id="list" class="list-group"></ul>
+    </main>
+
+  </div>
+
+  <script src="logic/app.js"></script>
+</body>
+</html>

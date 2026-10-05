@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arroz con pollo",
+    "descripcion": "Arroz guisado con pollo, verduras y color."
+  },
+  {
+    "id": 2,
+    "nombre": "Sancocho",
+    "descripcion": "Sopa típica con carne, plátano, papa y yuca."
+  },
+  {
+    "id": 3,
+    "nombre": "Tamales",
+    "descripcion": "Masa de maíz rellena, envuelta en hoja de plátano."
+  },
+  {
+    "id": 4,
+    "nombre": "Bandeja paisa",
+    "descripcion": "Plato con frijoles, arroz, huevo, chicharrón, carne molida y aguacate."
+  },
+  {
+    "id": 5,
+    "nombre": "Ajiaco santafereño",
+    "descripcion": "Sopa de pollo con papa, mazorca, guascas y crema."
+  },
+  {
+    "id": 6,
+    "nombre": "Empanadas de carne",
+    "descripcion": "Empanadas de maíz rellenas con carne, papa y condimentos."
+  },
+  {
+    "id": 7,
+    "nombre": "Arepas con queso",
+    "descripcion": "Arepas de maíz doradas y rellenas con queso."
+  },
+  {
+    "id": 8,
+    "nombre": "Pescado frito",
+    "descripcion": "Pescado frito acompañado de arroz con coco, ensalada y patacones."
+  },
+  {
+    "id": 9,
+    "nombre": "Patacones con hogao",
+    "descripcion": "Plátano verde frito servido con hogao de tomate y cebolla."
+  },
+  {
+    "id": 10,
+    "nombre": "Changua",
+    "descripcion": "Sopa caliente de leche y huevo, tradicional del altiplano."
+  }
+]

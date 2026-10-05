@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Stack de Desarrollo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <p class="kicker">Actividad 2 · Desarrollo Fullstack</p>
+    <h1>Las herramientas con las que construyo</h1>
+    <p class="subtitle">Un vistazo rápido a las tecnologías que uso hoy en día para pasar de una idea a una aplicación funcional.</p>
+  </header>
+
+  <main>
+    <section class="stack-section" aria-labelledby="stack-title">
+      <h2 id="stack-title">Mi stack actual</h2>
+      <ul class="stack-list">
+        <li class="stack-item" data-tech="Next.js">
+          <span class="tech-name">Next.js</span>
+          <span class="tech-role">Frontend</span>
+        </li>
+        <li class="stack-item" data-tech="NestJS">
+          <span class="tech-name">NestJS</span>
+          <span class="tech-role">Backend</span>
+        </li>
+        <li class="stack-item" data-tech="Java">
+          <span class="tech-name">Java</span>
+          <span class="tech-role">Lenguaje</span>
+        </li>
+        <li class="stack-item" data-tech="SQL">
+          <span class="tech-name">Bases de datos</span>
+          <span class="tech-role">Persistencia</span>
+        </li>
+      </ul>
+
+      <button id="detail-btn" class="reveal-btn" type="button" aria-expanded="false" aria-controls="detail-box">
+        Ver por qué elegí este stack
+      </button>
+
+      <div id="detail-box" class="detail-box" hidden>
+        <p>Elegí esta combinación porque me permite cubrir todo el ciclo de una aplicación: <strong>Next.js</strong> para construir interfaces rápidas y bien organizadas, <strong>NestJS</strong> para levantar APIs robustas y ordenadas por módulos, <strong>Java</strong> como base sólida de programación orientada a objetos, y una capa de <strong>bases de datos</strong> para que la información persista de forma confiable.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Hecho para la materia de Desarrollo Fullstack.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

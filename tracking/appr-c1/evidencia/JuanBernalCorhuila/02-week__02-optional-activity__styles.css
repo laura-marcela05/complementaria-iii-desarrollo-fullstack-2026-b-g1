@@ -1,0 +1,98 @@
+/* Reset simple */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F2F5F9;
+  color: #1B2430;
+}
+
+/* Selector por etiqueta */
+header {
+  background-color: #1B2430;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+}
+
+main {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Selector por etiqueta dentro de un contenedor */
+section {
+  background-color: white;
+  border: 1px solid #DDE3EC;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+section h2 {
+  margin-top: 0;
+  color: #1B2430;
+}
+
+/* Lista con flexbox en cada elemento */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Selector por clase */
+.dato {
+  background-color: #DFF7F4;
+  border-left: 4px solid #2EC4B6;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+/* Selector por id */
+#boton {
+  background-color: #FF6B4A;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#boton:hover {
+  background-color: #E85A3B;
+}
+
+/* Clase que oculta el elemento */
+.oculto {
+  display: none;
+}
+
+#curioso {
+  margin-top: 15px;
+  background-color: #FFE4DB;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #6B7686;
+  font-size: 0.85rem;
+}

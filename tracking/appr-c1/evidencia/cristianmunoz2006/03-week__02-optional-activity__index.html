@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recetario Exprés · Mockup + consumo de API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">Semana 3 · Mockup + consumo de API</p>
+    <h1>Recetario Exprés</h1>
+    <p class="lead">
+      Una vista de lista que consulta en vivo la API pública DummyJSON y
+      maneja los estados de carga, datos y error.
+    </p>
+  </header>
+
+  <main>
+    <section class="board" aria-labelledby="board-heading">
+      <div class="board-head">
+        <h2 id="board-heading">Recetas</h2>
+        <label class="search" for="search-input">
+          <span class="search-label">Filtrar</span>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Nombre o cocina&hellip;"
+            autocomplete="off"
+          />
+        </label>
+      </div>
+
+      <p class="board-meta" id="board-meta"></p>
+
+      <!-- estado: cargando -->
+      <div class="state" id="state-loading">
+        <div class="skeleton-grid" aria-hidden="true">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+        <p class="status-text">Precalentando el horno&hellip;</p>
+      </div>
+
+      <!-- estado: error -->
+      <div class="state is-hidden" id="state-error">
+        <div class="error-card">
+          <p class="status-text status-text--error">
+            No se pudo cargar el recetario. Revisa tu conexión e inténtalo
+            de nuevo.
+          </p>
+          <button class="btn" id="retry-btn" type="button">Reintentar</button>
+        </div>
+      </div>
+
+      <!-- estado: vacío (búsqueda sin resultados) -->
+      <div class="state is-hidden" id="state-empty">
+        <p class="status-text">Ninguna receta coincide con tu búsqueda.</p>
+      </div>
+
+      <!-- estado: datos -->
+      <div class="state is-hidden" id="state-data">
+        <div class="recipe-grid" id="recipe-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Datos servidos por
+      <a href="https://dummyjson.com/docs/recipes" target="_blank" rel="noopener">DummyJSON · /recipes</a>.
+      Actividad Semana 3 · Desarrollo Fullstack
+    </p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de sesión de estudio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Sesión de estudio</h1>
+    <p class="subtitle">Semana 2 · Desarrollo Fullstack</p>
+  </header>
+
+  <main class="content">
+    <section class="tasks" aria-labelledby="tasks-heading">
+      <h2 id="tasks-heading">Temas de hoy</h2>
+      <ul class="task-list">
+        <li class="task-item">Estructura semántica en HTML5</li>
+        <li class="task-item">Layout flexible con Flexbox</li>
+        <li class="task-item">Eventos e interactividad con JavaScript</li>
+        <li class="task-item">Buenas prácticas de accesibilidad</li>
+      </ul>
+    </section>
+
+    <section class="notes-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Nota rápida</h2>
+      <p>Pulsa el botón para ver un dato extra sobre la sesión.</p>
+      <button id="toggle-note" type="button">Mostrar nota</button>
+      <p id="hidden-note" class="hidden-note" hidden>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Luis Fernando Perez Chala · luisfernando-77</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

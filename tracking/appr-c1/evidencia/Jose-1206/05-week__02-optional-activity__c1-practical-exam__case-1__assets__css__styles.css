@@ -1,0 +1,15 @@
+body {
+    margin: 30px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px;
+}
+
+#mensaje {
+    margin-left: 10px;
+}

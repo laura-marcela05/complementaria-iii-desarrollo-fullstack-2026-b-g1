@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Semana 04 · Equipos de Fútbol (React)</title>
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    background: #0b3d24;
+    color: #fff;
+    margin: 0;
+    padding: 2rem;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+  p.subtitle {
+    text-align: center;
+    color: #cdeeda;
+    margin-top: 0;
+  }
+  .buscador {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .buscador input {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    border: none;
+    width: 260px;
+  }
+  .buscador button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    background: #1e824c;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .buscador button:hover {
+    background: #26a562;
+  }
+  .estado {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+  }
+  .lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .tarjeta {
+    background: #ffffff11;
+    border: 1px solid #ffffff33;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .tarjeta img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+  }
+  .tarjeta h3 {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+  }
+  .tarjeta p {
+    margin: 0.2rem 0;
+    font-size: 0.85rem;
+    color: #cdeeda;
+  }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- React y ReactDOM vía CDN (sin necesidad de instalar nada) -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!-- Babel para poder escribir JSX directo en el navegador -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  const { useState, useEffect } = React;
+
+  // ---------------------------------------------------------
+  // COMPONENTE REUTILIZABLE: recibe un equipo y lo muestra.
+  // Este es el "componente" que pide la actividad: pequeño,
+  // reutilizable, y se le pueden pasar distintos datos (props).
+  // ---------------------------------------------------------
+  function TarjetaEquipo({ equipo }) {
+    return (
+      <div className="tarjeta">
+        <img
+          src={equipo.strBadge || equipo.strTeamBadge || "https://via.placeholder.com/70?text=?"}
+          alt={equipo.strTeam}
+          onError={(e) => { e.target.onerror = null; e.target.src = "https://via.placeholder.com/70?text=?"; }}
+        />
+        <h3>{equipo.strTeam}</h3>
+        <p>{equipo.strLeague}</p>
+        <p>{equipo.strCountry}</p>
+      </div>
+    );
+  }
+
+  // ---------------------------------------------------------
+  // COMPONENTE PRINCIPAL: maneja el ESTADO y consume la API
+  // ---------------------------------------------------------
+  function App() {
+    // 1) ESTADO: los datos que la vista va a mostrar
+    const [equipos, setEquipos] = useState([]);   // lista de equipos
+    const [cargando, setCargando] = useState(true); // ¿estamos esperando la API?
+    const [error, setError] = useState(null);       // por si algo falla
+    const [busqueda, setBusqueda] = useState("Arsenal"); // texto del buscador
+
+    // 2) FUNCIÓN que consulta la API de TheSportsDB
+    function buscarEquipos(nombreLiga) {
+      setCargando(true);
+      setError(null);
+
+      // "123" es la clave de prueba pública y gratuita de TheSportsDB (la anterior, "3", ya no funciona)
+      const url = `https://www.thesportsdb.com/api/v1/json/123/searchteams.php?t=${encodeURIComponent(nombreLiga)}`;
+
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          setEquipos(data.teams || []); // la API devuelve null si no encuentra nada
+          setCargando(false);
+        })
+        .catch((err) => {
+          setError("No se pudo cargar la información. Intenta de nuevo.");
+          setCargando(false);
+        });
+    }
+
+    // 3) useEffect: se ejecuta automáticamente cuando el componente
+    //    aparece en pantalla (equivalente a "ngOnInit" en Angular)
+    useEffect(() => {
+      buscarEquipos(busqueda);
+    }, []); // el arreglo vacío [] significa "solo una vez al inicio"
+
+    function manejarBusqueda(e) {
+      e.preventDefault();
+      buscarEquipos(busqueda);
+    }
+
+    return (
+      <div>
+        <h1>⚽ Buscador de Equipos de Fútbol</h1>
+        <p className="subtitle">Componente React con estado + consumo de API (TheSportsDB)</p>
+
+        <form className="buscador" onSubmit={manejarBusqueda}>
+          <input
+            type="text"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            placeholder="Ej: Arsenal, Barcelona, Millonarios..."
+          />
+          <button type="submit">Buscar</button>
+        </form>
+
+        {/* 4) RENDER CONDICIONAL según el estado de carga */}
+        {cargando && <p className="estado">⏳ Cargando equipos...</p>}
+        {error && <p className="estado">❌ {error}</p>}
+        {!cargando && !error && equipos.length === 0 && (
+          <p className="estado">No se encontraron equipos con ese nombre.</p>
+        )}
+
+        {!cargando && !error && equipos.length > 0 && (
+          <div className="lista">
+            {equipos.map((equipo) => (
+              <TarjetaEquipo key={equipo.idTeam} equipo={equipo} />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup · Lista de usuarios</title>
+  <style>
+    body {
+      background-color: #1f2229;
+      color: #e6e6e6;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 0 0 4px 0;
+    }
+
+    .intro {
+      color: #9aa0aa;
+      margin: 0 0 28px 0;
+      max-width: 640px;
+    }
+
+    /* Los tres estados uno al lado del otro */
+    .estados {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .pantalla {
+      width: 260px;
+      border: 1px dashed #4a4f59;
+      padding: 14px;
+    }
+
+    .nombre-estado {
+      color: #d99a3c;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin: 0 0 12px 0;
+    }
+
+    .barra-titulo {
+      background-color: #3a3f49;
+      height: 16px;
+      width: 60%;
+      margin-bottom: 6px;
+    }
+
+    .barra-sub {
+      background-color: #2e323a;
+      height: 10px;
+      width: 85%;
+      margin-bottom: 16px;
+    }
+
+    .caja {
+      border: 1px solid #3a3f49;
+      padding: 10px;
+      margin-bottom: 8px;
+    }
+
+    .linea {
+      background-color: #3a3f49;
+      height: 10px;
+      margin-bottom: 6px;
+    }
+
+    .linea.corta { width: 45%; }
+    .linea.media { width: 70%; }
+    .linea.tenue { background-color: #2e323a; }
+
+    .mensaje {
+      border: 1px solid #3a3f49;
+      color: #9aa0aa;
+      font-size: 13px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .mensaje.falla {
+      border-color: #6b3b3b;
+      color: #d98b8b;
+    }
+
+    .boton-falso {
+      border: 1px solid #d99a3c;
+      color: #d99a3c;
+      font-size: 12px;
+      padding: 6px 0;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .notas {
+      margin-top: 32px;
+      border-top: 1px solid #383c45;
+      padding-top: 16px;
+      max-width: 640px;
+      color: #9aa0aa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mockup · Lista de usuarios</h1>
+  <p class="intro">
+    Boceto de la vista antes de programarla. La pantalla es una sola, pero se ve
+    de tres maneras distintas según lo que esté pasando con la petición a la API.
+  </p>
+
+  <div class="estados">
+
+    <div class="pantalla">
+      <p class="nombre-estado">1 · Cargando</p>
+      <div class="barra-titulo"></div>
+      <div class="barra-sub"></div>
+      <div class="caja">
+        <div class="linea tenue media"></div>
+        <div class="linea tenue corta"></div>
+      </div>
+      <div class="caja">
+        <div class="linea tenue media"></div>
+        <div class="linea tenue corta"></div>
+      </div>
+      <div class="mensaje">Cargando usuarios...</div>
+    </div>
+
+    <div class="pantalla">
+      <p class="nombre-estado">2 · Con datos</p>
+      <div class="barra-titulo"></div>
+      <div class="barra-sub"></div>
+      <div class="caja">
+        <div class="linea media"></div>
+        <div class="linea tenue corta"></div>
+      </div>
+      <div class="caja">
+        <div class="linea media"></div>
+        <div class="linea tenue corta"></div>
+      </div>
+      <div class="caja">
+        <div class="linea media"></div>
+        <div class="linea tenue corta"></div>
+      </div>
+    </div>
+
+    <div class="pantalla">
+      <p class="nombre-estado">3 · Error</p>
+      <div class="barra-titulo"></div>
+      <div class="barra-sub"></div>
+      <div class="mensaje falla">
+        No se pudieron cargar los usuarios
+      </div>
+      <div class="boton-falso">Reintentar</div>
+    </div>
+
+  </div>
+
+  <div class="notas">
+    <p><strong>Notas del diseño</strong></p>
+    <p>
+      Cada usuario se muestra en una caja: el nombre arriba, el correo debajo en
+      gris y la ciudad alineada a la derecha. El encabezado y los botones no
+      cambian entre estados, lo único que cambia es la zona de la lista.
+    </p>
+  </div>
+
+</body>
+</html>

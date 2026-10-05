@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Estantería · Maqueta de interfaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">Semana 2 · Maqueta una interfaz web</p>
+    <h1>Mi Estantería</h1>
+    <p class="lead">
+      Una pequeña lista de lectura, pensada como maqueta: estructura
+      semántica, estilo con flexbox y un comportamiento simple con
+      JavaScript.
+    </p>
+  </header>
+
+  <main>
+    <section class="shelf" aria-labelledby="shelf-heading">
+      <h2 id="shelf-heading">Lo que estoy leyendo</h2>
+
+      <ul class="book-list">
+        <li class="book-card">
+          <article>
+            <span class="book-tag">Ficción</span>
+            <h3 class="book-title">Cien años de soledad</h3>
+            <p class="book-author">Gabriel García Márquez</p>
+            <button class="btn-toggle" type="button">Ver sinopsis</button>
+            <p class="book-synopsis" hidden>
+              La historia de la familia Buendía a lo largo de siete
+              generaciones en el pueblo ficticio de Macondo.
+            </p>
+          </article>
+        </li>
+
+        <li class="book-card">
+          <article>
+            <span class="book-tag">Ensayo</span>
+            <h3 class="book-title">El hombre en busca de sentido</h3>
+            <p class="book-author">Viktor Frankl</p>
+            <button class="btn-toggle" type="button">Ver sinopsis</button>
+            <p class="book-synopsis" hidden>
+              Reflexiones sobre la búsqueda de propósito a partir de la
+              experiencia del autor en campos de concentración.
+            </p>
+          </article>
+        </li>
+
+        <li class="book-card">
+          <article>
+            <span class="book-tag">Ciencia ficción</span>
+            <h3 class="book-title">Fahrenheit 451</h3>
+            <p class="book-author">Ray Bradbury</p>
+            <button class="btn-toggle" type="button">Ver sinopsis</button>
+            <p class="book-synopsis" hidden>
+              En una sociedad donde los libros están prohibidos, un
+              bombero encargado de quemarlos empieza a cuestionar su
+              trabajo.
+            </p>
+          </article>
+        </li>
+
+        <li class="book-card">
+          <article>
+            <span class="book-tag">Tecnología</span>
+            <h3 class="book-title">Clean Code</h3>
+            <p class="book-author">Robert C. Martin</p>
+            <button class="btn-toggle" type="button">Ver sinopsis</button>
+            <p class="book-synopsis" hidden>
+              Principios y buenas prácticas para escribir código legible,
+              mantenible y fácil de entender.
+            </p>
+          </article>
+        </li>
+
+        <li class="book-card">
+          <article>
+            <span class="book-tag">Fantasía</span>
+            <h3 class="book-title">El nombre del viento</h3>
+            <p class="book-author">Patrick Rothfuss</p>
+            <button class="btn-toggle" type="button">Ver sinopsis</button>
+            <p class="book-synopsis" hidden>
+              Kvothe narra, en primera persona, su ascenso desde niño de
+              una compañía itinerante hasta convertirse en leyenda.
+            </p>
+          </article>
+        </li>
+
+        <li class="book-card">
+          <article>
+            <span class="book-tag">Historia</span>
+            <h3 class="book-title">Sapiens</h3>
+            <p class="book-author">Yuval Noah Harari</p>
+            <button class="btn-toggle" type="button">Ver sinopsis</button>
+            <p class="book-synopsis" hidden>
+              Un recorrido por la historia de la humanidad, desde la
+              revolución cognitiva hasta la era moderna.
+            </p>
+          </article>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Actividad Semana 2 · Desarrollo Fullstack</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

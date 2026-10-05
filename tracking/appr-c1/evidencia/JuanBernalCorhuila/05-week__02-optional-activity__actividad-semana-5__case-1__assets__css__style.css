@@ -1,0 +1,46 @@
+:root {
+  --amarillo: #FCD116;
+  --azul: #003893;
+  --rojo: #CE1126;
+}
+
+body {
+  background-color: #f5f6f8;
+}
+
+.navbar-seleccion {
+  background-color: var(--azul);
+}
+
+.navbar-seleccion .navbar-brand {
+  color: var(--amarillo) !important;
+  font-weight: 700;
+}
+
+.franja-colombia {
+  height: 6px;
+  background: linear-gradient(to right, var(--amarillo) 0 50%, var(--azul) 50% 75%, var(--rojo) 75% 100%);
+}
+
+.jugador-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.jugador-card img {
+  width: 70px;
+  height: 70px;
+}
+
+.badge-posicion {
+  background-color: var(--rojo);
+}
+
+#estado-error {
+  display: none;
+}
+
+#estado-cargando {
+  min-height: 200px;
+}

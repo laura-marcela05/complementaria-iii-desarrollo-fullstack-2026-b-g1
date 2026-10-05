@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CORHUILA Asistencia - Teacher Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#596376",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#f2bc82",
+                      "surface-container": "#efedf1",
+                      "surface-container-low": "#f4f3f7",
+                      "surface-container-highest": "#e3e2e6",
+                      "inverse-primary": "#adc7f7",
+                      "inverse-on-surface": "#f1f0f4",
+                      "on-secondary-fixed": "#121c2c",
+                      "primary-fixed": "#d6e3ff",
+                      "surface": "#faf9fd",
+                      "surface-container-high": "#e9e7eb",
+                      "surface-variant": "#e3e2e6",
+                      "on-tertiary-fixed-variant": "#633f0f",
+                      "surface-dim": "#dad9dd",
+                      "on-surface-variant": "#43474e",
+                      "surface-bright": "#faf9fd",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary": "#555f71",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#001b3c",
+                      "on-tertiary-container": "#c6955e",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#bdc7dc",
+                      "on-secondary-fixed-variant": "#3d4759",
+                      "outline-variant": "#c4c6cf",
+                      "on-surface": "#1a1c1e",
+                      "inverse-surface": "#2f3033",
+                      "tertiary-container": "#4f2e00",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#ffddba",
+                      "primary-container": "#1a365d",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "background": "#faf9fd",
+                      "secondary-fixed": "#d9e3f9",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#d6e0f6",
+                      "on-primary-container": "#86a0cd",
+                      "on-tertiary-fixed": "#2b1700",
+                      "tertiary": "#321b00",
+                      "primary-fixed-dim": "#adc7f7",
+                      "outline": "#74777f",
+                      "surface-tint": "#455f88",
+                      "primary": "#002045",
+                      "on-background": "#1a1c1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-margin": "1rem",
+                      "section-gap": "1.5rem",
+                      "card-padding": "1.25rem",
+                      "stack-gap": "1rem",
+                      "touch-target-min": "44px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "stat-number": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "stat-number": ["28px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased pb-24 font-body-lg text-body-lg">
+<!-- TopAppBar -->
+<header class="bg-surface text-primary shadow-sm flex justify-between items-center px-container-margin py-3 w-full sticky top-0 z-40 bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-surface-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged male university professor with short dark hair and a neat beard, wearing a casual light blue button-down shirt. The background is a brightly lit, out-of-focus modern campus setting with natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAVuPZQWbbUZ0WnscvtSBufGKl5tAA0jfpjUbZsK8iePjI5VfJPu3qQVrB2du697vz_ijTXihzBdQlaJp-REveptulliCo60MYCdlz2PoxAUbqGsWfy6aP72BLyF92a6N-ZfBSqqgKeYZuRHBk70D8Ynt8UO3G_C_s8EupIIHC9GA892AuWzqLXfHwIjexBb7uj3lEsi6IQ5ZF4pQTBVMt_5-ci0aREqbcJBfwR81RyfvDFDzytZ6l"/>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm block">Hola, Prof. Ricardo Gómez</span>
+</div>
+</div>
+<button aria-label="Notifications" class="w-[44px] h-[44px] flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors duration-200 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-container-margin py-section-gap max-w-md mx-auto">
+<div class="mb-stack-gap">
+<h1 class="font-display-lg text-display-lg text-on-surface">Mis Materias</h1>
+</div>
+<div class="flex flex-col gap-stack-gap">
+<!-- Card 1 -->
+<button class="w-full text-left bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-variant hover:shadow-md transition-shadow active:scale-[0.98] flex items-center justify-between group">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface mb-1">Fullstack - Grupo 01</span>
+<span class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+                        32 estudiantes
+                    </span>
+</div>
+<div class="w-[44px] h-[44px] flex items-center justify-center text-primary group-hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</button>
+<!-- Card 2 -->
+<button class="w-full text-left bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-variant hover:shadow-md transition-shadow active:scale-[0.98] flex items-center justify-between group">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface mb-1">Diseño UI/UX - Grupo 02</span>
+<span class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+                        28 estudiantes
+                    </span>
+</div>
+<div class="w-[44px] h-[44px] flex items-center justify-center text-primary group-hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</button>
+<!-- Card 3 -->
+<button class="w-full text-left bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-variant hover:shadow-md transition-shadow active:scale-[0.98] flex items-center justify-between group">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface mb-1">Ingeniería de Software - Grupo 01</span>
+<span class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+                        35 estudiantes
+                    </span>
+</div>
+<div class="w-[44px] h-[44px] flex items-center justify-center text-primary group-hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<!-- Active Tab: Classes (Mis Materias) -->
+<nav class="bg-surface fixed bottom-0 w-full z-50 rounded-t-xl shadow-lg flex justify-around items-center h-[72px] px-2 shadow-[0_-2px_8px_rgba(0,0,0,0.05)] md:hidden">
+<!-- Home Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-transform w-[64px] h-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Classes Active -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 hover:opacity-80 active:scale-95 transition-transform min-w-[64px] h-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book" data-weight="fill" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-md text-label-md">Classes</span>
+</a>
+<!-- Alerts Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-transform w-[64px] h-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="notifications">notifications</span>
+<span class="font-label-md text-label-md">Alerts</span>
+</a>
+<!-- Profile Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 active:scale-95 transition-transform w-[64px] h-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+</body></html>

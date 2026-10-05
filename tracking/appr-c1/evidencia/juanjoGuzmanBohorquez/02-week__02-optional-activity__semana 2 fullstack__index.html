@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Semántica - HTML, CSS & JS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Encabezado Semántico -->
+  <header class="main-header">
+    <h1>📚 Mis Objetivos de Desarrollo</h1>
+    <p>Proyecto base con HTML5, CSS3 y JavaScript</p>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="container">
+    <section class="card">
+      <h2>Lista de Metas</h2>
+      
+      <!-- Lista Semántica -->
+      <ul class="task-list">
+        <li>Aprender HTML5 Semántico</li>
+        <li>Dominar Layouts con Flexbox</li>
+        <li>Integrar Interactividad con JS</li>
+      </ul>
+
+      <!-- Botón de Acción -->
+      <button id="toggleBtn" class="btn">Mostrar Mensaje Especial</button>
+
+      <!-- Elemento oculto que se mostrará con JS -->
+      <div id="secretMessage" class="hidden-message">
+        🎉 ¡Excelente! Has ejecutado el comportamiento interactivo con JavaScript.
+      </div>
+    </section>
+  </main>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>

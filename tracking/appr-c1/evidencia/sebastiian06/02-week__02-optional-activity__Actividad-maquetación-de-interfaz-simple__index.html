@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Lista de Productos</title>
+    <!-- Enlazamos CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header con navegación semántica -->
+    <header>
+        <nav>
+            <div class="logo">MiTienda</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal con etiquetas semánticas -->
+    <main>
+        <section id="inicio">
+            <h1>Bienvenido a MiTienda</h1>
+            <p>Descubre nuestros productos exclusivos</p>
+        </section>
+
+        <section id="productos">
+            <h2>Nuestros Productos</h2>
+            
+            <!-- Botón con interacción -->
+            <div class="product-controls">
+                <button id="cargarProductos" class="btn-primary">
+                    Cargar Productos
+                </button>
+                <button id="limpiarLista" class="btn-secondary">
+                    Limpiar Lista
+                </button>
+            </div>
+
+            <!-- Lista donde se mostrarán los productos -->
+            <div class="product-list-container">
+                <ul id="listaProductos">
+                    <!-- Los productos se agregarán aquí dinámicamente -->
+                    <li class="empty-message">Haz clic en "Cargar Productos" para ver la lista</li>
+                </ul>
+            </div>
+
+            <!-- Contador de productos -->
+            <div id="contador" class="counter">
+                Total de productos: <span id="totalProductos">0</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MiTienda - Todos los derechos reservados</p>
+        <p>Desarrollado con HTML5, CSS3 y JavaScript</p>
+    </footer>
+
+    <!-- Enlazamos JavaScript al final del body -->
+    <script src="script.js"></script>
+</body>
+</html>

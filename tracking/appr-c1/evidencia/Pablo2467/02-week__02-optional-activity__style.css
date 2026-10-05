@@ -1,0 +1,95 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+    color: #333;
+}
+
+/* Encabezado semántico */
+header {
+    background-color: #0d1b2a;
+    color: #e0e1dd;
+    text-align: center;
+    padding: 30px 10px;
+    border-bottom: 4px solid #415a77;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+}
+
+header p {
+    margin: 0;
+    font-style: italic;
+    color: #778da9;
+}
+
+/* Layout con Flexbox */
+.contenedor-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 30px;
+}
+
+/* Estilo de la tarjeta (Portafolio) */
+.tarjeta {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Lista y espaciado */
+ul {
+    text-align: left;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+/* Botón interactivo */
+button {
+    background-color: #1b263b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #415a77;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Clase para ocultar/mostrar elementos */
+.oculto {
+    display: none;
+}
+
+/* Estilo del mensaje secreto */
+#mensaje-oculto {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e0fbfc;
+    border-left: 5px solid #3d5a80;
+    border-radius: 4px;
+}
+
+#mensaje-oculto p {
+    margin: 0;
+    color: #1b263b;
+    font-weight: 600;
+}

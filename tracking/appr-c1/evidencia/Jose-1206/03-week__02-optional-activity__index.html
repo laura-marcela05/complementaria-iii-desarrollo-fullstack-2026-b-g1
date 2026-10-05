@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Directorio de Usuarios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <p class="eyebrow">Actividad 3 · Mockup + consumo de API</p>
+    <h1>Directorio de usuarios</h1>
+    <p class="lead">Datos obtenidos en tiempo real desde una API pública (JSONPlaceholder).</p>
+    <button id="reload-btn" class="reload-btn" type="button">Recargar datos</button>
+  </header>
+
+  <main>
+    <!-- Estado: cargando -->
+    <div id="loading-state" class="state-box">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Cargando usuarios…</p>
+    </div>
+
+    <!-- Estado: error -->
+    <div id="error-state" class="state-box error" hidden>
+      <p class="error-title">No se pudieron cargar los datos</p>
+      <p id="error-message" class="error-message">Revisa tu conexión e inténtalo de nuevo.</p>
+      <button id="retry-btn" class="reload-btn" type="button">Reintentar</button>
+    </div>
+
+    <!-- Estado: datos -->
+    <ul id="user-list" class="user-list" hidden></ul>
+  </main>
+
+  <footer class="page-footer">
+    <p>Fuente de datos: jsonplaceholder.typicode.com</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Directorio del equipo · Semana 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="page-header">
+    <p class="page-header__index">Semana 03</p>
+    <h1 class="page-header__title">Directorio del equipo</h1>
+    <p class="page-header__subtitle">
+      Vista que consulta una API pública y muestra cada persona como una ficha de directorio.
+    </p>
+    <button id="reload-btn" class="reload-btn" type="button">Recargar lista</button>
+  </header>
+
+  <main class="directory" id="directory" aria-live="polite">
+
+    <!-- 1) ESTADO: CARGANDO -->
+    <section id="state-loading" class="state state-loading">
+      <div class="skeleton-row" aria-hidden="true"></div>
+      <div class="skeleton-row" aria-hidden="true"></div>
+      <div class="skeleton-row" aria-hidden="true"></div>
+      <p class="state-loading__label">Cargando personas…</p>
+    </section>
+
+    <!-- 2) ESTADO: ERROR -->
+    <section id="state-error" class="state state-error" hidden>
+      <p class="state-error__title">No se pudo cargar el directorio</p>
+      <p class="state-error__detail" id="error-detail">Revisa tu conexión e inténtalo otra vez.</p>
+      <button id="retry-btn" class="retry-btn" type="button">Reintentar</button>
+    </section>
+
+    <!-- 3) ESTADO: DATOS -->
+    <ul id="state-data" class="state-data" hidden></ul>
+
+  </main>
+
+  <template id="person-row-template">
+    <li class="person">
+      <div class="person__avatar" aria-hidden="true"></div>
+      <div class="person__info">
+        <p class="person__name"></p>
+        <p class="person__role"></p>
+      </div>
+      <div class="person__meta">
+        <p class="person__email"></p>
+        <p class="person__city"></p>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

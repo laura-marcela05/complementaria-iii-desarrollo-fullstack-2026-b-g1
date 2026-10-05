@@ -36,3 +36,9 @@ Antes de cada clase, actualiza tu copia local:
 ```bash
 git pull origin main
 ```
+
+## Documentacion de proyecto
+
+| Documento | Para que sirve |
+| --- | --- |
+| [Replanteamiento y recomendaciones - Corte 1](docs/replanteamiento-corte-1.md) | Estado de los repositorios `-docs` de cada equipo al 28-sep-2026, hallazgos de consistencia entre secciones, reglas de trabajo y lo que le falta a cada equipo. Lectura obligatoria antes de seguir documentando. |

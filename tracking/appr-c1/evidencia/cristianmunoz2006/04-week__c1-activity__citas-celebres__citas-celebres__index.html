@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuaderno de Citas · Catálogo de frases célebres</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Archivo abierto · fetch en vivo</p>
+    <h1 class="title"><span class="mark">&ldquo;</span>Cuaderno de Citas</h1>
+    <p class="subtitle">
+      Un pequeño catálogo de frases célebres, ordenado como una fichero de
+      biblioteca. Cada tarjeta es un registro real, consultado en el momento
+      desde la API.
+    </p>
+  </header>
+
+  <main>
+    <!-- HERO: carta del día (quote aleatoria) -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-card" id="hero-card">
+        <span class="hero-quote-mark" aria-hidden="true">&ldquo;</span>
+        <p class="hero-eyebrow" id="hero-heading">Carta del día</p>
+
+        <!-- estado: cargando -->
+        <div class="hero-state hero-loading" id="hero-loading">
+          <p class="status-text">Consultando el archivo&hellip;</p>
+        </div>
+
+        <!-- estado: error -->
+        <div class="hero-state hero-error is-hidden" id="hero-error">
+          <p class="status-text status-text--error">
+            No se pudo abrir el archivo. Revisa tu conexión e inténtalo de
+            nuevo.
+          </p>
+          <button class="btn btn-stamp" id="hero-retry" type="button">
+            Reintentar
+          </button>
+        </div>
+
+        <!-- estado: datos -->
+        <blockquote class="hero-state hero-data is-hidden" id="hero-data">
+          <p class="hero-text" id="hero-text"></p>
+          <footer class="hero-byline">
+            <span class="byline-line"></span>
+            <cite id="hero-author"></cite>
+          </footer>
+        </blockquote>
+
+        <button class="btn btn-stamp" id="hero-shuffle" type="button">
+          Sacar otra carta
+        </button>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="catalog" aria-labelledby="catalog-heading">
+      <div class="catalog-head">
+        <h2 id="catalog-heading">Catálogo completo</h2>
+        <label class="search" for="search-input">
+          <span class="search-label">Buscar</span>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Autor o palabra clave&hellip;"
+            autocomplete="off"
+          />
+        </label>
+      </div>
+
+      <p class="catalog-meta" id="catalog-meta"></p>
+
+      <!-- estado: cargando -->
+      <div class="catalog-state" id="catalog-loading">
+        <div class="skeleton-grid" aria-hidden="true">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+        <p class="status-text" id="catalog-loading-text">Ordenando las fichas del catálogo&hellip;</p>
+      </div>
+
+      <!-- estado: error -->
+      <div class="catalog-state is-hidden" id="catalog-error">
+        <div class="torn-card">
+          <p class="status-text status-text--error">
+            El archivo no respondió. No se pudo cargar el catálogo de citas.
+          </p>
+          <button class="btn btn-stamp" id="catalog-retry" type="button">
+            Reintentar
+          </button>
+        </div>
+      </div>
+
+      <!-- estado: vacío (búsqueda sin resultados) -->
+      <div class="catalog-state is-hidden" id="catalog-empty">
+        <p class="status-text">No hay citas que coincidan con tu búsqueda.</p>
+      </div>
+
+      <!-- estado: datos -->
+      <div class="catalog-state is-hidden" id="catalog-data">
+        <div class="card-grid" id="card-grid"></div>
+
+        <nav class="pager" id="pager" aria-label="Paginación del catálogo">
+          <button class="btn btn-ghost" id="prev-page" type="button">
+            ← Anterior
+          </button>
+          <span class="pager-status" id="pager-status"></span>
+          <button class="btn btn-ghost" id="next-page" type="button">
+            Siguiente →
+          </button>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Datos servidos por
+      <a href="https://dummyjson.com/docs/quotes" target="_blank" rel="noopener">DummyJSON · /quotes</a>.
+      Proyecto académico sin fines comerciales.
+    </p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

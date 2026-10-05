@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Rick y Morty - Consumo API</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="app-container">
+        
+        <!-- HEADER -->
+        <header class="app-header">
+            <h1>👽 Portal de Rick y Morty</h1>
+            <p>Explora el multiverso de personajes con la API de Rick and Morty</p>
+        </header>
+
+        <!-- SECCIÓN DE BÚSQUEDA -->
+        <section class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="👾 Buscar personaje... (ej: rick, morty)"
+                    value="rick"
+                >
+                <button id="searchBtn" class="btn btn-primary">
+                    🔍 Buscar
+                </button>
+                <button id="clearBtn" class="btn btn-secondary">
+                    🗑️ Limpiar
+                </button>
+            </div>
+            <div class="search-hint">
+                💡 Sugerencia: "rick", "morty", "summer", "beth", "birdperson"
+            </div>
+        </section>
+
+        <!-- CONTENEDOR DE ESTADOS -->
+        <div id="statusContainer" class="status-container">
+            
+            <!-- Estado: CARGANDO -->
+            <div id="loadingState" class="state-card state-loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>⏳ Cargando personajes del multiverso...</p>
+                <div class="loading-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+
+            <!-- Estado: ERROR -->
+            <div id="errorState" class="state-card state-error" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <p><span id="errorMessage">Error al cargar los personajes</span></p>
+                <button id="retryBtn" class="btn btn-retry">
+                    🔄 Intentar de nuevo
+                </button>
+            </div>
+
+            <!-- Estado: VACÍO -->
+            <div id="emptyState" class="state-card state-empty" style="display: none;">
+                <div class="empty-icon">🔭</div>
+                <p><span id="emptyMessage">No se encontraron personajes</span></p>
+                <p class="empty-hint">Prueba con otro nombre del multiverso</p>
+            </div>
+        </div>
+
+        <!-- LISTA DE RESULTADOS -->
+        <section class="results-section">
+            <div class="results-header">
+                <h2>🧬 Personajes</h2>
+                <span id="resultCount" class="badge">0 personajes</span>
+            </div>
+            
+            <ul id="characterList" class="character-list">
+                <li class="empty-message">
+                    <span class="icon-large">👽</span>
+                    <p>Busca personajes para explorar el multiverso</p>
+                    <small>Usa el campo de búsqueda</small>
+                </li>
+            </ul>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <p>
+                🔗 Rick and Morty API | 
+                <span id="apiStatus" class="status-online">✅ API Activa</span>
+            </p>
+            <p class="footer-small">HTML5 · CSS3 · JavaScript (Fetch)</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

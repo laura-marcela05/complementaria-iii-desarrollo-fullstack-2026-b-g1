@@ -1,0 +1,18 @@
+Punto 3:
+Estado 1: Carga (Loading)
+Cómo funciona: Antes de lanzar el fetch(), el sistema muestra una barra de aviso animada (#status-loading) que le notifica al usuario que los datos de asistencia están siendo traídos desde el servidor.
+Codigo:
+
+Estado 2: Datos / Éxito (Success / Data)
+Cómo funciona: Cuando la API responde con un código 200 OK, el fetch() procesa el JSON con la lista de usuarios, oculta el mensaje de carga y renderiza automáticamente la lista de estudiantes y las barras de inasistencia (alertas al 20%, 25% y 30%).
+Codigo:
+
+Estado 3: Error (Error Handling)
+Cómo funciona: Si falla la red, la API no responde o cae el servidor, el bloque .catch() de la promesa captura el fallo, oculta el spinner de carga y muestra una alerta roja (#status-error) con un botón para reintentar la sincronización.
+Codigo:
+
+Componentes y Estructura Ordenada
+Para justificar la estructura ordenada en tu entrega, resalta estos tres aspectos de la arquitectura de tu archivo:
+Separación de Vistas por Secciones (<section>): Cada pantalla (Profesor - Inicio, Profesor - Pase de Lista, Estudiante - Inicio y Estudiante - Notificaciones) está aislada en su propia etiqueta HTML y se conmuta dinámicamente usando la función modular navegarA().
+Componentes de Renderizado Dinámico: Las funciones renderizarListaEstudiantes() y renderizarMateriasEstudiante() se encargan de desacoplar los datos recibidos de la API de la interfaz gráfica, inyectando el código HTML de forma limpia y reutilizable.
+Diseño Responsivo e Indicadores Visuales: Se utilizó Tailwind CSS para estructurar la maquetación simulando la vista móvil del sistema de control de asistencia de CORHUILA.

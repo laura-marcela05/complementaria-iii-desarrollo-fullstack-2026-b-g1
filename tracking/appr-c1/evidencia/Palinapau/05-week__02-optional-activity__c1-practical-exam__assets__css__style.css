@@ -1,0 +1,36 @@
+body {
+    background-color: #f4f6f9;
+}
+
+
+header {
+    margin-bottom: 20px;
+}
+
+
+h2 {
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+
+.card {
+    border-radius: 10px;
+}
+
+
+.card:hover {
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+
+pre {
+    border-radius: 5px;
+}
+
+
+footer {
+    margin-top: 50px;
+}

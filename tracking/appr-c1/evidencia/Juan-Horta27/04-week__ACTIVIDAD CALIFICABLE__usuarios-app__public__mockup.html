@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup · Lista de usuarios</title>
+  <style>
+    body {
+      background-color: #1f2229;
+      color: #e6e6e6;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    h1 { font-size: 22px; margin: 0 0 4px 0; }
+
+    .intro {
+      color: #9aa0aa;
+      margin: 0 0 28px 0;
+      max-width: 660px;
+    }
+
+    .estados {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .pantalla {
+      width: 280px;
+      border: 1px dashed #4a4f59;
+      padding: 14px;
+    }
+
+    .nombre-estado {
+      color: #d99a3c;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin: 0 0 12px 0;
+    }
+
+    /* Encabezado de la pantalla */
+    .barra-titulo {
+      background-color: #3a3f49;
+      height: 16px;
+      width: 60%;
+      margin-bottom: 6px;
+    }
+
+    .barra-sub {
+      background-color: #2e323a;
+      height: 10px;
+      width: 85%;
+      margin-bottom: 14px;
+    }
+
+    /* Los dos botones van fijos arriba, en los tres estados */
+    .botones {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .boton {
+      border: 1px solid #d99a3c;
+      color: #d99a3c;
+      font-size: 11px;
+      padding: 5px 0;
+      text-align: center;
+      width: 50%;
+    }
+
+    .boton.gris {
+      border-color: #4a4f59;
+      color: #9aa0aa;
+    }
+
+    /* Linea de mensaje de estado */
+    .mensaje {
+      font-size: 12px;
+      color: #9aa0aa;
+      margin-bottom: 12px;
+    }
+
+    .mensaje.ok { color: #8fb87a; }
+    .mensaje.falla { color: #d98b8b; }
+
+    /* Tarjeta de usuario */
+    .tarjeta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 3px solid #d99a3c;
+      background-color: #262a31;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+    }
+
+    .tarjeta.vacia { border-left-color: #3a3f49; }
+
+    .linea {
+      background-color: #3a3f49;
+      height: 9px;
+      margin-bottom: 5px;
+    }
+
+    .linea:last-child { margin-bottom: 0; }
+    .linea.tenue { background-color: #2e323a; }
+    .linea.nombre { width: 90px; }
+    .linea.correo { width: 110px; }
+    .linea.ciudad { width: 55px; }
+
+    .caja-error {
+      border: 1px solid #6b3b3b;
+      color: #d98b8b;
+      font-size: 12px;
+      padding: 12px 10px;
+      text-align: center;
+    }
+
+    .pie {
+      border-top: 1px solid #383c45;
+      margin-top: 14px;
+      padding-top: 8px;
+    }
+
+    .pie .linea { width: 70%; }
+
+    .notas {
+      margin-top: 32px;
+      border-top: 1px solid #383c45;
+      padding-top: 16px;
+      max-width: 660px;
+      color: #9aa0aa;
+      font-size: 14px;
+    }
+
+    .notas strong { color: #e6e6e6; }
+  </style>
+</head>
+<body>
+
+  <h1>Mockup · Lista de usuarios</h1>
+  <p class="intro">
+    Boceto de la vista antes de programarla. La pantalla es una sola y su
+    distribución no cambia: encabezado, botones, mensaje de estado y lista.
+    Lo único que cambia es la zona de la lista, según lo que esté pasando
+    con la petición a la API.
+  </p>
+
+  <div class="estados">
+
+    <div class="pantalla">
+      <p class="nombre-estado">1 · Cargando</p>
+      <div class="barra-titulo"></div>
+      <div class="barra-sub"></div>
+      <div class="botones">
+        <div class="boton">Recargar</div>
+        <div class="boton gris">Probar el error</div>
+      </div>
+      <p class="mensaje">Cargando usuarios...</p>
+      <div class="tarjeta vacia">
+        <div>
+          <div class="linea tenue nombre"></div>
+          <div class="linea tenue correo"></div>
+        </div>
+        <div class="linea tenue ciudad"></div>
+      </div>
+      <div class="tarjeta vacia">
+        <div>
+          <div class="linea tenue nombre"></div>
+          <div class="linea tenue correo"></div>
+        </div>
+        <div class="linea tenue ciudad"></div>
+      </div>
+      <div class="pie"><div class="linea tenue"></div></div>
+    </div>
+
+    <div class="pantalla">
+      <p class="nombre-estado">2 · Con datos</p>
+      <div class="barra-titulo"></div>
+      <div class="barra-sub"></div>
+      <div class="botones">
+        <div class="boton">Recargar</div>
+        <div class="boton gris">Probar el error</div>
+      </div>
+      <p class="mensaje ok">Se cargaron 10 usuarios.</p>
+      <div class="tarjeta">
+        <div>
+          <div class="linea nombre"></div>
+          <div class="linea tenue correo"></div>
+        </div>
+        <div class="linea tenue ciudad"></div>
+      </div>
+      <div class="tarjeta">
+        <div>
+          <div class="linea nombre"></div>
+          <div class="linea tenue correo"></div>
+        </div>
+        <div class="linea tenue ciudad"></div>
+      </div>
+      <div class="tarjeta">
+        <div>
+          <div class="linea nombre"></div>
+          <div class="linea tenue correo"></div>
+        </div>
+        <div class="linea tenue ciudad"></div>
+      </div>
+      <div class="pie"><div class="linea tenue"></div></div>
+    </div>
+
+    <div class="pantalla">
+      <p class="nombre-estado">3 · Error</p>
+      <div class="barra-titulo"></div>
+      <div class="barra-sub"></div>
+      <div class="botones">
+        <div class="boton">Recargar</div>
+        <div class="boton gris">Probar el error</div>
+      </div>
+      <p class="mensaje falla">No se pudieron cargar los usuarios.</p>
+      <div class="caja-error">
+        Intenta de nuevo con el boton Recargar
+      </div>
+      <div class="pie"><div class="linea tenue"></div></div>
+    </div>
+
+  </div>
+
+  <div class="notas">
+    <p><strong>Notas del diseño</strong></p>
+    <p>
+      Cada usuario se muestra en una tarjeta con una franja naranja a la
+      izquierda: el nombre arriba, el correo debajo en gris y la ciudad
+      alineada a la derecha. Esa tarjeta se repite tantas veces como
+      usuarios lleguen, por eso se resuelve como un componente aparte.
+    </p>
+    <p>
+      Los dos botones y el encabezado se quedan fijos en los tres estados,
+      para que el usuario siempre pueda reintentar sin importar qué haya
+      pasado. El boton "Probar el error" apunta a una direccion invalida
+      a proposito, y sirve para demostrar el estado de error.
+    </p>
+    <p>
+      Hay un cuarto caso contemplado: si la API responde bien pero la
+      lista viene vacia, se muestra el aviso "No hay usuarios para
+      mostrar" en el mismo lugar del mensaje de estado.
+    </p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,912 @@
+<title>Fullstack G1 · Entregas C1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ── tokens ───────────────────────────────────────────── */
+  :root {
+    --ink:        #1A2445;
+    --ink-light:  #3D4D7A;
+    --bg:         #F2F5FB;
+    --surface:    #FFFFFF;
+    --muted:      #6872A3;
+    --border:     #D6DCF0;
+    --accent:     #3A5AE8;
+    --accent-dim: #EEF2FF;
+
+    --yes-bg:     #D1FAE5;
+    --yes-text:   #065F46;
+    --no-bg:      #F1F2F6;
+    --no-text:    #B0B8D1;
+    --warn-bg:    #FEF3C7;
+    --warn-text:  #92400E;
+
+    --radius:     6px;
+    --font-ui:    'Outfit', system-ui, sans-serif;
+    --font-body:  'DM Sans', system-ui, sans-serif;
+    --font-mono:  'JetBrains Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink:        #E4E9F7;
+      --ink-light:  #9DA8CB;
+      --bg:         #0C0F1A;
+      --surface:    #141929;
+      --muted:      #7B83B8;
+      --border:     #252D4A;
+      --accent:     #6B8AFF;
+      --accent-dim: #1C2260;
+
+      --yes-bg:     #054434;
+      --yes-text:   #6EE7B7;
+      --no-bg:      #1A1F30;
+      --no-text:    #3D4566;
+      --warn-bg:    #3D1F02;
+      --warn-text:  #FCD34D;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink:        #E4E9F7;
+    --ink-light:  #9DA8CB;
+    --bg:         #0C0F1A;
+    --surface:    #141929;
+    --muted:      #7B83B8;
+    --border:     #252D4A;
+    --accent:     #6B8AFF;
+    --accent-dim: #1C2260;
+
+    --yes-bg:     #054434;
+    --yes-text:   #6EE7B7;
+    --no-bg:      #1A1F30;
+    --no-text:    #3D4566;
+    --warn-bg:    #3D1F02;
+    --warn-text:  #FCD34D;
+  }
+
+  /* ── reset / base ─────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 32px 24px 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── header ───────────────────────────────────────────── */
+  .page-header {
+    border-bottom: 1.5px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .course-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .page-title {
+    font-family: var(--font-ui);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+
+  .page-meta {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ── stats bar ────────────────────────────────────────── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .stat-value {
+    font-family: var(--font-ui);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .stat-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* ── section heading ──────────────────────────────────── */
+  .section-heading {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── grid table ───────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 40px;
+    background: var(--surface);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 660px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  thead th.week-group {
+    text-align: center;
+    border-left: 1px solid var(--border);
+    color: var(--ink-light);
+  }
+
+  thead .sub-header th {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 400;
+    padding: 5px 8px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr:hover { background: var(--accent-dim); }
+
+  tbody td {
+    padding: 8px 12px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .td-student {
+    min-width: 240px;
+    white-space: normal;
+  }
+
+  .student-name {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .student-gh {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .student-noconfig {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--warn-text);
+    font-style: italic;
+  }
+
+  .student-flag {
+    font-size: 10px;
+    color: var(--warn-text);
+    margin-left: 4px;
+    cursor: help;
+  }
+
+  .td-total {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-light);
+    text-align: center;
+  }
+
+  .td-cell {
+    text-align: center;
+    border-left: 1px solid var(--border);
+    padding: 6px 8px;
+  }
+
+  /* delivery pills */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 2px 8px;
+    min-width: 44px;
+    letter-spacing: .02em;
+  }
+
+  .pill-yes  { background: var(--yes-bg);  color: var(--yes-text); }
+  .pill-no   { background: var(--no-bg);   color: var(--no-text); }
+  .pill-warn { background: var(--warn-bg); color: var(--warn-text); }
+  .pill-na   { background: var(--no-bg);   color: var(--no-text); font-style: italic; }
+
+  /* progress bar in total col */
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .progress-bar {
+    width: 40px;
+    height: 5px;
+    background: var(--no-bg);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width .3s;
+  }
+
+  .progress-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-light);
+  }
+
+  /* note row */
+  .note-row td {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    padding: 4px 12px 8px;
+    border-bottom: none;
+  }
+
+  /* ── activity cards ───────────────────────────────────── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .act-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .act-card-week {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .act-card-topic {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    text-wrap: balance;
+    line-height: 1.3;
+  }
+
+  .act-card-unit {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .act-card-lead {
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .act-card-rubric {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+
+  .rubric-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+  }
+
+  .rubric-crit { color: var(--ink-light); }
+  .rubric-pts {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .act-card-stats {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+  }
+
+  .act-stat-num {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--yes-text);
+  }
+
+  .act-stat-label { font-size: 11px; color: var(--muted); }
+
+  .act-minibar {
+    flex: 1;
+    height: 4px;
+    background: var(--no-bg);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .act-minibar-fill {
+    height: 100%;
+    background: var(--yes-text);
+    border-radius: 2px;
+  }
+
+  /* ── legend ───────────────────────────────────────────── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: -24px;
+    margin-bottom: 28px;
+    align-items: center;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  /* ── footer note ──────────────────────────────────────── */
+  .footnote {
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    line-height: 1.7;
+  }
+
+  .footnote strong { color: var(--ink-light); }
+</style>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div>
+    <p class="course-eyebrow">code-corhuila / complementaria-iii-desarrollo-fullstack-2026-b-g1</p>
+    <h1 class="page-title">Entregas Corte 1 · Semanas 1–5</h1>
+  </div>
+  <div class="page-meta">
+    Actividades opcionales formativas<br>
+    G1 · Lun 6:00–7:40 a.m. · B2-210<br>
+    Consultado 2026-08-31
+  </div>
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-card">
+    <div class="stat-label">Estudiantes</div>
+    <div class="stat-value">25</div>
+    <div class="stat-sub">25 forks activos</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Activ. A1</div>
+    <div class="stat-value">9</div>
+    <div class="stat-sub">36 % entregaron</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Activ. A2</div>
+    <div class="stat-value">8</div>
+    <div class="stat-sub">32 % entregaron</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Activ. A3</div>
+    <div class="stat-value">7</div>
+    <div class="stat-sub">28 % entregaron</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Activ. A4</div>
+    <div class="stat-value">11</div>
+    <div class="stat-sub">44 % entregaron</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Activ. A5</div>
+    <div class="stat-value">—</div>
+    <div class="stat-sub">Sem. inicia 01-sep</div>
+  </div>
+</div>
+
+<!-- TABLE 1 -->
+<h2 class="section-heading">Chequeo de entregas · actividad opcional por semana</h2>
+
+<!-- legend -->
+<div class="legend">
+  <span class="legend-item"><span class="pill pill-yes">✓ entregó</span></span>
+  <span class="legend-item"><span class="pill pill-no">— pendiente</span></span>
+  <span class="legend-item"><span class="pill pill-warn">⚠ carpeta incorrecta</span></span>
+  <span class="legend-item"><span class="pill pill-na">· no iniciada</span></span>
+  <span style="color:var(--muted); font-size:11px">Las celdas muestran <em>02-optional-activity</em> de cada semana. Sesiones (01-session) son material del docente.</span>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" style="min-width:240px">Estudiante · GitHub user</th>
+      <th class="week-group" colspan="1">Sem 1</th>
+      <th class="week-group" colspan="1">Sem 2</th>
+      <th class="week-group" colspan="1">Sem 3</th>
+      <th class="week-group" colspan="1">Sem 4</th>
+      <th class="week-group" colspan="1">Sem 5</th>
+      <th rowspan="2" style="text-align:center;min-width:90px">Total A</th>
+    </tr>
+    <tr class="sub-header">
+      <th class="td-cell" style="text-align:center">A1</th>
+      <th class="td-cell" style="text-align:center">A2</th>
+      <th class="td-cell" style="text-align:center">A3</th>
+      <th class="td-cell" style="text-align:center">A4</th>
+      <th class="td-cell" style="text-align:center">A5</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- estudiantes con 4/4 -->
+    <tr>
+      <td class="td-student"><div class="student-name">Juan Sebastian Agudelo Quintero</div><div class="student-gh">sebastiian06</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div><span class="progress-num">4/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Juan Diego Bonilla Orozco</div><div class="student-gh">jdbonilla-2025b-netizen</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div><span class="progress-num">4/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Juan José Horta Vanegas</div><div class="student-gh">Juan-Horta27</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div><span class="progress-num">4/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Juan José Guzmán Bohórquez</div><div class="student-gh">juanjoGuzmanBohorquez</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div><span class="progress-num">4/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Laura Marcela Quintero Poveda</div><div class="student-gh">laura-marcela05</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div><span class="progress-num">4/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Juan Camilo Bernal Gordillo</div><div class="student-gh">JuanBernalCorhuila</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div><span class="progress-num">4/4</span></div></td>
+    </tr>
+
+    <!-- 3/4 -->
+    <tr>
+      <td class="td-student"><div class="student-name">Cristian Andres Muñoz Montenegro</div><div class="student-gh">cristianmunoz2006</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div><span class="progress-num">3/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-noconfig">[sin CONFIG]</div><div class="student-gh">Pablo2467</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div><span class="progress-num">3/4</span></div></td>
+    </tr>
+
+    <!-- 1/4 -->
+    <tr>
+      <td class="td-student"><div class="student-name">Paulina Díaz Perdomo</div><div class="student-gh">Palinapau</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Daniel Felipe Fernandez Rojas</div><div class="student-gh">Daniel666-ui</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Michael Adonis Pérez Triana</div><div class="student-gh">Mapt05</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-noconfig">[sin CONFIG]</div><div class="student-gh">ktchambo-2024a-max</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Santiago Stiven Parra Cadena</div><div class="student-gh">santiagoparraC12-ux</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Jesús Esteban Lopez Charry</div><div class="student-gh">jesusestebanlopezcharry-source</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Lozano-027 <span class="student-flag" title="CONFIG usa nombre del docente — verificar">⚠</span></div><div class="student-gh">Lozano-027 · CONFIG: «Jesús Ariel González Bonilla»</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Alex David Salgado Trujillo</div><div class="student-gh">Adst2006</div></td>
+      <td class="td-cell"><span class="pill pill-yes">✓</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div><span class="progress-num">1/4</span></div></td>
+    </tr>
+
+    <!-- 0/4 — carpeta incorrecta -->
+    <tr>
+      <td class="td-student"><div class="student-name">Andres Felipe Cardenas Bermeo</div><div class="student-gh">felip442</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-warn">⚠ sem4/ses</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Andres Felipe Gomez Anacona</div><div class="student-gh">Andresfg20</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-warn">⚠ sem4/ses</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+
+    <!-- 0/4 sin ninguna -->
+    <tr>
+      <td class="td-student"><div class="student-name">Juan Diego Jiménez Horta</div><div class="student-gh">ItzJunixs</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Rosfeller David Castillo Garzon</div><div class="student-gh">feller2006</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">José Miguel Aya Peralta</div><div class="student-gh">Jose-1206</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">William Erney Collo Narvaez</div><div class="student-gh">11William11</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Carlos Andres Zuluaga Acuña</div><div class="student-gh">carloszuluaga-20</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-name">Luis Fernando Pérez Chala</div><div class="student-gh">luisfernando-77</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+    <tr>
+      <td class="td-student"><div class="student-noconfig">[sin CONFIG]</div><div class="student-gh">juan895</div></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-no">—</span></td>
+      <td class="td-cell"><span class="pill pill-na">·</span></td>
+      <td class="td-total"><div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div><span class="progress-num">0/4</span></div></td>
+    </tr>
+
+    <!-- note row -->
+    <tr class="note-row">
+      <td colspan="7">⚠ felip442 y Andresfg20 subieron su entrega a <code>04-week/01-session</code> en vez de <code>04-week/02-optional-activity</code>.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- TABLE 2 — activity descriptions -->
+<h2 class="section-heading">Descripción de actividades · Corte 1</h2>
+
+<div class="cards-grid">
+
+  <!-- S1 -->
+  <div class="act-card">
+    <div class="act-card-week">Semana 1 · A1</div>
+    <div class="act-card-topic">Configura tu entorno y entrega por GitHub</div>
+    <div class="act-card-unit">Unidad 1 · Fundamentos web y Frontend</div>
+    <div class="act-card-lead">Crea tu cuenta GitHub, el repo de perfil con bloque CONFIG y haz el fork del repo de la clase. Entrega un README de presentación personal.</div>
+    <div class="act-card-rubric">
+      <div class="rubric-item"><span class="rubric-crit">Repo de perfil + CONFIG</span><span class="rubric-pts">45 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">Fork + entrega en carpeta</span><span class="rubric-pts">35 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">README de presentación</span><span class="rubric-pts">20 pts</span></div>
+    </div>
+    <div class="act-card-stats">
+      <span class="act-stat-num">9</span>
+      <div>
+        <div class="act-minibar"><div class="act-minibar-fill" style="width:36%"></div></div>
+        <div class="act-stat-label">/ 25 · 36 %</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="act-card">
+    <div class="act-card-week">Semana 2 · A2</div>
+    <div class="act-card-topic">Maqueta una interfaz web</div>
+    <div class="act-card-unit">Unidad 1 · Fundamentos web y Frontend</div>
+    <div class="act-card-lead">Construye una página HTML5 semántica, aplica estilos con CSS3 y flexbox, y agrega un comportamiento JavaScript básico (evento de clic).</div>
+    <div class="act-card-rubric">
+      <div class="rubric-item"><span class="rubric-crit">HTML semántico</span><span class="rubric-pts">35 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">CSS layout/estilo</span><span class="rubric-pts">35 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">JavaScript (evento)</span><span class="rubric-pts">30 pts</span></div>
+    </div>
+    <div class="act-card-stats">
+      <span class="act-stat-num">8</span>
+      <div>
+        <div class="act-minibar"><div class="act-minibar-fill" style="width:32%"></div></div>
+        <div class="act-stat-label">/ 25 · 32 %</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="act-card">
+    <div class="act-card-week">Semana 3 · A3</div>
+    <div class="act-card-topic">Mockup + consumo de API</div>
+    <div class="act-card-unit">Unidad 1 · Fundamentos web y Frontend</div>
+    <div class="act-card-lead">Diseña el mockup de una vista (lista de elementos), consúmela desde una API pública con fetch y maneja los estados: cargando, datos y error.</div>
+    <div class="act-card-rubric">
+      <div class="rubric-item"><span class="rubric-crit">Mockup</span><span class="rubric-pts">25 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">Consumo con fetch</span><span class="rubric-pts">45 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">Estados carga/error</span><span class="rubric-pts">30 pts</span></div>
+    </div>
+    <div class="act-card-stats">
+      <span class="act-stat-num">7</span>
+      <div>
+        <div class="act-minibar"><div class="act-minibar-fill" style="width:28%"></div></div>
+        <div class="act-stat-label">/ 25 · 28 %</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4 -->
+  <div class="act-card">
+    <div class="act-card-week">Semana 4 · A4</div>
+    <div class="act-card-topic">Componente que consume datos</div>
+    <div class="act-card-unit">Unidad 1 · Fundamentos web y Frontend</div>
+    <div class="act-card-lead">Crea un componente Angular o React con estado que se llena desde una API. Renderiza una lista y contempla el estado de carga.</div>
+    <div class="act-card-rubric">
+      <div class="rubric-item"><span class="rubric-crit">Componente reutilizable</span><span class="rubric-pts">35 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">Estado desde API</span><span class="rubric-pts">45 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">Render + estado carga</span><span class="rubric-pts">20 pts</span></div>
+    </div>
+    <div class="act-card-stats">
+      <span class="act-stat-num">11</span>
+      <div>
+        <div class="act-minibar"><div class="act-minibar-fill" style="width:44%"></div></div>
+        <div class="act-stat-label">/ 25 · 44 %</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="act-card" style="opacity:.75">
+    <div class="act-card-week">Semana 5 · A5 · cierre C1</div>
+    <div class="act-card-topic">Frontend inicial integrado</div>
+    <div class="act-card-unit">Unidad 1 · Cierre Corte 1</div>
+    <div class="act-card-lead">Integra un mini-frontend: vista con framework + consumo de API + estados carga/error + diseño desde mockup. Versiona y documenta en README.</div>
+    <div class="act-card-rubric">
+      <div class="rubric-item"><span class="rubric-crit">Integración (vista + API)</span><span class="rubric-pts">50 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">Estados + diseño</span><span class="rubric-pts">30 pts</span></div>
+      <div class="rubric-item"><span class="rubric-crit">README</span><span class="rubric-pts">20 pts</span></div>
+    </div>
+    <div class="act-card-stats">
+      <span class="act-stat-num" style="color:var(--muted)">—</span>
+      <div>
+        <div class="act-minibar"><div class="act-minibar-fill" style="width:0%"></div></div>
+        <div class="act-stat-label">Inicia 01-sep-2026</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTNOTE -->
+<footer class="footnote">
+  <strong>Actividades opcionales formativas</strong> — no generan nota en Moodle. ·
+  Las carpetas <code>01-session</code> son material del docente; las entregas de estudiantes van en <code>02-optional-activity</code>. ·
+  <strong>⚠ Carpeta incorrecta:</strong> Andres Felipe Cardenas Bermeo (felip442) y Andres Felipe Gomez Anacona (Andresfg20) subieron en <code>04-week/01-session</code>. ·
+  <strong>⚠ Sin CONFIG:</strong> ktchambo-2024a-max · Pablo2467 · juan895 (pendiente de verificar nombre real en repo de perfil). ·
+  <strong>⚠ Revisar:</strong> Lozano-027 registró el nombre del docente en su bloque CONFIG. ·
+  Fuente: GitHub API · <code>code-corhuila/complementaria-iii-desarrollo-fullstack-2026-b-g1</code> · 25 forks activos · 2026-08-31.
+</footer>

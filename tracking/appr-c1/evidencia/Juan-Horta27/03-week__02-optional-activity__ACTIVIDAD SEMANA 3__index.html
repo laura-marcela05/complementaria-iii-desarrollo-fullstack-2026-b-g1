@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de usuarios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Lista de usuarios</h1>
+    <p>Datos traídos desde una API pública con fetch.</p>
+  </header>
+
+  <main>
+
+    <section class="controles">
+      <button id="btn-cargar">Cargar usuarios</button>
+      <button id="btn-fallar" class="secundario">Probar el error</button>
+    </section>
+
+    <p id="estado"></p>
+
+    <ul id="lista"></ul>
+
+  </main>
+
+  <footer>
+    <p>Desarrollo Fullstack &middot; Semana 3 &middot; CORHUILA</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

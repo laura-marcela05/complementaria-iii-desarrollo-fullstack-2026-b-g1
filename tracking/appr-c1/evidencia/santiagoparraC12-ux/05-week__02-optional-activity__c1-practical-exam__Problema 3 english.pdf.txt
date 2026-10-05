@@ -1,0 +1,29 @@
+--- pag 1 ---
+Problema 3 — Framework y SPA
+Un componente es una parte independiente y reutilizable de una aplicación, como un
+botón, un menú o una tarjeta.
+Ejemplo:
+Componente: Botón
+↓
+Muestra "Guardar"
+↓
+Al hacer clic → ejecuta una acción
+El estado son los datos que pueden cambiar mientras el usuario utiliza la aplicación.
+Ejemplo:
+contador = 0
+al hacer clic:
+contador = contador + 1
+El enrutamiento permite cambiar entre diferentes vistas o rutas de una aplicación sin tener
+que recargar toda la página.
+Ejemplo:
+/ → Inicio
+/usuarios → Usuarios
+/productos → Productos
+Una SPA (Single Page Application) necesita una API porque permite comunicarse con un
+servidor para consultar, guardar, modificar y eliminar datos sin tener que recargar toda la
+página.
+An SPA (Single Page Application) loads one main page and updates its content
+dynamically without reloading the entire page. An MPA (Multi-Page Application) loads a
+new page from the server whenever the user navigates to a different section. Therefore,
+SPAs usually provide a faster and smoother user experience, while MPAs use separate
+pages for different sections.

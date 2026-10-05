@@ -1,0 +1,109 @@
+/* --- Reset básico y tipografía general --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+  padding: 20px;
+}
+
+/* --- Encabezado --- */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.lista-productos {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.producto {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.img-producto {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.producto h3 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.producto .descripcion {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.producto .precio {
+  font-weight: bold;
+  color: #2a7f2a;
+  font-size: 1.1rem;
+}
+
+/* --- Botón --- */
+button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* --- Estado alterno: disposición en columna + colores invertidos --- */
+.lista-productos.estilo-alterno {
+  flex-direction: column;
+  align-items: center;
+}
+
+.lista-productos.estilo-alterno .producto {
+  background-color: #222;
+  border-color: #444;
+}
+
+.lista-productos.estilo-alterno .producto h3 {
+  color: #fff;
+}
+
+.lista-productos.estilo-alterno .producto .descripcion {
+  color: #ccc;
+}
+
+.lista-productos.estilo-alterno .producto .precio {
+  color: #6fd86f;
+}

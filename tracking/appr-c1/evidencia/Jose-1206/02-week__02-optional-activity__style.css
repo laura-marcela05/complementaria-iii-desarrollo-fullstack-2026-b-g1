@@ -1,0 +1,130 @@
+:root {
+  --bg: #0f1c1c;
+  --panel: #16302c;
+  --accent: #ffb454;
+  --text: #eef3f1;
+  --muted: #a9c2bb;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.site-header {
+  padding: 3rem 1.5rem 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.kicker {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+}
+
+.site-header h1 {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.stack-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.stack-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.stack-item {
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  flex: 1 1 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-left: 3px solid var(--accent);
+}
+
+.tech-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.tech-role {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.reveal-btn {
+  background: var(--accent);
+  color: #241705;
+  border: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.reveal-btn:hover {
+  filter: brightness(1.08);
+}
+
+.reveal-btn:active {
+  transform: scale(0.98);
+}
+
+.detail-box {
+  margin-top: 1.25rem;
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  color: var(--muted);
+}
+
+.detail-box strong {
+  color: var(--text);
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--panel);
+}

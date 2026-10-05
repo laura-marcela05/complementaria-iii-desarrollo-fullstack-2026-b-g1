@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Practica C-1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #mensaje {
+            margin-top: 10px;
+            color: green;
+            display: none;
+        }
+
+        #estado {
+            margin-top: 10px;
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Practica C-1 - Fundamentos Web</h1>
+</header>
+
+<h2>Problema 1</h2>
+
+<p>Lista de temas del curso:</p>
+<ul>
+    <li>HTML semantico</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+    <li>Consumo de APIs</li>
+</ul>
+
+<button onclick="mostrarMensaje()">Haz clic</button>
+<p id="mensaje">El boton funciono correctamente con JavaScript</p>
+
+<p>
+    HTML es el lenguaje que le da estructura a la pagina, define los elementos que van a aparecer como titulos, listas, botones, etc. CSS se encarga de la parte visual, los colores, tamaños y como estan ordenados los elementos en pantalla. JavaScript es el que hace que la pagina sea interactiva, por ejemplo que al hacer clic en un boton pase algo. Los tres trabajan juntos, cada uno con un rol diferente.
+</p>
+
+<hr>
+<h2>Problema 2</h2>
+
+<button onclick="cargarDatos()">Cargar publicaciones</button>
+<p id="estado"></p>
+<ul id="lista"></ul>
+
+<p>
+    Para crear un recurso nuevo usaria el metodo POST porque es el que se usa para enviar datos nuevos al servidor. Para borrar un recurso usaria DELETE, que le indica al servidor que elimine ese elemento. El metodo GET que use en el fetch solo sirve para leer datos sin modificar nada.
+</p>
+
+<hr>
+<h2>Problema 3</h2>
+
+<p>
+    Un componente es una parte de la interfaz que tiene su propia logica y se puede reutilizar en distintos lugares de la aplicacion. Por ejemplo en React un componente basico seria asi:
+</p>
+
+<pre>
+function Tarjeta({ titulo }) {
+    return (
+        &lt;div&gt;
+            &lt;h3&gt;{titulo}&lt;/h3&gt;
+        &lt;/div&gt;
+    );
+}
+</pre>
+
+<p>
+    El estado es la informacion que guarda un componente y que puede cambiar. Cuando el estado cambia, el componente se vuelve a mostrar con los datos nuevos. Por ejemplo si cargo una lista de usuarios, esa lista es estado. El enrutamiento es lo que permite navegar entre distintas vistas o paginas dentro de la aplicacion sin que el navegador recargue toda la pagina.
+</p>
+
+<p>
+    Una SPA necesita una API porque aunque la pagina no se recarga, igual necesita obtener o guardar datos en el servidor. La unica forma de hacerlo de manera asincrona es mediante peticiones HTTP a una API. Sin API la SPA no podria mostrar datos reales.
+</p>
+
+<p><b>English:</b></p>
+<p>
+    A Single Page Application loads only once in the browser and updates the content dynamically using JavaScript without reloading the full page. A Multi-Page Application sends a new request to the server each time the user navigates, causing a full page reload every time. SPAs feel faster and more like a desktop app, while MPAs are simpler to build but feel slower when navigating.
+</p>
+
+<script>
+    function mostrarMensaje() {
+        document.getElementById("mensaje").style.display = "block";
+    }
+
+    async function cargarDatos() {
+        const estado = document.getElementById("estado");
+        const lista = document.getElementById("lista");
+
+        lista.innerHTML = "";
+        estado.textContent = "Cargando...";
+        estado.style.color = "orange";
+
+        try {
+            const respuesta = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+            const datos = await respuesta.json();
+
+            estado.textContent = "Datos cargados";
+            estado.style.color = "green";
+
+            datos.forEach(post => {
+                const li = document.createElement("li");
+                li.textContent = post.title;
+                lista.appendChild(li);
+            });
+
+        } catch (error) {
+            estado.textContent = "Error al cargar los datos";
+            estado.style.color = "red";
+        }
+    }
+</script>
+
+</body>
+</html>

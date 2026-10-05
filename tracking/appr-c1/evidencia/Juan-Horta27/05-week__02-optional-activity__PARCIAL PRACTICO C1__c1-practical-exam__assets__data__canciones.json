@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "titulo": "Bohemian Rhapsody",
+    "artista": "Queen",
+    "album": "A Night at the Opera",
+    "duracion": "5:55",
+    "genero": "Rock"
+  },
+  {
+    "id": 2,
+    "titulo": "Billie Jean",
+    "artista": "Michael Jackson",
+    "album": "Thriller",
+    "duracion": "4:54",
+    "genero": "Pop"
+  },
+  {
+    "id": 3,
+    "titulo": "Shape of You",
+    "artista": "Ed Sheeran",
+    "album": "÷ (Divide)",
+    "duracion": "3:53",
+    "genero": "Pop"
+  },
+  {
+    "id": 4,
+    "titulo": "Hotel California",
+    "artista": "Eagles",
+    "album": "Hotel California",
+    "duracion": "6:30",
+    "genero": "Classic Rock"
+  },
+  {
+    "id": 5,
+    "titulo": "Blinding Lights",
+    "artista": "The Weeknd",
+    "album": "After Hours",
+    "duracion": "3:20",
+    "genero": "Synthwave"
+  }
+]

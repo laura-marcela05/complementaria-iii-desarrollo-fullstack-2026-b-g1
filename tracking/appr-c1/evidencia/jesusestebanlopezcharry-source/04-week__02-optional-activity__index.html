@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Inventario</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         ENCABEZADO
+    ================================= -->
+
+    <header>
+
+        <h1>
+            🛒 MI INVENTARIO
+        </h1>
+
+        <div>
+            👤 Usuario ▼
+        </div>
+
+    </header>
+
+
+
+    <!-- ================================
+         CONTENIDO PRINCIPAL
+    ================================= -->
+
+    <main>
+
+
+        <!-- TÍTULO Y BOTÓN -->
+
+        <section>
+
+            <h2>
+                Lista de Productos
+            </h2>
+
+            <button id="btnNuevo">
+                + Nuevo Producto
+            </button>
+
+        </section>
+
+
+
+        <!-- ================================
+             BUSCADOR
+        ================================= -->
+
+        <section>
+
+            <input
+                type="text"
+                id="buscar"
+                placeholder="🔍 Buscar producto..."
+            >
+
+            <button id="btnBuscar">
+                🔍 Buscar
+            </button>
+
+        </section>
+
+
+
+        <!-- ================================
+             TABLA DE PRODUCTOS
+        ================================= -->
+
+        <section>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Código
+                        </th>
+
+                        <th>
+                            Producto
+                        </th>
+
+                        <th>
+                            Precio
+                        </th>
+
+                        <th>
+                            Stock
+                        </th>
+
+                        <th>
+                            Acciones
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <!--
+                    IMPORTANTE:
+
+                    JavaScript colocará aquí
+                    los productos que vienen
+                    de la API.
+                -->
+
+                <tbody id="tablaProductos">
+
+                </tbody>
+
+
+            </table>
+
+        </section>
+
+
+
+        <!-- ================================
+             INFORMACIÓN DE PRODUCTOS
+        ================================= -->
+
+<section class="controles-productos">
+
+    <p id="contador">
+        Productos cargados desde la API
+    </p>
+
+    <button
+        id="btnCargarMas"
+        type="button"
+    >
+        ➕ Cargar más productos
+    </button>
+
+</section>
+
+
+
+        <!-- ================================
+             FORMULARIO NUEVO PRODUCTO
+        ================================= -->
+
+        <section
+            id="formularioProducto"
+            class="formulario"
+        >
+
+            <h2>
+                Nuevo Producto
+            </h2>
+
+
+            <input
+                type="text"
+                id="nombreProducto"
+                placeholder="Nombre del producto"
+            >
+
+
+            <input
+                type="number"
+                id="precioProducto"
+                placeholder="Precio"
+                step="0.01"
+            >
+
+
+            <input
+                type="number"
+                id="stockProducto"
+                placeholder="Stock"
+            >
+
+
+            <div class="botones-formulario">
+
+                <button id="btnCancelar">
+                    Cancelar
+                </button>
+
+                <button id="btnGuardar">
+                    Guardar Producto
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================================
+         PIE DE PÁGINA
+    ================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Mi Inventario - Todos los derechos reservados
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="app.js"></script>
+
+
+</body>
+
+</html>

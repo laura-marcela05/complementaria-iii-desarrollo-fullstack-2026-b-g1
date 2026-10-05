@@ -1,0 +1,164 @@
+:root {
+  --chalkboard: #6b84b7;
+  --chalkboard-edge: #4f6693;
+  --chalk: #ffffff;
+  --chalk-dim: #dbe2f0;
+  --accent: #bcd0f0;
+  --brick: #3a4f7a;
+  --index-card: #f4f6fb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--chalkboard);
+  color: var(--chalk);
+  font-family: "Space Mono", monospace;
+}
+
+/* ---------- HEADER ---------- */
+.board-header {
+  padding: 3.5rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.board-header-title {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.board-header h1 {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  line-height: 0.95;
+  color: var(--chalk);
+}
+
+.chalk-subtitle {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--chalk-dim);
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+/* ---------- TIPS LIST ---------- */
+.tips {
+  width: 100%;
+  max-width: 560px;
+}
+
+.tips-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.tips-list li {
+  padding: 1rem 0.25rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tips-list li:first-child {
+  padding-top: 0;
+}
+
+/* ---------- NOTE AREA ---------- */
+.note-area {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.chalk-button {
+  font-family: "Space Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--chalkboard-edge);
+  background-color: var(--chalk);
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.chalk-button:hover {
+  background-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.chalk-button:active {
+  transform: translateY(0);
+}
+
+/* ---------- NOTA (elemento distintivo) ---------- */
+.chalk-note {
+  position: relative;
+  max-width: 380px;
+  background-color: var(--index-card);
+  color: var(--chalkboard-edge);
+  padding: 1.75rem 1.5rem 1.5rem;
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+  transform: rotate(-1.5deg);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.chalk-note::before {
+  content: "";
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 4.5rem;
+  height: 1.4rem;
+  background: rgba(107, 132, 183, 0.55);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---------- FOOTER ---------- */
+.board-footer {
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--chalk-dim);
+  border-top: 2px dashed rgba(255, 255, 255, 0.3);
+  background-color: var(--chalkboard-edge);
+}

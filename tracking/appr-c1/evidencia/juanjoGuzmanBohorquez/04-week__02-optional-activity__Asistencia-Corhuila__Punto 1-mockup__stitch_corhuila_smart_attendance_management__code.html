@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>CORHUILA Asistencia - Tomar Asistencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#596376",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#f2bc82",
+                      "surface-container": "#efedf1",
+                      "surface-container-low": "#f4f3f7",
+                      "surface-container-highest": "#e3e2e6",
+                      "inverse-primary": "#adc7f7",
+                      "inverse-on-surface": "#f1f0f4",
+                      "on-secondary-fixed": "#121c2c",
+                      "primary-fixed": "#d6e3ff",
+                      "surface": "#faf9fd",
+                      "surface-container-high": "#e9e7eb",
+                      "surface-variant": "#e3e2e6",
+                      "on-tertiary-fixed-variant": "#633f0f",
+                      "surface-dim": "#dad9dd",
+                      "on-surface-variant": "#43474e",
+                      "surface-bright": "#faf9fd",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary": "#555f71",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#001b3c",
+                      "on-tertiary-container": "#c6955e",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#bdc7dc",
+                      "on-secondary-fixed-variant": "#3d4759",
+                      "outline-variant": "#c4c6cf",
+                      "on-surface": "#1a1c1e",
+                      "inverse-surface": "#2f3033",
+                      "tertiary-container": "#4f2e00",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#ffddba",
+                      "primary-container": "#1a365d",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "background": "#faf9fd",
+                      "secondary-fixed": "#d9e3f9",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#d6e0f6",
+                      "on-primary-container": "#86a0cd",
+                      "on-tertiary-fixed": "#2b1700",
+                      "tertiary": "#321b00",
+                      "primary-fixed-dim": "#adc7f7",
+                      "outline": "#74777f",
+                      "surface-tint": "#455f88",
+                      "primary": "#002045",
+                      "on-background": "#1a1c1e",
+                      "success": "#198754",
+                      "on-success": "#ffffff",
+                      "success-container": "#d1e7dd",
+                      "on-success-container": "#0f5132",
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-margin": "1rem",
+                      "section-gap": "1.5rem",
+                      "card-padding": "1.25rem",
+                      "stack-gap": "1rem",
+                      "touch-target-min": "44px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "stat-number": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "stat-number": ["28px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .attendance-toggle {
+            display: none;
+        }
+        
+        .attendance-toggle:checked + label {
+            background-color: var(--tw-color-primary);
+            color: var(--tw-color-on-primary);
+        }
+
+        .status-present:checked + label {
+            background-color: var(--tw-color-success);
+            color: var(--tw-color-on-success);
+            border-color: var(--tw-color-success);
+        }
+
+        .status-absent:checked + label {
+            background-color: var(--tw-color-error);
+            color: var(--tw-color-on-error);
+            border-color: var(--tw-color-error);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen flex flex-col pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface text-primary font-headline-sm flex justify-between items-center px-container-margin py-3 w-full docked full-width top-0 bg-surface-container-low shadow-sm sticky z-50">
+<div class="flex items-center gap-3">
+<button aria-label="Volver" class="w-touch-target-min h-touch-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm text-primary">Asistencia</h1>
+<span class="font-body-md text-body-md text-on-surface-variant">Fullstack - G01</span>
+</div>
+</div>
+<button aria-label="Notificaciones" class="w-touch-target-min h-touch-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow px-container-margin py-section-gap max-w-2xl mx-auto w-full flex flex-col gap-stack-gap">
+<!-- Search Bar -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant transition-all outline-none" placeholder="Buscar estudiante por nombre o código..." type="text"/>
+</div>
+<!-- Meta Info Row -->
+<div class="flex justify-between items-center px-2">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">35 Estudiantes</span>
+<div class="flex gap-4">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-success"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Presentes</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Ausentes</span>
+</div>
+</div>
+</div>
+<!-- Students List (Cards) -->
+<div class="flex flex-col gap-3">
+<!-- Student Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm">
+                        JP
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Juan Pérez</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-mono">202312345</span>
+</div>
+</div>
+<div class="flex rounded-lg overflow-hidden border border-outline-variant">
+<input class="attendance-toggle status-present" id="present_1" name="status_1" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors border-r border-outline-variant" for="present_1">
+                        Presente
+                    </label>
+<input class="attendance-toggle status-absent" id="absent_1" name="status_1" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors" for="absent_1">
+                        Ausente
+                    </label>
+</div>
+</div>
+<!-- Student Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm text-headline-sm">
+                        MG
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">María García</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-mono">202312346</span>
+</div>
+</div>
+<div class="flex rounded-lg overflow-hidden border border-outline-variant">
+<input checked="" class="attendance-toggle status-present" id="present_2" name="status_2" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors border-r border-outline-variant" for="present_2">
+                        Presente
+                    </label>
+<input class="attendance-toggle status-absent" id="absent_2" name="status_2" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors" for="absent_2">
+                        Ausente
+                    </label>
+</div>
+</div>
+<!-- Student Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-headline-sm text-headline-sm">
+                        CR
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Carlos Rodríguez</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-mono">202312347</span>
+</div>
+</div>
+<div class="flex rounded-lg overflow-hidden border border-outline-variant">
+<input class="attendance-toggle status-present" id="present_3" name="status_3" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors border-r border-outline-variant" for="present_3">
+                        Presente
+                    </label>
+<input checked="" class="attendance-toggle status-absent" id="absent_3" name="status_3" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors" for="absent_3">
+                        Ausente
+                    </label>
+</div>
+</div>
+<!-- Student Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm">
+                        LM
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Laura Martínez</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-mono">202312348</span>
+</div>
+</div>
+<div class="flex rounded-lg overflow-hidden border border-outline-variant">
+<input class="attendance-toggle status-present" id="present_4" name="status_4" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors border-r border-outline-variant" for="present_4">
+                        Presente
+                    </label>
+<input class="attendance-toggle status-absent" id="absent_4" name="status_4" type="radio"/>
+<label class="flex-1 sm:w-24 h-touch-target-min flex items-center justify-center font-body-md text-body-md font-semibold cursor-pointer text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors" for="absent_4">
+                        Ausente
+                    </label>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Action Button Footer -->
+<div class="fixed bottom-0 left-0 w-full p-4 bg-surface-container-lowest shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-40 sm:flex sm:justify-center">
+<button class="w-full sm:w-auto sm:min-w-[320px] h-12 bg-primary text-on-primary rounded-lg font-headline-sm text-headline-sm flex items-center justify-center gap-2 hover:bg-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="save" style="font-variation-settings: 'FILL' 1;">save</span>
+            Guardar asistencia
+        </button>
+</div>
+<!-- Navigation shell suppressed because this is a focused task screen. -->
+<script>
+        // Simple script to handle visual feedback on save (optional UX enhancement)
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">check_circle</span> Guardado';
+            this.classList.replace('bg-primary', 'bg-success');
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.classList.replace('bg-success', 'bg-primary');
+            }, 2000);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,1 @@
+Vite .parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}

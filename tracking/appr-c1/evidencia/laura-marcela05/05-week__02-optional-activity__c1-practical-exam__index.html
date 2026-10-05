@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recetario - Parcial Práctico Corte 1</title>
+
+    <!-- CSS de Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="assets/library/bootstrap-4.6.2/css/bootstrap.min.css"
+    />
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- HEADER: encabezado semántico -->
+    <header class="bg-dark text-white text-center py-4">
+      <h1>Recetario</h1>
+      <p class="mb-0">Parcial Práctico · Corte 1 · Desarrollo Fullstack</p>
+    </header>
+
+    <!-- MAIN: contenido principal -->
+    <main class="container my-4">
+      <!-- SECTION: lista de recetas -->
+      <section id="lista-recetas">
+        <h2>Mis recetas favoritas</h2>
+
+        <!-- Mensaje de estado: cargando / error -->
+        <p id="estado" class="text-muted">Cargando recetas...</p>
+
+        <!-- Lista semántica (se llena con fetch desde data/db.json) -->
+        <ul id="lista" class="list-group mb-3"></ul>
+
+        <!-- Botón que dispara el comportamiento en JS -->
+        <button id="btnAgregar" class="btn btn-primary">Agregar receta</button>
+      </section>
+    </main>
+
+    <!-- Explicación Problema 1: rol de cada lenguaje -->
+    <section class="container mb-4">
+      <div class="alert alert-info">
+        <strong>Rol de cada lenguaje (Problema 1):</strong>
+        <ul class="mb-0">
+          <li>
+            <strong>HTML:</strong> define la estructura (encabezado, lista,
+            botón).
+          </li>
+          <li>
+            <strong>CSS:</strong> define la apariencia (colores, bordes,
+            espaciado).
+          </li>
+          <li>
+            <strong>JavaScript:</strong> define el comportamiento (agregar
+            receta al hacer clic, consumir datos).
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Explicación Problema 3: framework y SPA -->
+    <section class="container mb-4">
+      <div class="alert alert-secondary">
+        <h2 class="h4">Framework y SPA (Problema 3)</h2>
+        <p>
+          Un componente es una parte de la interfaz que se puede reutilizar, por
+          ejemplo, cada elemento de la lista de recetas. El estado es la
+          información que puede cambiar, como las recetas cargadas y el mensaje
+          de carga o error.
+        </p>
+        <p>
+          El enrutamiento permite cambiar de vista según la dirección URL sin
+          volver a cargar toda la página. Una SPA necesita una API para
+          solicitar y enviar datos al servidor mientras la interfaz continúa
+          funcionando en una sola página.
+        </p>
+        <p>
+          Ejemplo mínimo: un componente muestra una receta y, cuando cambia el
+          estado, la lista se actualiza.
+        </p>
+        <p class="mb-0">
+          <strong>SPA and MPA:</strong> An SPA loads one main page and updates
+          its content without reloading the whole page. An MPA loads a new page
+          from the server when the user navigates to another section.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-light text-center py-3 mt-4">
+      <small>CORHUILA - Ingeniería de Sistemas - 2026-B</small>
+    </footer>
+
+    <!-- Lógica propia -->
+    <script src="assets/logic/app.js"></script>
+  </body>
+</html>

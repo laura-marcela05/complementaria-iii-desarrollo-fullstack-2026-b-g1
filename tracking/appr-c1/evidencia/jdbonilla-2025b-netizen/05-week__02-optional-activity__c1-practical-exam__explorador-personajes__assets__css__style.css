@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #abffbd;
+  color: #127529;
+  line-height: 1.5;
+}
+
+header {
+  background: linear-gradient(135deg, #41a760, #28885b);
+  color: white;
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  opacity: 0.9;
+}
+
+main {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ---------- Formulario ---------- */
+.form-section {
+  background: rgb(71, 168, 92);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-section label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 0.6rem;
+}
+
+.form-section input {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#discoverBtn {
+  margin-top: 1.2rem;
+  background-color: #17a135;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#discoverBtn:hover {
+  background-color: #005e0c;
+}
+
+#discoverBtn:active {
+  transform: scale(0.97);
+}
+
+#discoverBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Estado ---------- */
+#status {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  min-height: 1.2rem;
+}
+
+#status.loading {
+  color: #4cc466;
+}
+
+#status.success {
+  color: #1a9e5c;
+}
+
+#status.error {
+  color: #d9364f;
+  font-weight: bold;
+}
+
+/* ---------- Resultado ---------- */
+.result-section {
+  background: white;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.result-section img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.8rem;
+}
+
+.result-section h2 {
+  color: #1a810d;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.result-section ul {
+  list-style: none;
+  text-align: left;
+  display: inline-block;
+}
+
+.result-section li {
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #888;
+  font-size: 0.85rem;
+}

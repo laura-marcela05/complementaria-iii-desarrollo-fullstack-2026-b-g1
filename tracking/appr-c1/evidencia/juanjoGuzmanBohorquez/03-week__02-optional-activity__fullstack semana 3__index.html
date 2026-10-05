@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup API - Consumo con Estados</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>📱 Dashboard de Usuarios</h1>
+    <p>Consumo de API con gestión de estados (Loading, Success, Error)</p>
+  </header>
+
+  <main class="container">
+    
+    <!-- Estado 1: CARGANDO (Spinner) -->
+    <div id="loadingState" class="state-box">
+      <div class="spinner"></div>
+      <p>Cargando información desde la API...</p>
+    </div>
+
+    <!-- Estado 2: ERROR (Mensaje + Reintento) -->
+    <div id="errorState" class="state-box hidden">
+      <div class="error-icon">⚠️</div>
+      <h3>Error de Conexión</h3>
+      <p id="errorMessage">No se pudieron cargar los datos.</p>
+      <button id="retryBtn" class="btn btn-retry">🔄 Reintentar</button>
+    </div>
+
+    <!-- Estado 3: ÉXITO (Lista de Elementos) -->
+    <div id="successState" class="hidden">
+      <ul id="dataList" class="user-list">
+        <!-- Los elementos cargados por JS se insertan aquí -->
+      </ul>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
