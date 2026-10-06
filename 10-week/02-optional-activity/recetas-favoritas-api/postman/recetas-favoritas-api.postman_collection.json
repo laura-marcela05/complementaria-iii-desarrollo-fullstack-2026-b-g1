@@ -1,0 +1,156 @@
+{
+  "info": {
+    "name": "recetas-favoritas-api",
+    "description": "Colección de pruebas para la API de Recetas Favoritas — Semana 10 (cierre del Corte 2).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/recetas-favoritas"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Crear receta (Teriyaki Chicken)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"mealId\": \"52772\",\n  \"nombre\": \"Teriyaki Chicken Casserole\",\n  \"categoria\": \"Chicken\",\n  \"area\": \"Japanese\",\n  \"imagenUrl\": \"https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}", "host": ["{{baseUrl}}"] }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('201 Created', function () { pm.response.to.have.status(201); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Crear receta (Apple Pie)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"mealId\": \"52893\",\n  \"nombre\": \"Apple & Blackberry Crumble\",\n  \"categoria\": \"Dessert\",\n  \"area\": \"British\",\n  \"imagenUrl\": \"https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}", "host": ["{{baseUrl}}"] }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('201 Created', function () { pm.response.to.have.status(201); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Listar todas",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}", "host": ["{{baseUrl}}"] }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('200 OK', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Obtener receta 1",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/1", "host": ["{{baseUrl}}"], "path": ["1"] }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('200 OK', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Actualizar receta 1",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"mealId\": \"52772\",\n  \"nombre\": \"Teriyaki Chicken Casserole (actualizado)\",\n  \"categoria\": \"Chicken\",\n  \"area\": \"Japanese\",\n  \"imagenUrl\": \"https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/1", "host": ["{{baseUrl}}"], "path": ["1"] }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('200 OK', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Borrar receta 2",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "{{baseUrl}}/2", "host": ["{{baseUrl}}"], "path": ["2"] }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('204 No Content', function () { pm.response.to.have.status(204); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Caso de error: receta 2 ya no existe",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/2", "host": ["{{baseUrl}}"], "path": ["2"] }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('404 Not Found', function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
